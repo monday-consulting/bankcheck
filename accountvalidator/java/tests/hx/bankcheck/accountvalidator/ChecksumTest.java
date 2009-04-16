@@ -36,14 +36,19 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum03() throws Exception {
-		//TODO
+		// TODO should be fine when checksum01 is
 	}
 
 	@Test
 	public void checksum04() throws Exception {
-		//TODO
+		// TODO should be fine when checksum02 is
 	}
 
+	@Test
+	public void checksum05() throws Exception {
+		// TODO should be fine when checksum01 is
+	}
+	
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
 			assertTrue(cs.validate(number) == numbersAreValid);
