@@ -8,7 +8,8 @@ package hx.bankcheck.accountvalidator;
  */
 public class Checksum05 extends Checksum01 {
 
-	private final static int[] WEIGHTS = { 7, 3, 1, 7, 3, 1, 7, 3, 1 };
+	// Weights from left to right
+	private final static int[] WEIGHTS = { 1, 3, 7, 1, 3, 7, 1, 3, 7 };
 	
 	public Checksum05() {
 		super(WEIGHTS);

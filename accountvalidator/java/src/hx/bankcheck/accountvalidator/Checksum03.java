@@ -7,6 +7,7 @@ package hx.bankcheck.accountvalidator;
  * @author tma
  */
 public class Checksum03 extends Checksum01 implements IAccountChecksum {
+	// Weights from left to right
 	private final static int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
 	
 	public Checksum03() {

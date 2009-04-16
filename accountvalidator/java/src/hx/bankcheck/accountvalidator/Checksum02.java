@@ -18,7 +18,8 @@ import java.util.logging.Logger;
 public class Checksum02 implements IAccountChecksum {
 	private final static Logger LOG = Logger.getLogger(Checksum02.class.getName());
 	
-	private final static int[] WEIGHTS = { 2, 3, 4, 5, 6, 7, 8, 9, 2 };
+	// Weights from left to right
+	private final static int[] WEIGHTS = {2, 9, 8, 7, 6, 5, 4, 3, 2 };
 
 	private int[] weights;
 	
@@ -32,9 +33,8 @@ public class Checksum02 implements IAccountChecksum {
 	
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		
 		int sum = 0;
-		for(int i=8; i>=0; i--) {
+		for(int i=0; i<9; i++) {
 			sum += accountNumber[i] * weights[i];
 		}
 		int checksum = 11 - (sum % 11);
