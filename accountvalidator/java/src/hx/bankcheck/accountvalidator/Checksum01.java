@@ -18,7 +18,17 @@ import java.util.logging.Logger;
 public class Checksum01 implements IAccountChecksum {
 	private final static Logger LOG = Logger.getLogger(Checksum00.class.getName());
 	
-	private int[] weights = { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
+	private final static int[] WEIGHTS = { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
+	
+	private int[] weights;
+	
+	public Checksum01() {
+		this(WEIGHTS);
+	}
+	
+	public Checksum01(int[] weights) {
+		this.weights = weights;
+	}
 	
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {

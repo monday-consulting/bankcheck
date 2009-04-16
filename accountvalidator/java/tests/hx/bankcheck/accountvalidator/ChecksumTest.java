@@ -33,6 +33,16 @@ public class ChecksumTest {
 	public void checksum02() throws Exception {
 		//TODO
 	}
+	
+	@Test
+	public void checksum03() throws Exception {
+		//TODO
+	}
+
+	@Test
+	public void checksum04() throws Exception {
+		//TODO
+	}
 
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
