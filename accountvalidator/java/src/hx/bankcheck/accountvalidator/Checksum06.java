@@ -26,21 +26,37 @@ public class Checksum06 implements IAccountChecksum {
 	
 	// Weights from left to right
 	private final static int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+
+	private int[] weights;
+	
+	public Checksum06() {
+		this(WEIGHTS);
+	}
+	
+	Checksum06(int[] weights) {
+		this.weights = weights;
+	}
 	
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		int sum = 0;
 		for(int i=0; i<9; i++) {
-			sum += accountNumber[i] * WEIGHTS[i];
+			sum += accountNumber[i] * weights[i];
 		}
 		int checksum = 11 - (sum % 11);
 		
-		if (checksum == 10 || checksum == 11) 
-			checksum = 0;
+		checksum = adjustChecksum(checksum);
 		
 		LOG.finer("Calculated Checksum is: " + checksum);
 		
 		return checksum == accountNumber[9];
+	}
+	
+	protected int adjustChecksum(int checksum) {
+		if (checksum == 10 || checksum == 11) 
+			checksum = 0;
+		
+		return checksum;
 	}
 
 }

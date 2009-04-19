@@ -3,7 +3,7 @@ package hx.bankcheck.accountvalidator;
 public class ChecksumUtils {
 	
 	/**
-	 * Calculates the crossfoot
+	 * Calculates the crossfoot of a number
 	 * @param number
 	 * @return
 	 */

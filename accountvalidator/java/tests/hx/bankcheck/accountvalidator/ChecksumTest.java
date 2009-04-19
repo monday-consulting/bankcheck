@@ -96,6 +96,39 @@ public class ChecksumTest {
 		}
 	}
 	
+	@Test
+	public void checksum09() throws ValidationException {
+		IAccountChecksum cs = new Checksum09();
+		
+		// Check all numbers < 100000, all would take too long.
+		for(int i=0; i<100000l; i++) {
+			int[] n = new int[10];
+			int x = i;
+			for(int c=0; c<10; c++) {
+				n[9-c] = x % 10;
+				x = x / 10;
+			}
+			assertTrue("Check failed for " + Arrays.toString(n), cs.validate(n));
+		}
+	}
+	
+	@Test
+	public void checksum10() throws ValidationException {
+		IAccountChecksum cs = new Checksum10();
+		
+		int[][] correctNumbers = {
+				{0,0,1,2,3,4,5,0,0,8},
+				{0,0,8,7,6,5,4,0,0,8}
+		};
+		
+		checkNumbers(cs, correctNumbers, true);
+	}
+	
+	@Test
+	public void checksum11() {
+		// TODO should be ok when checksum06 is
+	}
+	
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
 			assertTrue(Arrays.toString(number)+" is not " + numbersAreValid, cs.validate(number) == numbersAreValid);
