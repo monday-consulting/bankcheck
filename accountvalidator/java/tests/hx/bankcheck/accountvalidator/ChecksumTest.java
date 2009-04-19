@@ -146,6 +146,10 @@ public class ChecksumTest {
 		// TODO should be ok when checksum02 is
 	}
 	
+	@Test
+	public void checksum15() {
+		// TODO should be ok when checksum06 is
+	}
 	
 	
 	
