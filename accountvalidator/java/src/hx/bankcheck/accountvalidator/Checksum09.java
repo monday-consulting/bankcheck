@@ -13,4 +13,9 @@ public class Checksum09 implements IAccountChecksum {
 		return true;
 	}
 
+	@Override
+	public int calcChecksum(int[] accountNumber) {
+		return 0;
+	}
+
 }

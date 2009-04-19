@@ -129,6 +129,18 @@ public class ChecksumTest {
 		// TODO should be ok when checksum06 is
 	}
 	
+	@Test
+	public void checksum13() throws ValidationException {
+		IAccountChecksum cs = new Checksum13();
+		
+		int[][] correctNumbers = {
+				{0,0,0,6,0,0,0,4,0,0},
+				{0,0,0,0,0,6,0,0,0,4}	
+		};
+		
+		checkNumbers(cs, correctNumbers, true);
+	}
+	
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
 			assertTrue(Arrays.toString(number)+" is not " + numbersAreValid, cs.validate(number) == numbersAreValid);

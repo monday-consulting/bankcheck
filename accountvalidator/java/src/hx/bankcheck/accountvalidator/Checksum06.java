@@ -39,6 +39,20 @@ public class Checksum06 implements IAccountChecksum {
 	
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
+		int checksum = calcChecksum(accountNumber);
+		
+		return checksum == accountNumber[9];
+	}
+	
+	protected int adjustChecksum(int checksum) {
+		if (checksum == 10 || checksum == 11) 
+			checksum = 0;
+		
+		return checksum;
+	}
+
+	@Override
+	public int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		for(int i=0; i<9; i++) {
 			sum += accountNumber[i] * weights[i];
@@ -48,13 +62,6 @@ public class Checksum06 implements IAccountChecksum {
 		checksum = adjustChecksum(checksum);
 		
 		LOG.finer("Calculated Checksum is: " + checksum);
-		
-		return checksum == accountNumber[9];
-	}
-	
-	protected int adjustChecksum(int checksum) {
-		if (checksum == 10 || checksum == 11) 
-			checksum = 0;
 		
 		return checksum;
 	}
