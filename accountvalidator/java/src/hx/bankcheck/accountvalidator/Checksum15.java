@@ -15,7 +15,7 @@ public class Checksum15 extends Checksum06 {
 	public boolean validate(int[] num) throws ValidationException {
 		int n[] = { 0, 0, 0, 0, 0, num[5], num[6], num[7], num[8], num[9] };
 		
-		return super.validate(num);
+		return super.validate(n);
 	}
 
 }

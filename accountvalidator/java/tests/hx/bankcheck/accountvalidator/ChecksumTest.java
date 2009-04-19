@@ -151,6 +151,19 @@ public class ChecksumTest {
 		// TODO should be ok when checksum06 is
 	}
 	
+	@Test
+	public void checksum16() throws ValidationException {
+		IAccountChecksum cs = new Checksum16();
+		
+		int[][] correctNumbers = {
+				{0,0,9,4,0,1,2,3,4,1},
+				{5,0,7,3,3,2,1,0,1,0},
+				{0,0,9,4,0,1,2,3,4,4}
+		};
+		
+		checkNumbers(cs, correctNumbers, true);
+	}
+	
 	
 	
 	
