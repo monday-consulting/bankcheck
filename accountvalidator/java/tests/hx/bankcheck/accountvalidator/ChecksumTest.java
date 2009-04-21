@@ -198,7 +198,12 @@ public class ChecksumTest {
 		// TODO should be ok when checksum06 is
 	}
 	
+	@Test
+	public void checksum21() throws ValidationException {
+		// TODO find some numbers!
+	}
 
+	
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
 			assertTrue(Arrays.toString(number)+" is not " + numbersAreValid, cs.validate(number) == numbersAreValid);

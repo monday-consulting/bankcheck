@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Checksum00 implements IAccountChecksum {
 	private final static Logger LOG = Logger.getLogger(Checksum00.class.getName());
 	
-	private int[] weights = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
+	protected final static int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
 	
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
@@ -33,7 +33,7 @@ public class Checksum00 implements IAccountChecksum {
 	public int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		for(int i=8; i>=0; i--) {
-			sum += ChecksumUtils.qs(accountNumber[i] * weights[i]);
+			sum += ChecksumUtils.qs(accountNumber[i] * WEIGHTS[i]);
 		}
 		int checksum = (10 - (sum % 10)) % 10;
 	
