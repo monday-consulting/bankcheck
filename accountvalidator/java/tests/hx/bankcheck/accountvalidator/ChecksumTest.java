@@ -176,6 +176,22 @@ public class ChecksumTest {
 		checkNumbers(cs, correctNumbers, true);
 	}
 	
+	@Test
+	public void checksum18() throws ValidationException {
+		// TODO should be ok when checksum01 is
+	}
+	
+	@Test
+	public void checksum19() throws ValidationException {
+		IAccountChecksum cs = new Checksum19();
+		
+		int[][] correctNumbers = {
+				{0,2,4,0,3,3,4,0,0,0}, 
+				{0,2,0,0,5,2,0,0,1,6}
+		};
+		
+		checkNumbers(cs, correctNumbers, true);
+	}
 	
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
