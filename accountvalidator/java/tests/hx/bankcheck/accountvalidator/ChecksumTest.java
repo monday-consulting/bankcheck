@@ -164,7 +164,17 @@ public class ChecksumTest {
 		checkNumbers(cs, correctNumbers, true);
 	}
 	
-	
+
+	@Test
+	public void checksum17() throws ValidationException {
+		IAccountChecksum cs = new Checksum17();
+		
+		int[][] correctNumbers = {
+				{ 0,4,4,6,7,8,6,0,4,0 }
+		};
+		
+		checkNumbers(cs, correctNumbers, true);
+	}
 	
 	
 	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
