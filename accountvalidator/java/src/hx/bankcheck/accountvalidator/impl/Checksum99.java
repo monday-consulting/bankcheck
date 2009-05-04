@@ -14,12 +14,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * <b>Ausnahmen:</b><br/>
  * 
  * Kontonr.:0396000000 bis 0499999999<br/>
- * Für diese Kontonummern ist keine Prüfzifferberechnung möglich. Sie sind als
+ * Fï¿½r diese Kontonummern ist keine Prï¿½fzifferberechnung mï¿½glich. Sie sind als
  * richtig anzusehen.
  * 
  * Testkontonummern: 0068007003, 0847321750
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
@@ -28,6 +28,10 @@ public class Checksum99 extends Checksum06 {
 	private static final int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 	private boolean exception=false;
 
+	public Checksum99() {
+		super(WEIGHTS);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -37,11 +41,11 @@ public class Checksum99 extends Checksum06 {
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		long accountNumberAsLong = ChecksumUtils.parseLong(accountNumber);
 		if ((accountNumberAsLong >= Long.parseLong("0396000000"))
-				&& (accountNumberAsLong <= Long.parseLong("0396000000"))) {
+				&& (accountNumberAsLong <= Long.parseLong("0499999999"))) {
 			exception=true;
 			return true;
 		} else {
-			return new Checksum06(WEIGHTS).validate(accountNumber);
+			return super.validate(accountNumber);
 		}
 	}
 

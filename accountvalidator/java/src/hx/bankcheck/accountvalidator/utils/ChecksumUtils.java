@@ -23,7 +23,7 @@ public class ChecksumUtils {
 	 * Fills up the account number by adding '0' to the left until size is
 	 * reached.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param sizeOfAccountNumber
@@ -48,7 +48,7 @@ public class ChecksumUtils {
 	/**
 	 * Parses the given account number as long value for comparing it.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param acccountNumber
@@ -56,19 +56,18 @@ public class ChecksumUtils {
 	 * @return long value of the given account number
 	 */
 	public static long parseLong(int[] accountNumber) {
-		int[] filledAccountNumber = ChecksumUtils.getFilledAcountNumber(10,
-				accountNumber);
-		String tmp = "";
-		for (int i = 0; i < filledAccountNumber.length; i++) {
-			tmp += filledAccountNumber[i];
+		long l = 0l;
+		for(int i=0; i<accountNumber.length; i++) {
+			l *= 10;
+			l += accountNumber[i];
 		}
-		return Long.parseLong(tmp);
+		return l;
 	}
 
 	/**
 	 * Parses the given account number as int[].
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumberAsLong

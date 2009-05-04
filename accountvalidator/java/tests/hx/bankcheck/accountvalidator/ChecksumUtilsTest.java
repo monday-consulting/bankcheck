@@ -1,12 +1,13 @@
 package hx.bankcheck.accountvalidator;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
-import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class ChecksumUtilsTest extends TestCase {
+public class ChecksumUtilsTest {
 
 	@Test
 	public void testGetFilledAcountNumber() {
@@ -69,4 +70,18 @@ public class ChecksumUtilsTest extends TestCase {
 		assertArrayEquals(c_expected, ChecksumUtils.parseAccountNumber(c.longValue()));
 	}
 	
+	@Test
+	public void parseLong() {
+		int[] accountNumber1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+		int[] accountNumber2 = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+		int[] accountNumber3 = { 0, 0, 3, 0, 0 };
+		int[] accountNumber4 = { 0, 9, 1 };
+		int[] accountNumber5 = { 0 };
+		
+		assertEquals(1234567890l, ChecksumUtils.parseLong(accountNumber1));
+		assertEquals(234567890l, ChecksumUtils.parseLong(accountNumber2));
+		assertEquals(300l, ChecksumUtils.parseLong(accountNumber3));
+		assertEquals(91l, ChecksumUtils.parseLong(accountNumber4));
+		assertEquals(0l, ChecksumUtils.parseLong(accountNumber5));
+	}
 }
