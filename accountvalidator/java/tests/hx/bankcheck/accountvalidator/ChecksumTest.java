@@ -1,15 +1,26 @@
 package hx.bankcheck.accountvalidator;
 
+import static org.junit.Assert.*;
+import hx.bankcheck.accountvalidator.exceptions.ValidationException;
+import hx.bankcheck.accountvalidator.impl.Checksum00;
+import hx.bankcheck.accountvalidator.impl.Checksum06;
+import hx.bankcheck.accountvalidator.impl.Checksum08;
+import hx.bankcheck.accountvalidator.impl.Checksum09;
+import hx.bankcheck.accountvalidator.impl.Checksum10;
+import hx.bankcheck.accountvalidator.impl.Checksum13;
+import hx.bankcheck.accountvalidator.impl.Checksum16;
+import hx.bankcheck.accountvalidator.impl.Checksum17;
+import hx.bankcheck.accountvalidator.impl.Checksum19;
+
 import java.util.Arrays;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class ChecksumTest {
 
 	@Test
 	public void checksum00() throws Exception {
-		IAccountChecksum cs = new Checksum00();
+		ChecksumValidator cs = new Checksum00();
 
 		int[][] correctNumbers = new int[][] {
 				{0,0,0,9,2,9,0,7,0,1},
@@ -52,7 +63,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum06() throws Exception {
-		IAccountChecksum cs = new Checksum06();
+		ChecksumValidator cs = new Checksum06();
 		
 		int[][] correctNumbers = {
 				{0,0,9,4,0,1,2,3,4,1},
@@ -68,7 +79,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum08() throws Exception {
-		IAccountChecksum cs = new Checksum08();
+		ChecksumValidator cs = new Checksum08();
 		
 		int[][] correctNumbers = new int[][] {
 				{0,0,0,9,2,9,0,7,0,1},
@@ -98,7 +109,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum09() throws ValidationException {
-		IAccountChecksum cs = new Checksum09();
+		ChecksumValidator cs = new Checksum09();
 		
 		// Check all numbers < 100000, all would take too long.
 		for(int i=0; i<100000l; i++) {
@@ -114,7 +125,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum10() throws ValidationException {
-		IAccountChecksum cs = new Checksum10();
+		ChecksumValidator cs = new Checksum10();
 		
 		int[][] correctNumbers = {
 				{0,0,1,2,3,4,5,0,0,8},
@@ -131,7 +142,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum13() throws ValidationException {
-		IAccountChecksum cs = new Checksum13();
+		ChecksumValidator cs = new Checksum13();
 		
 		int[][] correctNumbers = {
 				{0,0,0,6,0,0,0,4,0,0},
@@ -153,7 +164,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum16() throws ValidationException {
-		IAccountChecksum cs = new Checksum16();
+		ChecksumValidator cs = new Checksum16();
 		
 		int[][] correctNumbers = {
 				{0,0,9,4,0,1,2,3,4,1},
@@ -167,7 +178,7 @@ public class ChecksumTest {
 
 	@Test
 	public void checksum17() throws ValidationException {
-		IAccountChecksum cs = new Checksum17();
+		ChecksumValidator cs = new Checksum17();
 		
 		int[][] correctNumbers = {
 				{ 0,4,4,6,7,8,6,0,4,0 }
@@ -183,7 +194,7 @@ public class ChecksumTest {
 	
 	@Test
 	public void checksum19() throws ValidationException {
-		IAccountChecksum cs = new Checksum19();
+		ChecksumValidator cs = new Checksum19();
 		
 		int[][] correctNumbers = {
 				{0,2,4,0,3,3,4,0,0,0}, 
@@ -204,7 +215,7 @@ public class ChecksumTest {
 	}
 
 	
-	private void checkNumbers(IAccountChecksum cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
+	private void checkNumbers(ChecksumValidator cs, int[][] numbers, boolean numbersAreValid) throws ValidationException {
 		for(int[] number : numbers) {
 			assertTrue(Arrays.toString(number)+" is not " + numbersAreValid, cs.validate(number) == numbersAreValid);
 		}
