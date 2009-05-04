@@ -4,9 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 @RunWith(Suite.class)
 @SuiteClasses({
 	Checksum00Test.class,
@@ -40,6 +37,7 @@ import junit.framework.TestSuite;
 	Checksum96Test.class,
 	Checksum97Test.class,
 	Checksum98Test.class,
+	Checksum99Test.class,
 })
 
 public class AccountCheckTestSuite {

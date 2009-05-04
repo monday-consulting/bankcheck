@@ -1,5 +1,7 @@
 package hx.bankcheck.accountvalidator.utils;
 
+import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumber;
+
 public class ChecksumUtils {
 
 	/**
@@ -48,8 +50,7 @@ public class ChecksumUtils {
 	/**
 	 * Parses the given account number as long value for comparing it.
 	 * 
-	 * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
-	 * @version 1.0
+	 * @author Tobias Mayer (bankcheck@tobiasm.de)
 	 * 
 	 * @param acccountNumber
 	 *            account number to parse
@@ -73,29 +74,22 @@ public class ChecksumUtils {
 	 * @param accountNumberAsLong
 	 *            account number to parse
 	 * @return int[] containing the account number
+	 * @throws IllegalAccountNumber thrown when accountNumber has too much digits
 	 */
-	public static int[] parseAccountNumber(long accountNumberAsLong) {
-		int[] result=null;
+	public static int[] parseAccountNumber(long accountNumberAsLong) throws IllegalAccountNumber {
+		int[] result= new int[10];
+		int pos = 0;
 		do {
-			int intValue=new Long(accountNumberAsLong%10).intValue();
-			result=addIntToArray(intValue, result);
-			accountNumberAsLong/=10;
-		} while (accountNumberAsLong!=0);
+			int intValue = (int) (accountNumberAsLong % 10);
+			result[9-pos] =  intValue;
+			accountNumberAsLong /= 10;
+			pos++;
+		} while (accountNumberAsLong!=0 && pos<10);
+		
+		if (accountNumberAsLong > 0)
+			throw new IllegalAccountNumber("Accountnumber has more than 10 digits");
+		
 		return result;
 	}
-
-	private static int[] addIntToArray(int intValue, int[] intArray) {
-		int[] tmp; 
-		if(intArray==null){
-			tmp=new int[1];
-		}else {
-			tmp=new int[intArray.length + 1];
-		}
-		tmp[0] = intValue;
-		for (int i = 0; i < tmp.length-1; i++) {
-			tmp[i+1] = intArray[i];
-		}
-		return tmp;
-	}
-
+	
 }
