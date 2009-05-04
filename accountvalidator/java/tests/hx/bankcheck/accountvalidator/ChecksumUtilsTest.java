@@ -3,6 +3,7 @@ package hx.bankcheck.accountvalidator;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumber;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 import org.junit.Test;
@@ -56,18 +57,18 @@ public class ChecksumUtilsTest {
 	}
 	
 	@Test
-	public void testparseAccountNumber(){
+	public void testparseAccountNumber() throws IllegalAccountNumber{
 		Long a=new Long("0000000012");
 		Long b=new Long("0123456789");
 		Long c=new Long("12345");
 		
-		int[] a_expected={1,2};
-		int[] b_expected={1,2,3,4,5,6,7,8,9};
-		int[] c_expected={1,2,3,4,5};
+		int[] a_expected={0,0,0,0,0,0,0,0,1,2};
+		int[] b_expected={0,1,2,3,4,5,6,7,8,9};
+		int[] c_expected={0,0,0,0,0,1,2,3,4,5};
 		
-		assertArrayEquals(a_expected, ChecksumUtils.parseAccountNumber(a.longValue()));
-		assertArrayEquals(b_expected, ChecksumUtils.parseAccountNumber(b.longValue()));
-		assertArrayEquals(c_expected, ChecksumUtils.parseAccountNumber(c.longValue()));
+		assertArrayEquals(a_expected, ChecksumUtils.parseAccountNumber(a));
+		assertArrayEquals(b_expected, ChecksumUtils.parseAccountNumber(b));
+		assertArrayEquals(c_expected, ChecksumUtils.parseAccountNumber(c));
 	}
 	
 	@Test
