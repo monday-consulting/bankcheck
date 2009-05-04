@@ -1,31 +1,47 @@
 package hx.bankcheck.accountvalidator;
 
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+@RunWith(Suite.class)
+@SuiteClasses({
+	Checksum00Test.class,
+	Checksum01Test.class,
+	Checksum02Test.class,
+	Checksum03Test.class,
+	Checksum04Test.class,
+	Checksum05Test.class,
+	Checksum06Test.class,
+	Checksum07Test.class,
+	Checksum08Test.class,
+	Checksum09Test.class,
+	Checksum10Test.class,
+	Checksum11Test.class,
+	Checksum13Test.class,
+	Checksum14Test.class,
+	Checksum15Test.class,
+	Checksum16Test.class,
+	Checksum17Test.class,
+	Checksum18Test.class,
+	Checksum19Test.class,
+	Checksum20Test.class,
+	Checksum21Test.class,
+	
+	Checksum90Test.class,
+	Checksum91Test.class,
+	Checksum92Test.class,
+	Checksum93Test.class,
+	Checksum94Test.class,
+	Checksum95Test.class,
+	Checksum96Test.class,
+	Checksum97Test.class,
+	Checksum98Test.class,
+})
+
 public class AccountCheckTestSuite {
-
-	public static Test suite() {
-		TestSuite suite = new TestSuite(
-				"Test for hx.bankcheck.accountvalidator");
-		//$JUnit-BEGIN$
-		
-		// Testing algorithms
-		suite.addTestSuite(Checksum90Test.class);
-		suite.addTestSuite(Checksum91Test.class);
-		suite.addTestSuite(Checksum92Test.class);
-		suite.addTestSuite(Checksum93Test.class);
-		suite.addTestSuite(Checksum94Test.class);
-		suite.addTestSuite(Checksum95Test.class);
-		suite.addTestSuite(Checksum96Test.class);
-		suite.addTestSuite(Checksum97Test.class);
-		suite.addTestSuite(Checksum98Test.class);
-		
-		// Testing utils
-		suite.addTestSuite(ChecksumUtilsTest.class);
-		
-		//$JUnit-END$
-		return suite;
-	}
-
+	// Empty space
 }
