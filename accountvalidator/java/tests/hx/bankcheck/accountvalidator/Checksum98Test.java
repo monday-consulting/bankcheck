@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * Testclass for testing algorithm 98.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
@@ -28,12 +28,12 @@ public class Checksum98Test extends TestCase {
 		int[] validAccountNumber6 = { 6, 7, 1, 9, 4, 3, 0, 0, 1, 8 };
 
 		// Should be valid
-		checksum98.validate(validAccountNumber1);
-		checksum98.validate(validAccountNumber2);
-		checksum98.validate(validAccountNumber3);
-		checksum98.validate(validAccountNumber4);
-		checksum98.validate(validAccountNumber5);
-		checksum98.validate(validAccountNumber6);
+		assertTrue(checksum98.validate(validAccountNumber1));
+		assertTrue(checksum98.validate(validAccountNumber2));
+		assertTrue(checksum98.validate(validAccountNumber3));
+		assertTrue(checksum98.validate(validAccountNumber4));
+		assertTrue(checksum98.validate(validAccountNumber5));
+		assertTrue(checksum98.validate(validAccountNumber6));
 		
 	}
 }
