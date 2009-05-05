@@ -25,7 +25,7 @@ public class ChecksumUtils {
 	 * Fills up the account number by adding '0' to the left until size is
 	 * reached.
 	 * 
-	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param sizeOfAccountNumber
@@ -68,7 +68,7 @@ public class ChecksumUtils {
 	/**
 	 * Parses the given account number as int[].
 	 * 
-	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumberAsLong

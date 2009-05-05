@@ -11,9 +11,4 @@ public interface ChecksumValidator {
 	 */
 	public boolean validate(int[] accountNumber) throws ValidationException;
 	
-	/**
-	 * Calculates the correct checksum for the given number
-	 */
-	public int calcChecksum(int[] accountNumber);
-	
 }
