@@ -45,24 +45,7 @@ public class Checksum96 implements ChecksumValidator {
 	private final static int[] WEIGHTS_ALTERNATIVE_2 = { 2, 1, 2, 1, 2, 1, 2,
 			1, 2 };
 
-	private int methodFlag = 0;
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.AccountChecksum#calcChecksum(int[])
-	 */
-	@Override
-	public int calcChecksum(int[] accountNumber) {
-		switch (methodFlag) {
-		case 0:
-			return calcChecksumAlternative1(accountNumber);
-		case 1:
-			return calcChecksumAlternative2(accountNumber);
-		default:
-			return -1;
-		}
-	}
+	private int alternative = 0;
 
 	/*
 	 * (non-Javadoc)
@@ -71,22 +54,30 @@ public class Checksum96 implements ChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		int[] filledAccountNumber = ChecksumUtils.getFilledAcountNumber(10,
-				accountNumber);
-		methodFlag = 0;
-		if (filledAccountNumber[9] == calcChecksum(filledAccountNumber)) {
+		setAlternative(0);
+		if (accountNumber[9] == calcChecksum(accountNumber)) {
 			return true;
 		} else {
-			methodFlag = 1;
-			if (filledAccountNumber[9] == calcChecksum(filledAccountNumber)) {
+			setAlternative(1);
+			if (accountNumber[9] == calcChecksum(accountNumber)) {
 				return true;
 			} else {
-				methodFlag = 2;
-				long tmpAccountNumber = ChecksumUtils
-						.parseLong(filledAccountNumber);
+				setAlternative(2);
+				long tmpAccountNumber = ChecksumUtils.parseLong(accountNumber);
 				return (tmpAccountNumber >= Long.parseLong("0001300000"))
 						&& (tmpAccountNumber <= Long.parseLong("0099399999"));
 			}
+		}
+	}
+
+	protected int calcChecksum(int[] accountNumber) {
+		switch (getAlternative()) {
+		case 0:
+			return calcChecksumAlternative1(accountNumber);
+		case 1:
+			return calcChecksumAlternative2(accountNumber);
+		default:
+			return -1;
 		}
 	}
 
@@ -103,8 +94,12 @@ public class Checksum96 implements ChecksumValidator {
 	/**
 	 * @return the methodFlag
 	 */
-	public int getMethodFlag() {
-		return methodFlag;
+	public int getAlternative() {
+		return alternative;
+	}
+
+	public void setAlternative(int alternative) {
+		this.alternative = alternative;
 	}
 
 }

@@ -49,8 +49,7 @@ public class Checksum95 extends Checksum06 {
 			exception = true;
 			return true;
 		} else {
-			return super.validate(ChecksumUtils.getFilledAcountNumber(10,
-					accountNumber));
+			return super.validate(accountNumber);
 		}
 	}
 

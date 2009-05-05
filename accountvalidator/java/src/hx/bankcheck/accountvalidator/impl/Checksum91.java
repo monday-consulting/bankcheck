@@ -88,7 +88,7 @@ public class Checksum91 implements ChecksumValidator {
 	private static final int[] WEIGTHS_3 = { 10, 9, 8, 7, 6, 5, 0, 4, 3, 2 };
 	private static final int[] WEIGTHS_4 = { 9, 10, 5, 8, 4, 2 };
 
-	private int methodFlag = 0;
+	private int alternative = 0;
 
 	/*
 	 * (non-Javadoc)
@@ -96,8 +96,19 @@ public class Checksum91 implements ChecksumValidator {
 	 * @see hx.bankcheck.accountvalidator.AccountChecksum#validate(int[])
 	 */
 	@Override
-	public int calcChecksum(int[] accountNumber) {
-		switch (methodFlag) {
+	public boolean validate(int[] accountNumber) throws ValidationException {
+		setAlternative(0);
+		while (getAlternative() < 4) {
+			if (accountNumber[6] == calcChecksum(accountNumber)) {
+				return true;
+			}
+			setAlternative(getAlternative() + 1);
+		}
+		return false;
+	}
+
+	protected int calcChecksum(int[] accountNumber) {
+		switch (getAlternative()) {
 		case 0:
 			return calcChecksumMethod1(accountNumber); // Method 1
 		case 1:
@@ -109,27 +120,6 @@ public class Checksum91 implements ChecksumValidator {
 		default:
 			return -1;
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.AccountChecksum#validate(int[])
-	 */
-	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		methodFlag = 0;
-		if (accountNumber.length != 10) {
-			return false;
-		} else {
-			while (methodFlag < 4) {
-				if (accountNumber[6] == calcChecksum(accountNumber)) {
-					return true;
-				}
-				methodFlag++;
-			}
-		}
-		return false;
 	}
 
 	private int calcChecksumMethod1(int[] accountNumber) {
@@ -156,8 +146,12 @@ public class Checksum91 implements ChecksumValidator {
 		return (sum % 11 == 1) || (sum % 11 == 0) ? 0 : (11 - sum % 11);
 	}
 
-	public int getMethodFlag() {
-		return this.methodFlag;
+	public int getAlternative() {
+		return this.alternative;
+	}
+
+	public void setAlternative(int alternative) {
+		this.alternative = alternative;
 	}
 
 }

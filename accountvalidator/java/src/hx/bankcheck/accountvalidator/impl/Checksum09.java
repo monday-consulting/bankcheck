@@ -16,9 +16,4 @@ public class Checksum09 implements ChecksumValidator {
 		return true;
 	}
 
-	@Override
-	public int calcChecksum(int[] accountNumber) {
-		return 0;
-	}
-
 }

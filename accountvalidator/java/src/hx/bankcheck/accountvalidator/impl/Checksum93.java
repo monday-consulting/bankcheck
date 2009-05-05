@@ -67,7 +67,7 @@ public class Checksum93 implements ChecksumValidator {
 	private static final int[] WEIGHTS_ALTERNATIVE2_A = { 6, 5, 4, 3, 2 };
 	private static final int[] WEIGHTS_ALTERNATIVE2_B = { 6, 5, 4, 3, 2 };
 
-	private int methodFlag = 0;
+	private int alternative = 0;
 
 	/*
 	 * (non-Javadoc)
@@ -75,8 +75,38 @@ public class Checksum93 implements ChecksumValidator {
 	 * @see hx.bankcheck.accountvalidator.AccountChecksum#validate(int[])
 	 */
 	@Override
-	public int calcChecksum(int[] accountNumber) {
-		switch (methodFlag) {
+	public boolean validate(int[] accountNumber) throws ValidationException {
+		setAlternative(0);
+		if (accountNumber[5] == calcChecksum(accountNumber)) {
+			return true;
+		} else {
+			setAlternative(1);
+			if ((accountNumber[0] == 0) && (accountNumber[1] == 0)
+					&& (accountNumber[2] == 0) && (accountNumber[3] == 0)
+					&& (accountNumber[9] == calcChecksum(accountNumber))) {
+				return true;
+			} else {
+				setAlternative(2);
+				if (accountNumber[5] == calcChecksum(accountNumber)) {
+					return true;
+				} else {
+					setAlternative(3);
+					if ((accountNumber[0] == 0)
+							&& (accountNumber[1] == 0)
+							&& (accountNumber[2] == 0)
+							&& (accountNumber[3] == 0)
+							&& (accountNumber[9] == calcChecksum(accountNumber))) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	protected int calcChecksum(int[] accountNumber) {
+		switch (getAlternative()) {
 		case 0:
 			return calcChecksumAlternative1A(accountNumber);
 		case 1:
@@ -87,46 +117,6 @@ public class Checksum93 implements ChecksumValidator {
 			return calcChecksumAlternative2B(accountNumber);
 		default:
 			return -1;
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.AccountChecksum#validate(int[])
-	 */
-	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		if (accountNumber.length != 10) {
-			return false;
-		} else {
-			methodFlag = 0;
-			if (accountNumber[5] == calcChecksum(accountNumber)) {
-				return true;
-			} else {
-				methodFlag = 1;
-				if ((accountNumber[0] == 0) && (accountNumber[1] == 0)
-						&& (accountNumber[2] == 0) && (accountNumber[3] == 0)
-						&& (accountNumber[9] == calcChecksum(accountNumber))) {
-					return true;
-				} else {
-					methodFlag = 2;
-					if (accountNumber[5] == calcChecksum(accountNumber)) {
-						return true;
-					} else {
-						methodFlag = 3;
-						if ((accountNumber[0] == 0)
-								&& (accountNumber[1] == 0)
-								&& (accountNumber[2] == 0)
-								&& (accountNumber[3] == 0)
-								&& (accountNumber[9] == calcChecksum(accountNumber))) {
-							return true;
-						} else {
-							return false;
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -165,8 +155,12 @@ public class Checksum93 implements ChecksumValidator {
 	/**
 	 * @return the methodFlag
 	 */
-	public int getMethodFlag() {
-		return this.methodFlag;
+	public int getAlternative() {
+		return this.alternative;
+	}
+
+	public void setAlternative(int alternative) {
+		this.alternative = alternative;
 	}
 
 }

@@ -11,8 +11,8 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Die Kontonummer ist 10-stellig. Die Berechnung erfolgt wie bei Verfahren 01.
  * Es ist jedoch zu beachten, dass nur die Stellen 3 bis 9 in die
- * Prï¿½fzifferberechnung einbezogen werden. Die Stelle 10 der Kontonummer ist die
- * Prï¿½fziffer. </br>
+ * Prï¿½fzifferberechnung einbezogen werden. Die Stelle 10 der Kontonummer ist
+ * die Prï¿½fziffer. </br>
  * 
  * Fï¿½hrt die Berechnung zu einem falschen Ergebnis, so ist alternativ das
  * Verfahren 32 anzuwenden.</br>
@@ -26,33 +26,18 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * 9619439213, 3009800016, 9619509976, 5989800173, 9619319999, 6719430018
  * 
- * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
 public class Checksum98 implements ChecksumValidator {
 
-	private static final int[] WEIGHTS_ALTERNATIVE1 = { 3, 7, 1, 3, 7, 1, 3 };
-	private static final int[] WEIGHTS_ALTERNATIVE2 = { 3, 7, 1, 3, 7, 1, 3 };
+	private static final int[] WEIGHTS_ALTERNATIVE1 = { 0, 0, 3, 7, 1, 3, 7, 1,
+			3 };
+	private static final int[] WEIGHTS_ALTERNATIVE2 = { 0, 0, 3, 7, 1, 3, 7, 1,
+			3 };
 
-	private int methodFlag = 0;
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.ChecksumValidator#calcChecksum(int[])
-	 */
-	@Override
-	public int calcChecksum(int[] accountNumber) {
-		switch (methodFlag) {
-		case 0:
-			return calcChecksumAlternative1(accountNumber);
-		case 1:
-			return calcChecksumAlternative2(accountNumber);
-		default:
-			return -1;
-		}
-	}
+	private int alternative = 0;
 
 	/*
 	 * (non-Javadoc)
@@ -61,37 +46,21 @@ public class Checksum98 implements ChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		if (accountNumber.length != 10) {
-			return false;
+		setAlternative(0);
+		if (new Checksum01(WEIGHTS_ALTERNATIVE1).validate(accountNumber)) {
+			return true;
 		} else {
-			methodFlag = 0;
-			if (accountNumber[9] == calcChecksum(accountNumber)) {
-				return true;
-			} else {
-				methodFlag = 1;
-				if (accountNumber[9] == calcChecksum(accountNumber)) {
-					return true;
-				} else {
-					return false;
-				}
-			}
+			setAlternative(1);
+			return new Checksum32(WEIGHTS_ALTERNATIVE2).validate(accountNumber);
 		}
 	}
 
-	private int calcChecksumAlternative1(int[] accountNumber) {
-		int sum = 0;
-		for (int i = 0; i < WEIGHTS_ALTERNATIVE1.length; i++) {
-			sum += accountNumber[i+3] + WEIGHTS_ALTERNATIVE1[i];
-		}
-		return ((10 - sum % 10) == 10) ? 0 : (10 - (sum % 10));
+	public void setAlternative(int alternative) {
+		this.alternative = alternative;
 	}
 
-	private int calcChecksumAlternative2(int[] accountNumber) {
-		int sum = 0;
-		for (int i = 0; i < 7; i++) {
-			sum += accountNumber[i + 3] * WEIGHTS_ALTERNATIVE2[i];
-		}
-		return ((sum % 10 == 1)||(sum % 10 == 0)) ? 0 : (10 - sum % 10);
+	public int getAlternative() {
+		return alternative;
 	}
 
 }

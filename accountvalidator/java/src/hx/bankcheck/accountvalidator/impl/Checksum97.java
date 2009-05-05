@@ -32,10 +32,14 @@ public class Checksum97 implements ChecksumValidator {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see hx.bankcheck.accountvalidator.ChecksumValidator#calcChecksum(int[])
+	 * @see hx.bankcheck.accountvalidator.ChecksumValidator#validate(int[])
 	 */
 	@Override
-	public int calcChecksum(int[] accountNumber) {
+	public boolean validate(int[] accountNumber) throws ValidationException {
+		return (accountNumber[9] == calcChecksum(accountNumber));
+	}
+
+	protected int calcChecksum(int[] accountNumber) {
 		int[] tmpIntArray = new int[accountNumber.length - 1];
 		for (int i = 0; i < accountNumber.length - 1; i++) {
 			tmpIntArray[i] = accountNumber[i];
@@ -43,18 +47,6 @@ public class Checksum97 implements ChecksumValidator {
 		Long valueX = new Long(ChecksumUtils.parseLong(tmpIntArray));
 		return ((valueX - (new Long((valueX / 11) * 11))) == 10) ? 0
 				: new Long(valueX - (new Long((valueX / 11) * 11))).intValue();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.ChecksumValidator#validate(int[])
-	 */
-	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		int[] filledAccountNumber = ChecksumUtils.getFilledAcountNumber(10,
-				accountNumber);
-		return (filledAccountNumber[9] == calcChecksum(filledAccountNumber));
 	}
 
 }

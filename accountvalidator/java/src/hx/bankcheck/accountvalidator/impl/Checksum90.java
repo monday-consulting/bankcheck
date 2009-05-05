@@ -2,7 +2,6 @@ package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.ChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
-import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
  * Die Kontonummer ist immer 10-stellig, ggf. ist die Kontonummer durch
@@ -158,35 +157,7 @@ public class Checksum90 implements ChecksumValidator {
 	private static final int[] WEIGTHS_E = { 2, 1, 2, 1, 2 };
 	private static final int[] WEIGTHS_F = { 8, 7, 6, 5, 4, 3, 2 };
 
-	private int methodFlag = 0;
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.AccountChecksum#calcChecksum(int[])
-	 */
-	@Override
-	public int calcChecksum(int[] accountNumber) {
-		if (accountNumber[2] == 9) {
-			methodFlag = 5;
-			return calcChecksumMethodF(accountNumber);
-		} else {
-			switch (methodFlag) {
-			case 0:
-				return calcChecksumMethodA(accountNumber); // Method A
-			case 1:
-				return calcChecksumMethodB(accountNumber); // Method B
-			case 2:
-				return calcChecksumMethodC(accountNumber); // Method C
-			case 3:
-				return calcChecksumMethodD(accountNumber); // Method D
-			case 4:
-				return calcChecksumMethodE(accountNumber); // Method E
-			default:
-				return -1;
-			}
-		}
-	}
+	private int alternative = 0;
 
 	/*
 	 * (non-Javadoc)
@@ -195,19 +166,41 @@ public class Checksum90 implements ChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		methodFlag = 0;
-		int[] filledAccountNumber = ChecksumUtils.getFilledAcountNumber(10,
-				accountNumber);
-		while (methodFlag < 6) {
-			if (accountNumber[accountNumber.length - 1] == calcChecksum(filledAccountNumber)) {
+		setAlternative(0);
+		while (getAlternative() < 6) {
+			if (accountNumber[9] == calcChecksum(accountNumber)) {
 				return true;
 			}
-			methodFlag++;
+			setAlternative(getAlternative() + 1);
 		}
 		return false;
 	}
 
-	private int calcChecksumMethodA(int[] accountNumber) {
+	protected int calcChecksum(int[] accountNumber) {
+		if (accountNumber[2] == 9) {
+			setAlternative(5);
+			return calcChecksumAlternativeF(accountNumber);
+		} else {
+			switch (getAlternative()) {
+			case 0:
+				return calcChecksumAlternativeA(accountNumber); // Method A
+			case 1:
+				return calcChecksumAlternativeB(accountNumber); // Method B
+			case 2:
+				return calcChecksumAlternativeC(accountNumber); // Method C
+			case 3:
+				return calcChecksumAlternativeD(accountNumber); // Method D
+			case 4:
+				return calcChecksumAlternativeE(accountNumber); // Method E
+			case 5:
+				return calcChecksumAlternativeF(accountNumber);// Method F
+			default:
+				return -1;
+			}
+		}
+	}
+
+	private int calcChecksumAlternativeA(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < 6; i++) {
 			sum += accountNumber[i + 3] * WEIGTHS_A[i];
@@ -215,7 +208,7 @@ public class Checksum90 implements ChecksumValidator {
 		return (sum % 11 == 1) || (sum % 11 == 0) ? 0 : (11 - sum % 11);
 	}
 
-	private int calcChecksumMethodB(int[] accountNumber) {
+	private int calcChecksumAlternativeB(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < 5; i++) {
 			sum += accountNumber[i + 4] * WEIGTHS_B[i];
@@ -223,7 +216,7 @@ public class Checksum90 implements ChecksumValidator {
 		return (sum % 11 == 1) || (sum % 11 == 0) ? 0 : (11 - sum % 11);
 	}
 
-	private int calcChecksumMethodC(int[] accountNumber) {
+	private int calcChecksumAlternativeC(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < 5; i++) {
 			sum += accountNumber[i + 4] * WEIGTHS_C[i];
@@ -231,7 +224,7 @@ public class Checksum90 implements ChecksumValidator {
 		return (sum % 7 == 0) ? 0 : (7 - sum % 7);
 	}
 
-	private int calcChecksumMethodD(int[] accountNumber) {
+	private int calcChecksumAlternativeD(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < 5; i++) {
 			sum += accountNumber[i + 4] * WEIGTHS_D[i];
@@ -239,7 +232,7 @@ public class Checksum90 implements ChecksumValidator {
 		return (sum % 9 == 0) ? 0 : (9 - sum % 9);
 	}
 
-	private int calcChecksumMethodE(int[] accountNumber) {
+	private int calcChecksumAlternativeE(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < 5; i++) {
 			sum += accountNumber[i + 4] * WEIGTHS_E[i];
@@ -247,7 +240,7 @@ public class Checksum90 implements ChecksumValidator {
 		return (sum % 10 == 0) ? 0 : (10 - sum % 10);
 	}
 
-	private int calcChecksumMethodF(int[] accountNumber) {
+	private int calcChecksumAlternativeF(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < 7; i++) {
 			sum += accountNumber[i + 2] * WEIGTHS_F[i];
@@ -255,8 +248,12 @@ public class Checksum90 implements ChecksumValidator {
 		return (sum % 11 == 1) || (sum % 11 == 0) ? 0 : (11 - sum % 11);
 	}
 
-	public int getMethodFlag() {
-		return this.methodFlag;
+	public int getAlternative() {
+		return this.alternative;
+	}
+
+	public void setAlternative(int alternative) {
+		this.alternative = alternative;
 	}
 
 }

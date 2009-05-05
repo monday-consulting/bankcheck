@@ -14,4 +14,9 @@ public class Checksum10 extends Checksum06 {
 	public Checksum10() {
 		super(WEIGHTS);
 	}
+	
+	public Checksum10(int[] weights) {
+		super(weights);
+	}
+
 }

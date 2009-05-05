@@ -32,7 +32,13 @@ public class Checksum17 implements ChecksumValidator {
 	private final static int[] WEIGHTS = { 1, 2, 1, 2, 1, 2 };
 	
 	@Override
-	public int calcChecksum(int[] accountNumber) {
+	public boolean validate(int[] accountNumber) throws ValidationException {
+		int checksum = calcChecksum(accountNumber);
+		
+		return (checksum == accountNumber[7]);
+	}
+
+	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		for(int i=1; i<=WEIGHTS.length; i++) {
 			sum += ChecksumUtils.qs(accountNumber[i] * WEIGHTS[i-1]);
@@ -46,13 +52,6 @@ public class Checksum17 implements ChecksumValidator {
 			checksum = 10 - x;
 		
 		return checksum;
-	}
-
-	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		int checksum = calcChecksum(accountNumber);
-		
-		return (checksum == accountNumber[7]);
 	}
 
 }

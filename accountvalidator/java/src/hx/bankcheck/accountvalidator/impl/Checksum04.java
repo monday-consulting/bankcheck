@@ -15,4 +15,8 @@ public class Checksum04 extends Checksum02 {
 		super(WEIGHTS);
 	}
 	
+	public Checksum04(int[] weights){
+		super(weights);
+	}
+	
 }

@@ -43,8 +43,7 @@ public class Checksum00 implements ChecksumValidator {
 		return calcChecksum(accountNumber) == accountNumber[9];
 	}
 
-	@Override
-	public int calcChecksum(int[] accountNumber) {
+	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		for(int i=weights.length-1; i>=0; i--) {
 			sum += ChecksumUtils.qs(accountNumber[i] * weights[i]);

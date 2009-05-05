@@ -1,9 +1,5 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
-import hx.bankcheck.accountvalidator.exceptions.ValidationException;
-import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
-
 /**
  * Modulus 10, Gewichtung 3, 7, 1, 3, 7, 1 <br />
  * 
@@ -24,37 +20,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * @version 1.0
  * 
  */
-public class Checksum92 implements ChecksumValidator {
+public class Checksum92 extends Checksum01 {
 
-	// Weights from left to right
-	private static final int[] WEIGHTS = { 1, 7, 3, 1, 7, 3 };
+	private static final int[] WEIGHTS = { 0, 1, 7, 3, 1, 7, 3 };
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.AccountChecksum#validate(int[])
-	 */
-	@Override
-	public int calcChecksum(int[] accountNumber) {
-		int sum = 0;
-		for (int i = 0; i < WEIGHTS.length; i++) {
-			sum += ChecksumUtils.qs(accountNumber[i + 5] + WEIGHTS[i]);
-		}
-		return ((10 - sum % 10) == 10) ? 0 : (10 - sum % 10);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.AccountChecksum#validate(int[])
-	 */
-	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		if (accountNumber.length != 10) {
-			return false;
-		} else {
-			return accountNumber[9] == calcChecksum(accountNumber);
-		}
+	public Checksum92() {
+		super(WEIGHTS);
 	}
 
 }
