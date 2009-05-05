@@ -1,7 +1,7 @@
 package hx.bankcheck.accountvalidator.exceptions;
 
 public class IllegalAccountNumber extends Exception {
-	private static final long serialVersionUID = 6549031052608627491L;
+	private static final long serialVersionUID = 4201977648958334207L;
 
 	public IllegalAccountNumber() {
 		super();
