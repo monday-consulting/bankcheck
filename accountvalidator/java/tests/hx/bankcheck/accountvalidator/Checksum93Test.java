@@ -17,7 +17,7 @@ public class Checksum93Test extends TestCase {
 	@Test
 	public void testValidate() throws Throwable {
 
-		Checksum93 checksum93 = new Checksum93();
+		Checksum93 checksum = new Checksum93();
 
 		// Valid account numbers for testing alternative 1
 		int[] validAccountNumberAlternative1a = { 6, 7, 1, 4, 7, 9, 0, 0, 0, 0 };
@@ -34,30 +34,30 @@ public class Checksum93Test extends TestCase {
 		int[] validAccountNumber2 = { 0, 0, 0, 0, 3, 0, 6, 7, 5, 4 };
 
 		// Should be valid using alternative 1 case a)
-		assertTrue((checksum93.validate(validAccountNumberAlternative1a))
-				&& (checksum93.getMethodFlag() == 0));
+		assertTrue((checksum.validate(validAccountNumberAlternative1a))
+				&& (checksum.getAlternative() == 0));
 
 		// Should be valid using alternative 1 case b)
-		assertTrue((checksum93.validate(validAccountNumberAlternative1b))
-				&& (checksum93.getMethodFlag() == 1));
+		assertTrue((checksum.validate(validAccountNumberAlternative1b))
+				&& (checksum.getAlternative() == 1));
 
 		// Should be valid using alternative 2 case a)
-		assertTrue((checksum93.validate(validAccountNumberAlternative21))
-				&& (checksum93.getMethodFlag() == 2));
+		assertTrue((checksum.validate(validAccountNumberAlternative21))
+				&& (checksum.getAlternative() == 2));
 
-		assertTrue((checksum93.validate(validAccountNumberAlternative23))
-				&& (checksum93.getMethodFlag() == 2));
+		assertTrue((checksum.validate(validAccountNumberAlternative23))
+				&& (checksum.getAlternative() == 2));
 
 		// Should be valid using alternative 2 case a)
-		assertTrue((checksum93.validate(validAccountNumberAlternative2b1))
-				&& (checksum93.getMethodFlag() == 3));
+		assertTrue((checksum.validate(validAccountNumberAlternative2b1))
+				&& (checksum.getAlternative() == 3));
 
-		assertTrue((checksum93.validate(validAccountNumberAlternative2b2))
-				&& (checksum93.getMethodFlag() == 3));
+		assertTrue((checksum.validate(validAccountNumberAlternative2b2))
+				&& (checksum.getAlternative() == 3));
 
 		// Should be valid without regarding the alternatives
-		assertTrue(checksum93.validate(validAccountNumber1));
-		assertTrue(checksum93.validate(validAccountNumber2));
+		assertTrue(checksum.validate(validAccountNumber1));
+		assertTrue(checksum.validate(validAccountNumber2));
 
 	}
 

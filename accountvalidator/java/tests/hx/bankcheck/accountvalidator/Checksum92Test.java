@@ -15,7 +15,7 @@ public class Checksum92Test extends TestCase{
 
 	@Test
 	public void testValidate() {
-		fail("Missing Testdata!");
+		fail("Need numbers...");
 	}
 
 }

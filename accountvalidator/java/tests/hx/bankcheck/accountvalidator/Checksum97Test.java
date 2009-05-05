@@ -17,13 +17,13 @@ public class Checksum97Test extends TestCase {
 	@Test
 	public void testValidate() throws Throwable {
 
-		Checksum97 checksum97 = new Checksum97();
+		Checksum97 checksum = new Checksum97();
 
 		// Valid account number
-		int[] validAccountNumber = { 2, 4, 0, 1, 0, 0, 1, 9 };
+		int[] validAccountNumber = { 0, 0, 2, 4, 0, 1, 0, 0, 1, 9 };
 
 		// Should be valid
-		assertTrue(checksum97.validate(validAccountNumber));
+		assertTrue(checksum.validate(validAccountNumber));
 
 	}
 

@@ -12,7 +12,7 @@ import org.junit.Test;
 /**
  * Testclass for testing algorithm 98.
  * 
- * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
@@ -21,7 +21,7 @@ public class Checksum99Test extends TestCase {
 	@Test
 	public void testValidate() throws Throwable {
 
-		Checksum99 checksum99 = new Checksum99();
+		Checksum99 checksum = new Checksum99();
 
 		// Valid account numbers
 		int[] validAccountNumber1 = { 0, 0, 6, 8, 0, 0, 7, 0, 0, 3 };
@@ -32,12 +32,12 @@ public class Checksum99Test extends TestCase {
 		int[] validAccountNumber6 = { 0, 5, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 		// Should be valid
-		assertTrue(checksum99.validate(validAccountNumber1));
-		assertTrue(checksum99.validate(validAccountNumber2));
-		assertFalse(checksum99.validate(validAccountNumber3));
-		assertTrue(checksum99.validate(validAccountNumber4));
-		assertTrue(checksum99.validate(validAccountNumber5));
-		assertFalse(checksum99.validate(validAccountNumber6));
+		assertTrue(checksum.validate(validAccountNumber1));
+		assertTrue(checksum.validate(validAccountNumber2));
+		assertFalse(checksum.validate(validAccountNumber3));
+		assertTrue(checksum.validate(validAccountNumber4));
+		assertTrue(checksum.validate(validAccountNumber5));
+		assertFalse(checksum.validate(validAccountNumber6));
 
 		// Testing exceptions
 		Random rnd = new Random();
@@ -47,8 +47,8 @@ public class Checksum99Test extends TestCase {
 		int i=0;
 		while(i++ < 10000) {
 			long testNumber = 396000000 + (int) (rnd.nextDouble() * range);
-			assertTrue(checksum99.validate(ChecksumUtils.parseAccountNumber(testNumber))
-					&& checksum99.isException());
+			assertTrue(checksum.validate(ChecksumUtils.parseAccountNumber(testNumber))
+					&& checksum.isException());
 		}
 	}
 }

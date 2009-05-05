@@ -28,6 +28,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	Checksum20Test.class,
 	Checksum21Test.class,
 	
+	Checksum32Test.class,
+	
 	Checksum90Test.class,
 	Checksum91Test.class,
 	Checksum92Test.class,
@@ -38,6 +40,10 @@ import org.junit.runners.Suite.SuiteClasses;
 	Checksum97Test.class,
 	Checksum98Test.class,
 	Checksum99Test.class,
+	ChecksumA0Test.class,
+	ChecksumA1Test.class,
+	ChecksumA2Test.class,
+	ChecksumA3Test.class,
 })
 
 public class AccountCheckTestSuite {
