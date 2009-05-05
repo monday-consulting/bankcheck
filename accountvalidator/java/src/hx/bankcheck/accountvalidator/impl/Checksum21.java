@@ -27,9 +27,6 @@ public class Checksum21 extends Checksum00 {
 		}
 		int checksum = 10 - sum;
 		
-		// checksum is always != except accountNumber is 0000000000
-		assert checksum != 0;
-
 		LOG.finer("Calculated Checksum is: " + checksum);
 
 		return checksum;

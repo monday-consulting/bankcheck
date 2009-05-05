@@ -27,6 +27,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	Checksum19Test.class,
 	Checksum20Test.class,
 	Checksum21Test.class,
+	Checksum22Test.class,
 	
 	Checksum32Test.class,
 	
