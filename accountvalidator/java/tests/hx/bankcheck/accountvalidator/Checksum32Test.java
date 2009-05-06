@@ -1,16 +1,23 @@
 package hx.bankcheck.accountvalidator;
 
-import static org.junit.Assert.assertTrue;
 import hx.bankcheck.accountvalidator.impl.Checksum32;
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class Checksum32Test {
+/**
+ *  Testclass for testing algorithm 32.
+ * 
+ * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @version 1.0
+ *
+ */
+public class Checksum32Test extends TestCase {
 
 	@Test
 	public void testValidate() throws Throwable {
 
-		Checksum32 checksum32 = new Checksum32();
+		Checksum32 checksum = new Checksum32();
 
 		// Valid account numbers
 		int[] validAccountNumber1 = { 0, 0, 0, 9, 1, 4, 1, 4, 0, 5 };
@@ -21,12 +28,12 @@ public class Checksum32Test {
 		int[] validAccountNumber6 = { 9, 2, 4, 5, 5, 0, 0, 4, 6, 0 };
 
 		// Should be valid
-		assertTrue(checksum32.validate(validAccountNumber1));
-		assertTrue(checksum32.validate(validAccountNumber2));
-		assertTrue(checksum32.validate(validAccountNumber3));
-		assertTrue(checksum32.validate(validAccountNumber4));
-		assertTrue(checksum32.validate(validAccountNumber5));
-		assertTrue(checksum32.validate(validAccountNumber6));
+		assertTrue(checksum.validate(validAccountNumber1));
+		assertTrue(checksum.validate(validAccountNumber2));
+		assertTrue(checksum.validate(validAccountNumber3));
+		assertTrue(checksum.validate(validAccountNumber4));
+		assertTrue(checksum.validate(validAccountNumber5));
+		assertTrue(checksum.validate(validAccountNumber6));
 
 	}
 }

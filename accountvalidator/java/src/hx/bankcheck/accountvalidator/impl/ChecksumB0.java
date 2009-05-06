@@ -11,7 +11,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class ChecksumA6 extends AbstractChecksumValidator {
+public class ChecksumB0 extends AbstractChecksumValidator {
 
 	private int alternative = 0;
 
@@ -22,12 +22,18 @@ public class ChecksumA6 extends AbstractChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		if (accountNumber[1] == 8) {
-			setAlternative(0);
-			return new Checksum00().validate(accountNumber);
+		if (((accountNumber[0] == 0)) || (accountNumber[0] == 8)
+				|| (accountNumber[1] == 8)) {
+			return false;
 		} else {
-			setAlternative(1);
-			return new Checksum01().validate(accountNumber);
+			if ((accountNumber[7] == 1) || (accountNumber[7] == 2)
+					|| (accountNumber[7] == 3) || (accountNumber[7] == 6)) {
+				setAlternative(0);
+				return new Checksum09().validate(accountNumber);
+			} else {
+				setAlternative(1);
+				return new Checksum06().validate(accountNumber);
+			}
 		}
 	}
 

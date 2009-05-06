@@ -30,7 +30,7 @@ public class Checksum09Test {
 				n[9-c] = x % 10;
 				x = x / 10;
 			}
-			assertTrue("Check failed for " + Arrays.toString(n), cs.validate(n));
+			assertTrue("Check failed for " + Arrays.toString(n), cs.validate(n,null));
 		}
 	}
 	

@@ -46,7 +46,7 @@ public class Checksum95 extends Checksum06 {
 						.parseLong("0499999999"))
 				|| (tmpAccoutNumber >= Long.parseLong("0700000000") && tmpAccoutNumber <= Long
 						.parseLong("0799999999"))) {
-			exception = true;
+			setException(true);
 			return true;
 		} else {
 			return super.validate(accountNumber);
@@ -58,5 +58,12 @@ public class Checksum95 extends Checksum06 {
 	 */
 	public boolean isException() {
 		return exception;
+	}
+
+	/**
+	 * @param exception the exception to set
+	 */
+	protected void setException(boolean exception) {
+		this.exception = exception;
 	}
 }

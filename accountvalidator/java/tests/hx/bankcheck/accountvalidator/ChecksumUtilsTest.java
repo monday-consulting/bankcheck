@@ -3,7 +3,7 @@ package hx.bankcheck.accountvalidator;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumber;
+import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumberException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 import org.junit.Test;
@@ -57,7 +57,7 @@ public class ChecksumUtilsTest {
 	}
 	
 	@Test
-	public void testparseAccountNumber() throws IllegalAccountNumber{
+	public void testparseAccountNumber() throws IllegalAccountNumberException{
 		Long a=new Long("0000000012");
 		Long b=new Long("0123456789");
 		Long c=new Long("12345");

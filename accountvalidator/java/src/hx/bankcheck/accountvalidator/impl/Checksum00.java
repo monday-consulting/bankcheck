@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *  
  * @author tma
  */
-public class Checksum00 implements ChecksumValidator {
+public class Checksum00 extends AbstractChecksumValidator {
 	private final static Logger LOG = Logger.getLogger(Checksum00.class.getName());
 	
 	protected final static int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };

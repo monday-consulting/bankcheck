@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
@@ -8,31 +11,32 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
  * Nullen 10-stellig darzustellen. <br/>
  * 
- * <b>Variante 1:</b><br/>
+ * <b>Variante 1: </b><br/>
  * 
- * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2<br/>
+ * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 2<br/>
  * 
- * Gewichtung und Berechnung erfolgen nach der Methode 00. Führt die Berechnung
- * nach Variante 1 zu einem Prüfzifferfehler, so sind 10-stellige Konten mit
- * einer 9 an Stelle 1 falsch, alle anderen Konten sind nach Variante 2 zu
- * prüfen. <br/>
+ * Kontonummern, die an der 1. Stelle von links der 10-stelligen Kontonummer den
+ * Wert 0 bis 7 beinhalten, sind nach der Methode 02 zu rechnen. <br/>
  * 
- * Testkontonummern (richtig): 9941510001, 9961230019 9380027210, 9932290910 <br/>
- * Testkontonummern (falsch): 9941510002, 9961230020 <br/>
+ * Testkontonummern (richtig): 0020012357, 0080012345, 0926801910, 1002345674<br/>
+ * Testkontonummern (falsch): 0020012399, 0080012347, 0080012370, 0932100027,
+ * 3310123454<br/>
  * 
- * <b>Variante 2:</b><br/>
+ * <b>Variante 2: </b><br/>
  * 
- * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 10<br/>
- * Gewichtung und Berechnung erfolgen nach der Methode 10.<br/>
+ * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 <br/>
  * 
- * Testkontonummern (richtig): 0000251437, 0007948344 0000159590, 0000051640<br/>
- * Testkontonummern (falsch): 0000251438, 0007948345<br/>
+ * Kontonummern, die an der 1. Stelle von links der 10-stelligen Kontonummer den
+ * Wert 8 oder 9 beinhalten, sind nach der Methode 00 zu rechnen.v
+ * 
+ * Testkontonummern (richtig): 8000990054, 9000481805<br/>
+ * Testkontonummern (falsch): 8000990057, 8011000126, 9000481800, 9980480111<br/>
  * 
  * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
-public class ChecksumA5 extends AbstractChecksumValidator {
+public class ChecksumB2 extends AbstractChecksumValidator {
 
 	private int alternative = 0;
 
@@ -43,16 +47,12 @@ public class ChecksumA5 extends AbstractChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		setAlternative(0);
-		if (new Checksum00().validate(accountNumber)) {
-			return true;
+		if (accountNumber[0] < 8) {
+			setAlternative(0);
+			return new Checksum02().validate(accountNumber);
 		} else {
 			setAlternative(1);
-			if (accountNumber[0] == 9) {
-				return false;
-			} else {
-				return new Checksum10().validate(accountNumber);
-			}
+			return new Checksum00().validate(accountNumber);
 		}
 	}
 

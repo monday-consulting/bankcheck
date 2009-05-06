@@ -3,7 +3,7 @@
  */
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -35,7 +35,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class ChecksumA2 implements ChecksumValidator {
+public class ChecksumA2 extends AbstractChecksumValidator {
 
 	private int alternative = 0;
 

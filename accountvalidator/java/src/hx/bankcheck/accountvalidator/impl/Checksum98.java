@@ -3,7 +3,7 @@
  */
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -30,7 +30,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class Checksum98 implements ChecksumValidator {
+public class Checksum98 extends AbstractChecksumValidator {
 
 	private static final int[] WEIGHTS_ALTERNATIVE1 = { 0, 0, 3, 7, 1, 3, 7, 1,
 			3 };

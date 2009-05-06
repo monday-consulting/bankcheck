@@ -1,6 +1,8 @@
 package hx.bankcheck.accountvalidator;
 
-import static org.junit.Assert.fail;
+import junit.framework.TestCase;
+
+import org.junit.Test;
 
 /**
  * 
@@ -9,8 +11,9 @@ import static org.junit.Assert.fail;
  *
  * $Id$
  */
-public class Checksum22Test {
+public class Checksum22Test extends TestCase {
 
+	@Test
 	public void testValidate() {
 		fail("Need numbers ...");
 	}

@@ -9,33 +9,33 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
  * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
- * Nullen 10-stellig darzustellen. <br/>
+ * Nullen 10-stellig darzustellen.<br/>
  * 
- * <b>Variante 1: </b><br/>
+ * <b>Variante 1:</b><br/>
  * 
- * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 <br/>
+ * Modulus 10, Gewichtung 7, 3, 1, 7, 3, 1, 7, 3, 1<br/>
  * 
- * Gewichtung und Berechnung erfolgen nach der Methode 00. <br/>
- * Führt die Berechnung nach Variante 1 zu einem Prüfzifferfehler, so ist nach
- * Variante 2 zu prüfen. <br/>
+ * Gewichtung und Berechnung erfolgen nach der Methode 05. Führt die Berechnung
+ * nach Variante 1 zu einem Prüfzifferfehler, so ist nach Variante 2 zu prüfen.<br/>
  * 
- * Testkontonummern (richtig): 1234567897, 0123456782<br/>
- * Testkontonummern (falsch): 9876543210, 1234567890, 6543217890, 0543216789<br/>
+ * Testkontonummern (richtig): 1434253150, 2746315471<br/>
+ * Testkontonummern (falsch): 7414398260, 8347251693 0123456789, 2345678901,<br/>
+ * 5678901234
  * 
  * <b>Variante 2:</b><br/>
  * 
- * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 10 <br/>
+ * Modulus 10, Gewichtung 3, 7, 1, 3, 7, 1, 3, 7, 1<br/>
  * 
- * Gewichtung und Berechnung erfolgen nach der Methode 10.
+ * Gewichtung und Berechnung erfolgen nach der Methode 01.<br/>
  * 
- * Testkontonummern (richtig): 9876543210, 1234567890, 0123456789<br/>
- * Testkontonummern (falsch): 6543217890, 0543216789<br/>
+ * Testkontonummern (richtig): 7414398260, 8347251693<br/>
+ * Testkontonummern (falsch): 0123456789, 2345678901, 5678901234<br/>
  * 
  * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
-public class ChecksumA3 extends AbstractChecksumValidator {
+public class ChecksumB1 extends AbstractChecksumValidator {
 
 	private int alternative = 0;
 
@@ -47,18 +47,25 @@ public class ChecksumA3 extends AbstractChecksumValidator {
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		setAlternative(0);
-		if (new Checksum00().validate(accountNumber)) {
+		if (new Checksum05().validate(accountNumber)) {
 			return true;
 		} else {
 			setAlternative(1);
-			return (new Checksum10().validate(accountNumber));
+			return new Checksum01().validate(accountNumber);
 		}
 	}
 
+	/**
+	 * @param alternative
+	 *            the alternative to set
+	 */
 	public void setAlternative(int alternative) {
 		this.alternative = alternative;
 	}
 
+	/**
+	 * @return the alternative
+	 */
 	public int getAlternative() {
 		return alternative;
 	}

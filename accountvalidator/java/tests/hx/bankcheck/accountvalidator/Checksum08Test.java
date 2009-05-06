@@ -28,16 +28,16 @@ public class Checksum08Test {
 				{0,0,0,1,5,0,1,8,3,2},
 				{0,0,0,0,0,6,0,0,0,4}
 		};
-		assertTrue(cs.validate(correctNumbers[0]));
-		assertTrue(cs.validate(correctNumbers[1]));
-		assertTrue(cs.validate(correctNumbers[2]));
-		assertTrue(cs.validate(correctNumbers[3]));
-		assertTrue(cs.validate(correctNumbers[4]));
+		assertTrue(cs.validate(correctNumbers[0],null));
+		assertTrue(cs.validate(correctNumbers[1],null));
+		assertTrue(cs.validate(correctNumbers[2],null));
+		assertTrue(cs.validate(correctNumbers[3],null));
+		assertTrue(cs.validate(correctNumbers[4],null));
 		
 		int[][] wrongNumbers = new int[][] {
 				{1,2,3,4,5,6,7,8,9,0}
 		};
-		assertFalse(cs.validate(wrongNumbers[0]));
+		assertFalse(cs.validate(wrongNumbers[0],null));
 
 		// Check all numbers < 60000
 		for(int i=0; i<60000; i++) {
@@ -47,7 +47,7 @@ public class Checksum08Test {
 				n[9-c] = x % 10;
 				x = x / 10;
 			}
-			assertFalse("Check failed for " + Arrays.toString(n), cs.validate(n));
+			assertFalse("Check failed for " + Arrays.toString(n), cs.validate(n,null));
 		}
 	}
 	

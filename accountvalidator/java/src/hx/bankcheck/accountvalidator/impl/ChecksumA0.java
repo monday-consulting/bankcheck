@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -43,7 +43,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class ChecksumA0 implements ChecksumValidator {
+public class ChecksumA0 extends AbstractChecksumValidator {
 
 	private static final int[] WEIGHTS = { 0, 0, 0, 0, 10, 5, 8, 4, 2 };
 	private boolean exception = false;
@@ -59,7 +59,7 @@ public class ChecksumA0 implements ChecksumValidator {
 				&& (accountNumber[2] == 0) && (accountNumber[3] == 0)
 				&& (accountNumber[4] == 0) && (accountNumber[5] == 0)
 				&& (accountNumber[6] == 0)) {
-			exception = true;
+			setException(true);
 			return true;
 		}
 		return accountNumber[9] == calcChecksum(accountNumber);
@@ -67,7 +67,7 @@ public class ChecksumA0 implements ChecksumValidator {
 
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
-		for (int i = 0; i < accountNumber.length-1; i++) {
+		for (int i = 0; i < accountNumber.length - 1; i++) {
 			sum += accountNumber[i] * WEIGHTS[i];
 		}
 		return ((sum % 11 == 1) || (sum % 11 == 0)) ? 0 : (11 - sum % 11);
@@ -78,6 +78,14 @@ public class ChecksumA0 implements ChecksumValidator {
 	 */
 	public boolean isException() {
 		return exception;
+	}
+
+	/**
+	 * @param exception
+	 *            the exception to set
+	 */
+	protected void setException(boolean exception) {
+		this.exception = exception;
 	}
 
 }

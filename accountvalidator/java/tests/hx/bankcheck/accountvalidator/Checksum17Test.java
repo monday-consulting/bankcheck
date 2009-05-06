@@ -23,7 +23,7 @@ public class Checksum17Test {
 				{ 0,4,4,6,7,8,6,0,4,0 }
 		};
 		
-		assertTrue(cs.validate(correctNumbers[0]));
+		assertTrue(cs.validate(correctNumbers[0],null));
 	}
 	
 	

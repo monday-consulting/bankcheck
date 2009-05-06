@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -59,7 +59,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class Checksum93 implements ChecksumValidator {
+public class Checksum93 extends AbstractChecksumValidator {
 
 	// Weights from left to right
 	private static final int[] WEIGHTS_ALTERNATIVE1_A = { 6, 5, 4, 3, 2 };

@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -9,7 +9,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @author tma
  *
  */
-public class Checksum09 implements ChecksumValidator {
+public class Checksum09 extends AbstractChecksumValidator {
 
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {

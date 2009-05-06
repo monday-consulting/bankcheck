@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 import java.util.logging.Logger;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * 
  * @author tma
  */
-public class Checksum01 implements ChecksumValidator {
+public class Checksum01 extends AbstractChecksumValidator {
 	private final static Logger LOG = Logger.getLogger(Checksum00.class.getName());
 	
 	// Weights from left to right

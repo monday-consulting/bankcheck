@@ -24,8 +24,8 @@ public class Checksum13Test {
 				{0,0,0,0,0,6,0,0,0,4}	
 		};
 		
-		assertTrue(cs.validate(correctNumbers[0]));
-		assertTrue(cs.validate(correctNumbers[1]));
+		assertTrue(cs.validate(correctNumbers[0],null));
+		assertTrue(cs.validate(correctNumbers[1],null));
 	}
 	
 }

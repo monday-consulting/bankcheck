@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.utils;
 
-import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumber;
+import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumberException;
 
 public class ChecksumUtils {
 
@@ -74,9 +74,9 @@ public class ChecksumUtils {
 	 * @param accountNumberAsLong
 	 *            account number to parse
 	 * @return int[] containing the account number
-	 * @throws IllegalAccountNumber thrown when accountNumber has too much digits
+	 * @throws IllegalAccountNumberException thrown when accountNumber has too much digits
 	 */
-	public static int[] parseAccountNumber(long accountNumberAsLong) throws IllegalAccountNumber {
+	public static int[] parseAccountNumber(long accountNumberAsLong) throws IllegalAccountNumberException {
 		int[] result= new int[10];
 		int pos = 0;
 		do {
@@ -87,7 +87,7 @@ public class ChecksumUtils {
 		} while (accountNumberAsLong!=0 && pos<10);
 		
 		if (accountNumberAsLong > 0)
-			throw new IllegalAccountNumber("Accountnumber has more than 10 digits");
+			throw new IllegalAccountNumberException("Accountnumber has more than 10 digits");
 		
 		return result;
 	}

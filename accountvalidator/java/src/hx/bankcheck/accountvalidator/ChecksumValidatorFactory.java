@@ -1,25 +1,28 @@
 package hx.bankcheck.accountvalidator;
 
-import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumber;
+import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumberException;
+import hx.bankcheck.accountvalidator.exceptions.IllegalBankNumberException;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.exceptions.ValidatorUnknownException;
 
 /**
  * 
  * @author Tobias Mayer (bankcheck@tobiasm.de)
- *
- *
- * $Id$
+ * 
+ * 
+ *         $Id$
  */
 public class ChecksumValidatorFactory {
-	private final static String CLASS_BASE_NAME = ChecksumValidatorFactory.class.getPackage().getName() + ".impl.Checksum";
+	private final static String CLASS_BASE_NAME = ChecksumValidatorFactory.class
+			.getPackage().getName()
+			+ ".impl.Checksum";
 
 	/**
 	 * 
 	 * @author Tobias Mayer (bankcheck@tobiasm.de)
-	 *
-	 *
-	 * $Id$
+	 * 
+	 * 
+	 *         $Id$
 	 */
 	class NumberValidatingWrapper implements ChecksumValidator {
 
@@ -28,51 +31,84 @@ public class ChecksumValidatorFactory {
 		public NumberValidatingWrapper(ChecksumValidator wrappedValidator) {
 			this.wrappedValidator = wrappedValidator;
 		}
-		
+
 		@Override
-		public boolean validate(int[] accountNumber) throws ValidationException {
-			checkNumber(accountNumber);
-			
-			return wrappedValidator.validate(accountNumber);
+		public boolean validate(int[] accountNumber, int[] bankNumber)
+				throws ValidationException {
+			checkAccountNumber(accountNumber);
+			checkBankNumber(bankNumber);
+
+			return wrappedValidator.validate(accountNumber, bankNumber);
 		}
 
 		/**
 		 * Checks the accountNumber for plausibility
+		 * 
 		 * @param accountNumber
-		 * @throws ValidationException 
+		 * @throws ValidationException
 		 */
-		private void checkNumber(int[] accountNumber) throws ValidationException {
+		private void checkAccountNumber(int[] accountNumber)
+				throws ValidationException {
 			if (accountNumber == null)
-				throw new IllegalAccountNumber("accountNumber may not be null");
-			
+				throw new IllegalAccountNumberException(
+						"accountNumber may not be null");
+
 			if (accountNumber.length != 10)
-				throw new IllegalAccountNumber("accountNumber has to have 10 digits");
-			
-			for(int i=0; i<10; i++) {
+				throw new IllegalAccountNumberException(
+						"accountNumber has to have 10 digits");
+
+			for (int i = 0; i < 10; i++) {
 				if (accountNumber[i] > 9 || accountNumber[i] < 0) {
-					throw new IllegalAccountNumber("Value " + accountNumber[i] + " for digit " + (i+1) + " not allowed");
+					throw new IllegalAccountNumberException("Value "
+							+ accountNumber[i] + " for digit " + (i + 1)
+							+ " not allowed");
 				}
 			}
 		}
-		
+
+		/**
+		 * Checks the bankNumber for plausibility
+		 * 
+		 * @param bankNumber
+		 * @throws ValidationException
+		 */
+		private void checkBankNumber(int[] bankNumber)
+				throws ValidationException {
+			if (bankNumber != null) {
+				if (bankNumber.length != 8)
+					throw new IllegalBankNumberException(
+							"bankNumber has to have 8 digits");
+
+				for (int i = 0; i < 10; i++) {
+					if (bankNumber[i] > 9 || bankNumber[i] < 0) {
+						throw new IllegalAccountNumberException("Value "
+								+ bankNumber[i] + " for digit " + (i + 1)
+								+ " not allowed");
+					}
+				}
+			}
+		}
+
 		/**
 		 * Returns the wrapped ChecksumValidator
+		 * 
 		 * @return
 		 */
 		public ChecksumValidator getWrappedValidator() {
 			return wrappedValidator;
 		}
-		
+
 	}
-	
+
 	/**
 	 * Return validators, that checks the accountNumber for common mistakes
 	 */
 	private boolean numberValidating = false;
-	
+
 	/**
 	 * Returns whether created Validators check the accountNumber for common
 	 * mistakes or not
+	 * 
 	 * @return
 	 */
 	public boolean isNumberValidating() {
@@ -82,6 +118,7 @@ public class ChecksumValidatorFactory {
 	/**
 	 * Sets whether created Validators should check the accountNumber for common
 	 * mistakes or not
+	 * 
 	 * @param numberValidating
 	 */
 	public void setNumberValidating(boolean numberValidating) {
@@ -90,23 +127,28 @@ public class ChecksumValidatorFactory {
 
 	/**
 	 * Creates the corresponding ChecksumValidator
-	 * @param code Code, usually consists of two letters
+	 * 
+	 * @param code
+	 *            Code, usually consists of two letters
 	 * @return
-	 * @throws ValidatorUnknownException Thrown when code is unknown
+	 * @throws ValidatorUnknownException
+	 *             Thrown when code is unknown
 	 */
-	public ChecksumValidator createValidatorFor(String code) throws ValidatorUnknownException {
+	public ChecksumValidator createValidatorFor(String code)
+			throws ValidatorUnknownException {
 		String className = CLASS_BASE_NAME + code;
 
 		try {
 			@SuppressWarnings("unchecked")
-			Class<ChecksumValidator> clazz = (Class<ChecksumValidator>) Class.forName(className);
-			
+			Class<ChecksumValidator> clazz = (Class<ChecksumValidator>) Class
+					.forName(className);
+
 			ChecksumValidator validator = clazz.newInstance();
-			
+
 			if (isNumberValidating()) {
 				validator = new NumberValidatingWrapper(validator);
 			}
-			
+
 			return validator;
 		} catch (ClassNotFoundException e) {
 			throw new ValidatorUnknownException("Unknown Code: " + code, e);
