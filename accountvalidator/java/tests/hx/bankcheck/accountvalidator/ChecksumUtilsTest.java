@@ -55,22 +55,22 @@ public class ChecksumUtilsTest {
 		ChecksumUtils.qs(-Integer.MAX_VALUE);
 
 	}
-	
+
 	@Test
-	public void testparseAccountNumber() throws IllegalAccountNumberException{
-		Long a=new Long("0000000012");
-		Long b=new Long("0123456789");
-		Long c=new Long("12345");
-		
-		int[] a_expected={0,0,0,0,0,0,0,0,1,2};
-		int[] b_expected={0,1,2,3,4,5,6,7,8,9};
-		int[] c_expected={0,0,0,0,0,1,2,3,4,5};
-		
+	public void testparseAccountNumber() throws IllegalAccountNumberException {
+		Long a = new Long("0000000012");
+		Long b = new Long("0123456789");
+		Long c = new Long("12345");
+
+		int[] a_expected = { 0, 0, 0, 0, 0, 0, 0, 0, 1, 2 };
+		int[] b_expected = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		int[] c_expected = { 0, 0, 0, 0, 0, 1, 2, 3, 4, 5 };
+
 		assertArrayEquals(a_expected, ChecksumUtils.parseAccountNumber(a));
 		assertArrayEquals(b_expected, ChecksumUtils.parseAccountNumber(b));
 		assertArrayEquals(c_expected, ChecksumUtils.parseAccountNumber(c));
 	}
-	
+
 	@Test
 	public void parseLong() {
 		int[] accountNumber1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
@@ -78,11 +78,12 @@ public class ChecksumUtilsTest {
 		int[] accountNumber3 = { 0, 0, 3, 0, 0 };
 		int[] accountNumber4 = { 0, 9, 1 };
 		int[] accountNumber5 = { 0 };
-		
+
 		assertEquals(1234567890l, ChecksumUtils.parseLong(accountNumber1));
 		assertEquals(234567890l, ChecksumUtils.parseLong(accountNumber2));
 		assertEquals(300l, ChecksumUtils.parseLong(accountNumber3));
 		assertEquals(91l, ChecksumUtils.parseLong(accountNumber4));
 		assertEquals(0l, ChecksumUtils.parseLong(accountNumber5));
 	}
+
 }
