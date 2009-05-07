@@ -1,6 +1,6 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -29,17 +29,38 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class ChecksumB6 extends AbstractChecksumValidator {
+public class ChecksumB6 implements ChecksumValidator {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.ChecksumValidator#validate(int[])
-	 */
+	private static final int[] WEIGHTS_ALTERANTIVE1 = { 3, 9, 8, 7, 6, 5, 4, 3,
+			2 };
+	private static final int[] WEIGHTS_ALTERANTIVE2 = { 4, 2, 1, 6, 3, 7, 9,
+			10, 5, 8, 4, 2 };
+	private int alternative = 0;
+
 	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean validate(int[] accountNumber, int[] bankNumber)
+			throws ValidationException {
+		if (accountNumber[0] == 0) {
+			return new Checksum53(WEIGHTS_ALTERANTIVE2).validate(accountNumber,
+					bankNumber);
+		} else {
+			return new Checksum20(WEIGHTS_ALTERANTIVE1).validate(accountNumber);
+		}
+	}
+
+	/**
+	 * @param alternative
+	 *            the alternative to set
+	 */
+	public void setAlternative(int alternative) {
+		this.alternative = alternative;
+	}
+
+	/**
+	 * @return the alternative
+	 */
+	public int getAlternative() {
+		return alternative;
 	}
 
 }

@@ -6,40 +6,52 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Berechnung entspricht dem Verfahren 52, jedoch für neunstellige
- * Kontonummern.<br/>
+ * Modulus 11, Gewichtung 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4 <br/>
  * 
- * Bildung der Kontonummern des ESER-Altsystems aus angegebener Bankleitzahl und
- * angegebener neunstelliger Kontonummer:<br/>
+ * Zur Berechnung der Prüfziffer muss zunächst aus der angegebenen Bankleitzahl
+ * und der angegebenen achtstelligen Kontonummer die zugehörige Kontonummer des
+ * ESER-Altsystems (maximal 12-stellig) ermittelt werden.<br/>
  * 
- * BLZ: XXX5XXXX <br/>
- * Konto-Nr.: XTPXXXXXX (P = Prüfziffer, T) <br/>
+ * Die einzelnen Stellen dieser Alt-Kontonummer sind von rechts nach links mit
+ * den Ziffern 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4 zu multiplizieren. Dabei ist
+ * für die Prüfziffer, die sich immer an der 6. Stelle von links der
+ * Alt-Kontonummer befindet, 0 zu setzen.<br/>
  * 
- * Kontonummer des ESER-Altsystems: XXTX-XP-XXXXXX <br/>
+ * Die jeweiligen Produkte werden addiert und die Summe durch 11 dividiert. Zum
+ * Divisionsrest (ggf. auch 0) ist das Gewicht oder ein Vielfaches des Gewichtes
+ * über der Prüfziffer zu addieren. Die Summe wird durch 11 dividiert; der
+ * Divisionsrest muss 10 lauten. Die Prüfziffer ist der verwendete Faktor des
+ * Gewichtes. Kann bei der Division kein Rest 10 erreicht werden, ist die
+ * Konto-Nr. nicht verwendbar.
  * 
- * (XXXXXX = variable Länge, da evtl. vorlaufende Nullen eliminiert werden).
+ * Bildung der Konto-Nr. des ESER-Altsystems aus angegebener Bankleitzahl und
+ * Konto-Nr.: <br/>
+ * 
+ * BLZ Konto-Nr. XXX5XXXX XPXXXXXX (P = Prüfziffer) Kontonummer des Altsystems:
+ * XXXX-XP-XXXXX (XXXX = variable Länge, da evtl. vorlaufende Nullen elimi-niert
+ * werden) <br/>
  * 
  * Bei 10-stelligen, mit 9 beginnenden Kontonummern ist die Prüfziffer nach
- * Verfahren 20 zu berechnen.
+ * Verfahren 20 zu berechnen.<br/>
  * 
  * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
-public class Checksum53 implements ChecksumValidator {
+public class Checksum52 implements ChecksumValidator {
 
 	private static final int[] WEIGHTS = { 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
 	private int checksumDigitIndex = -1;
 	private int[] weights;
 
-	public Checksum53(){
+	public Checksum52(){
 		this(WEIGHTS);
 	}
 	
-	public Checksum53(int[] weights){
-		this.setWeights(weights);
+	public Checksum52(int[] weights){
+		this.weights=weights;
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -66,12 +78,12 @@ public class Checksum53 implements ChecksumValidator {
 
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
-		for (int i = 0; i < WEIGHTS.length; i++) {
-			sum += accountNumber[i] * WEIGHTS[i];
+		for (int i = 0; i < weights.length; i++) {
+			sum += accountNumber[i] * weights[i];
 		}
 		int offcut = sum % 11;
 		for (int i = 0; i < 11; i++) {
-			if ((offcut + (i * WEIGHTS[getChecksumDigitIndex()]) % 11) == 10) {
+			if ((offcut + (i * weights[getChecksumDigitIndex()]) % 11) == 10) {
 				return i;
 			}
 		}
@@ -94,38 +106,30 @@ public class Checksum53 implements ChecksumValidator {
 	public int[] generateEserAccountNumber(int[] accountNumber, int[] bankNumber)
 			throws IllegalAccountNumberException {
 		long eserAccountNumber = 0l;
-		if ((accountNumber[0] != 0) || (accountNumber[1] == 0)) {
+		if ((accountNumber[0] != 0) || (accountNumber[1] != 0)
+				|| (accountNumber[2] == 0)) {
 			throw new IllegalAccountNumberException(
-					"Account number for generating old ESER-System account number need to have 9 relevant digits. First digits has to be 0, second digit has to be between 1 and 9.");
+					"Account number for generating old ESER-System account number need to have 8 relevant digits. First two digits have to be 0, third digit has to be between 1 and 9.");
 		} else {
-			// First 4 digits are the last 4 digits of the bank number with the
-			// second digit of the account number at third place
+			// First 4 digits are the last 4 digits of the bank number
 			for (int i = 0; i < 4; i++) {
-				if (i != 2) {
-					eserAccountNumber *= 10;
-					eserAccountNumber += bankNumber[(bankNumber.length)
-							- (4 - i)];
-				} else {
-					eserAccountNumber *= 10;
-					eserAccountNumber += accountNumber[2];
-				}
+				eserAccountNumber *= 10;
+				eserAccountNumber += bankNumber[(bankNumber.length) - (4 - i)];
 			}
 
-			// ESER account number at 4,5 = first and third digit of the account
+			// ESER account number at 4,5 = first two digits of the account
 			// number
 			// ESER account number is filled up with the rest of the account
 			// number. Leading digits which are 0, are skipped.
 			boolean foundDigitNotZero = false;
-			for (int i = 1; i < accountNumber.length; i++) {
-				if (i != 2) {
-					if ((i == 1) || (i == 3)
-							|| ((accountNumber[i] == 0) && (foundDigitNotZero))
-							|| (accountNumber[i] != 0)) {
-						eserAccountNumber *= 10;
-						eserAccountNumber += accountNumber[i];
-						if ((i != 2) && (i != 3)) {
-							foundDigitNotZero = true;
-						}
+			for (int i = 2; i < accountNumber.length; i++) {
+				if ((i == 2) || (i == 3)
+						|| ((accountNumber[i] == 0) && (foundDigitNotZero))
+						|| (accountNumber[i] != 0)) {
+					eserAccountNumber *= 10;
+					eserAccountNumber += accountNumber[i];
+					if ((i != 2) && (i != 3)) {
+						foundDigitNotZero = true;
 					}
 				}
 			}
