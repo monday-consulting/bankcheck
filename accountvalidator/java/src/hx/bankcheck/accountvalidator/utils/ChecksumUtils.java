@@ -58,7 +58,7 @@ public class ChecksumUtils {
 	 */
 	public static long parseLong(int[] accountNumber) {
 		long l = 0l;
-		for(int i=0; i<accountNumber.length; i++) {
+		for (int i = 0; i < accountNumber.length; i++) {
 			l *= 10;
 			l += accountNumber[i];
 		}
@@ -74,22 +74,55 @@ public class ChecksumUtils {
 	 * @param accountNumberAsLong
 	 *            account number to parse
 	 * @return int[] containing the account number
-	 * @throws IllegalAccountNumberException thrown when accountNumber has too much digits
+	 * @throws IllegalAccountNumberException
+	 *             thrown when accountNumber has too much digits
 	 */
-	public static int[] parseAccountNumber(long accountNumberAsLong) throws IllegalAccountNumberException {
-		int[] result= new int[10];
+	public static int[] parseAccountNumber(long accountNumberAsLong)
+			throws IllegalAccountNumberException {
+		int[] result = new int[10];
 		int pos = 0;
 		do {
 			int intValue = (int) (accountNumberAsLong % 10);
-			result[9-pos] =  intValue;
+			result[9 - pos] = intValue;
 			accountNumberAsLong /= 10;
 			pos++;
-		} while (accountNumberAsLong!=0 && pos<10);
-		
+		} while (accountNumberAsLong != 0 && pos < 10);
+
 		if (accountNumberAsLong > 0)
-			throw new IllegalAccountNumberException("Accountnumber has more than 10 digits");
-		
+			throw new IllegalAccountNumberException(
+					"Accountnumber has more than 10 digits");
+
 		return result;
 	}
-	
+
+	/**
+	 * Parses the given ESER system account number as int[].
+	 * 
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @version 1.0
+	 * 
+	 * @param accountNumberAsLong
+	 *            account number to parse
+	 * @return int[] containing the account number
+	 * @throws IllegalAccountNumberException
+	 *             thrown when accountNumber has too much digits
+	 */
+	public static int[] parseEserAccountNumber(long accountNumberAsLong)
+			throws IllegalAccountNumberException {
+		int[] result = new int[12];
+		int pos = 0;
+		do {
+			int intValue = (int) (accountNumberAsLong % 10);
+			result[11 - pos] = intValue;
+			accountNumberAsLong /= 10;
+			pos++;
+		} while (accountNumberAsLong != 0 && pos < 12);
+
+		if (accountNumberAsLong > 0)
+			throw new IllegalAccountNumberException(
+					"ESER account number has more than 12 digits");
+
+		return result;
+	}
+
 }
