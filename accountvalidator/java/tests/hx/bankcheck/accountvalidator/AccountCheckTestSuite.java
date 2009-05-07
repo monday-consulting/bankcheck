@@ -61,7 +61,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	ChecksumB2Test.class,
 	ChecksumB3Test.class,
 	ChecksumB4Test.class,
-	ChecksumB5Test.class
+	ChecksumB5Test.class,
+	ChecksumB6Test.class
 	})
 
 public class AccountCheckTestSuite {
