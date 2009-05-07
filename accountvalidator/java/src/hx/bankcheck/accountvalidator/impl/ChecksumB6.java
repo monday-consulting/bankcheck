@@ -41,9 +41,11 @@ public class ChecksumB6 implements ChecksumValidator {
 	public boolean validate(int[] accountNumber, int[] bankNumber)
 			throws ValidationException {
 		if (accountNumber[0] == 0) {
+			setAlternative(1);
 			return new Checksum53(WEIGHTS_ALTERANTIVE2).validate(accountNumber,
 					bankNumber);
 		} else {
+			setAlternative(0);
 			return new Checksum20(WEIGHTS_ALTERANTIVE1).validate(accountNumber);
 		}
 	}
