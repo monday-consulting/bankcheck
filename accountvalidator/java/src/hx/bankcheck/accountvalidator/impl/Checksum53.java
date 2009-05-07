@@ -67,7 +67,7 @@ public class Checksum53 implements ChecksumValidator {
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 0; i < WEIGHTS.length; i++) {
-			sum += accountNumber[i] * WEIGHTS[i];
+			sum += accountNumber[i] * WEIGHTS[i]; 
 		}
 		int offcut = sum % 11;
 		for (int i = 0; i < 11; i++) {
