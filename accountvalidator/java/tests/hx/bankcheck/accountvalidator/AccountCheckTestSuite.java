@@ -33,6 +33,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	Checksum33Test.class,
 	
 	Checksum51Test.class,
+	Checksum52Test.class,
+	Checksum53Test.class,
 	
 	Checksum90Test.class,
 	Checksum91Test.class,
