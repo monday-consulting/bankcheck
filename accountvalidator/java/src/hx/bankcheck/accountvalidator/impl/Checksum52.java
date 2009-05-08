@@ -40,6 +40,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  */
 public class Checksum52 implements ChecksumValidator {
 
+	// Weights from left to right
 	private static final int[] WEIGHTS = { 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
 	private int checksumDigitIndex = -1;
 	private int[] weights;

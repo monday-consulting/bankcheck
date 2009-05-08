@@ -23,6 +23,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  */
 public class Checksum33 extends AbstractChecksumValidator {
 
+	// Weights from left to right
 	private static final int[] WEIGHTS = { 0, 0, 0, 0, 6, 5, 4, 3, 2 };
 	private int[] weights;
 

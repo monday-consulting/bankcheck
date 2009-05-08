@@ -22,7 +22,7 @@ package hx.bankcheck.accountvalidator.impl;
  */
 public class Checksum32 extends Checksum06 {
 
-	// weights from left to right
+	// Weights from left to right
 	private static final int[] WEIGHTS = { 0, 0, 0, 7, 6, 5, 4, 3, 2 };
 
 	public Checksum32() {
