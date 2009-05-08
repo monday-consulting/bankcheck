@@ -124,5 +124,25 @@ public class ChecksumUtils {
 
 		return result;
 	}
+	
+	/**
+	 * Returns the number of neutral(=0) leading digits. 
+	 * 
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @version 1.0
+	 * 
+	 * @param accountNumber
+	 * @return
+	 */
+	public static int countNeutralLeadingDigits(int[] accountNumber) {
+		int c = 0;
+		int i = 0;
+		while (accountNumber[i] == 0) {
+			c++;
+			i++;
+		}
+		return c;
+	}
+
 
 }

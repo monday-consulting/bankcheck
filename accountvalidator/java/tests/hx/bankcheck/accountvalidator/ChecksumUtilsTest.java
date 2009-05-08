@@ -57,7 +57,7 @@ public class ChecksumUtilsTest {
 	}
 
 	@Test
-	public void testparseAccountNumber() throws IllegalAccountNumberException {
+	public void testParseAccountNumber() throws IllegalAccountNumberException {
 		Long a = new Long("0000000012");
 		Long b = new Long("0123456789");
 		Long c = new Long("12345");
@@ -72,7 +72,7 @@ public class ChecksumUtilsTest {
 	}
 
 	@Test
-	public void parseLong() {
+	public void testParseLong() {
 		int[] accountNumber1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 		int[] accountNumber2 = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 		int[] accountNumber3 = { 0, 0, 3, 0, 0 };
@@ -84,6 +84,18 @@ public class ChecksumUtilsTest {
 		assertEquals(300l, ChecksumUtils.parseLong(accountNumber3));
 		assertEquals(91l, ChecksumUtils.parseLong(accountNumber4));
 		assertEquals(0l, ChecksumUtils.parseLong(accountNumber5));
+	}
+
+	@Test
+	public void testcountNeutralLeadingDigits(){
+
+		int[] a = { 0, 0, 0, 0, 0, 0, 0, 0, 1, 2 };
+		int[] b = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		int[] c = { 0, 0, 0, 0, 0, 1, 2, 3, 4, 5 };
+
+		assertTrue(ChecksumUtils.countNeutralLeadingDigits(a)==8);
+		assertTrue(ChecksumUtils.countNeutralLeadingDigits(b)==1);
+		assertTrue(ChecksumUtils.countNeutralLeadingDigits(c)==5);
 	}
 
 }

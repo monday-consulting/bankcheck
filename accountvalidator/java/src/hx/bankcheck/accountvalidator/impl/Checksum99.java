@@ -25,6 +25,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  */
 public class Checksum99 extends Checksum06 {
 
+	// Weights from left to right
 	private static final int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 	private boolean exception=false;
 

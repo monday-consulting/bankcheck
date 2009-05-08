@@ -51,6 +51,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  */
 public class ChecksumA8 extends AbstractChecksumValidator {
 
+	// Weights from left to right
 	private static int[] WEIGHTS_ALTERNATIVE1 = { 0, 0, 0, 7, 6, 5, 4, 3, 2 };
 	private static int[] WEIGHTS_ALTERNATIVE2 = { 0, 0, 0, 1, 2, 1, 2, 1, 2 };
 	private int alternative = 0;

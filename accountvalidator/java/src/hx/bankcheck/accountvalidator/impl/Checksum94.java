@@ -20,6 +20,7 @@ package hx.bankcheck.accountvalidator.impl;
  */
 public class Checksum94 extends Checksum00 {
 
+	// Weights from left to right
 	private static final int[] WEIGHTS = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
 
 	public Checksum94() {

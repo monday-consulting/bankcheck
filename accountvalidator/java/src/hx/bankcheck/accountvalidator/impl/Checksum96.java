@@ -40,6 +40,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  */
 public class Checksum96 extends AbstractChecksumValidator {
 
+	// Weights from left to right
 	private final static int[] WEIGHTS_ALTERNATIVE_1 = { 1, 9, 8, 7, 6, 5, 4,
 			3, 2 };
 	private final static int[] WEIGHTS_ALTERNATIVE_2 = { 2, 1, 2, 1, 2, 1, 2,
