@@ -47,8 +47,6 @@ public class ChecksumA0 extends AbstractChecksumValidator {
 
 	// Weights from left to right
 	private static final int[] WEIGHTS = { 0, 0, 0, 0, 10, 5, 8, 4, 2 };
-	private boolean exception = false;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -72,21 +70,6 @@ public class ChecksumA0 extends AbstractChecksumValidator {
 			sum += accountNumber[i] * WEIGHTS[i];
 		}
 		return ((sum % 11 == 1) || (sum % 11 == 0)) ? 0 : (11 - sum % 11);
-	}
-
-	/**
-	 * @return the exception
-	 */
-	public boolean isException() {
-		return exception;
-	}
-
-	/**
-	 * @param exception
-	 *            the exception to set
-	 */
-	protected void setException(boolean exception) {
-		this.exception = exception;
 	}
 
 }

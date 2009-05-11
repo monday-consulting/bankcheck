@@ -1,6 +1,8 @@
 package hx.bankcheck.accountvalidator;
 
 import static org.junit.Assert.assertTrue;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
+import hx.bankcheck.accountvalidator.ChecksumValidatorFactory;
 import hx.bankcheck.accountvalidator.exceptions.ValidatorUnknownException;
 import hx.bankcheck.accountvalidator.impl.Checksum00;
 import hx.bankcheck.accountvalidator.impl.Checksum99;

@@ -34,8 +34,6 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  */
 public class ChecksumA5 extends AbstractChecksumValidator {
 
-	private int alternative = 0;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -54,21 +52,6 @@ public class ChecksumA5 extends AbstractChecksumValidator {
 				return new Checksum10().validate(accountNumber);
 			}
 		}
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
 	}
 
 }

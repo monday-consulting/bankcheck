@@ -29,8 +29,6 @@ public class Checksum95 extends Checksum06 {
 	// Weights from left to right
 	private static int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 
-	private boolean exception = false;
-
 	public Checksum95() {
 		super(WEIGHTS);
 	}
@@ -53,17 +51,4 @@ public class Checksum95 extends Checksum06 {
 		}
 	}
 
-	/**
-	 * @return the exception
-	 */
-	public boolean isException() {
-		return exception;
-	}
-
-	/**
-	 * @param exception the exception to set
-	 */
-	protected void setException(boolean exception) {
-		this.exception = exception;
-	}
 }

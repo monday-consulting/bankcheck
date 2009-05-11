@@ -76,8 +76,6 @@ public class ChecksumC1 extends AbstractChecksumValidator {
 	// Weights from left to right
 	private static final int[] WEIGHTS_ALTERNATIVE2 = { 1, 2, 1, 2, 1, 2, 1, 2,
 			1 };
-	private int alternative = 0;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -106,20 +104,5 @@ public class ChecksumC1 extends AbstractChecksumValidator {
 			}
 		}
 		return (((sum - 1) % 11) == 0) ? 0 : (10 - (sum - 1) % 11);
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
 	}
 }

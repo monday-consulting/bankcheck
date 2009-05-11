@@ -54,9 +54,6 @@ public class ChecksumA8 extends AbstractChecksumValidator {
 	// Weights from left to right
 	private static int[] WEIGHTS_ALTERNATIVE1 = { 0, 0, 0, 7, 6, 5, 4, 3, 2 };
 	private static int[] WEIGHTS_ALTERNATIVE2 = { 0, 0, 0, 1, 2, 1, 2, 1, 2 };
-	private int alternative = 0;
-	private boolean exception = false;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -80,36 +77,6 @@ public class ChecksumA8 extends AbstractChecksumValidator {
 						.validate(accountNumber);
 			}
 		}
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
-	}
-
-	/**
-	 * @return the exception
-	 */
-	public boolean isException() {
-		return exception;
-	}
-
-	/**
-	 * @param exception
-	 *            the exception to set
-	 */
-	protected void setException(boolean exception) {
-		this.exception = exception;
 	}
 
 }

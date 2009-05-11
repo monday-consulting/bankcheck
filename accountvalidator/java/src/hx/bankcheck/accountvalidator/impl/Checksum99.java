@@ -27,7 +27,6 @@ public class Checksum99 extends Checksum06 {
 
 	// Weights from left to right
 	private static final int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
-	private boolean exception=false;
 
 	public Checksum99() {
 		super(WEIGHTS);
@@ -43,17 +42,10 @@ public class Checksum99 extends Checksum06 {
 		long accountNumberAsLong = ChecksumUtils.parseLong(accountNumber);
 		if ((accountNumberAsLong >= Long.parseLong("0396000000"))
 				&& (accountNumberAsLong <= Long.parseLong("0499999999"))) {
-			exception=true;
+			setException(true);
 			return true;
 		} else {
 			return super.validate(accountNumber);
 		}
-	}
-
-	/**
-	 * @return the exception
-	 */
-	public boolean isException() {
-		return exception;
 	}
 }

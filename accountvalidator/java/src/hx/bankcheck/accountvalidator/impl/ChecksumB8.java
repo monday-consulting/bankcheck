@@ -35,8 +35,6 @@ public class ChecksumB8 extends AbstractChecksumValidator {
 
 	// Weights from left to right
 	private static final int[] WEIGHTS = { 3, 9, 8, 7, 6, 5, 4, 3, 2 };
-	private int alternative = 0;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -52,21 +50,6 @@ public class ChecksumB8 extends AbstractChecksumValidator {
 			setAlternative(1);
 			return new Checksum29().validate(accountNumber);
 		}
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
 	}
 
 }

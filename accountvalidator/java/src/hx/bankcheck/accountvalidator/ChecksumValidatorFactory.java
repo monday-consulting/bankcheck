@@ -98,6 +98,16 @@ public class ChecksumValidatorFactory {
 			return wrappedValidator;
 		}
 
+		@Override
+		public int getAlternative() {
+			return wrappedValidator.getAlternative();
+		}
+
+		@Override
+		public boolean isException() {
+			return wrappedValidator.isException();
+		}
+
 	}
 
 	/**

@@ -96,8 +96,6 @@ public class ChecksumB9 extends AbstractChecksumValidator {
 	// Weights from left to right
 	private static final int[] WEIGHTS_ALTERNATIVE1 = { 1, 2, 3, 1, 2, 3, 1 };
 	private static final int[] WEIGHTS_ALTERNATIVE2 = { 6, 5, 4, 3, 2, 1 };
-	private int alternative = 0;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -136,21 +134,6 @@ public class ChecksumB9 extends AbstractChecksumValidator {
 			sum += accountNumber[i + 3] * WEIGHTS_ALTERNATIVE2[i];
 		}
 		return sum % 11;
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
 	}
 
 }

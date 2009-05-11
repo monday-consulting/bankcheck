@@ -157,8 +157,6 @@ public class Checksum90 extends AbstractChecksumValidator {
 	private static final int[] WEIGTHS_E = { 2, 1, 2, 1, 2 };
 	private static final int[] WEIGTHS_F = { 8, 7, 6, 5, 4, 3, 2 };
 
-	private int alternative = 0;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -246,14 +244,6 @@ public class Checksum90 extends AbstractChecksumValidator {
 			sum += accountNumber[i + 2] * WEIGTHS_F[i];
 		}
 		return (sum % 11 == 1) || (sum % 11 == 0) ? 0 : (11 - sum % 11);
-	}
-
-	public int getAlternative() {
-		return this.alternative;
-	}
-
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
 	}
 
 }

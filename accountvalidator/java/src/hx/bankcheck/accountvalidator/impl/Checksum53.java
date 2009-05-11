@@ -27,7 +27,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  */
 public class Checksum53 implements ChecksumValidator {
-
+	
 	// Weights from left to right
 	private static final int[] WEIGHTS = { 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
 	private int checksumDigitIndex = -1;
@@ -189,6 +189,16 @@ public class Checksum53 implements ChecksumValidator {
 	 */
 	public int[] getWeights() {
 		return weights;
+	}
+
+	@Override
+	public int getAlternative() {
+		return 0;
+	}
+
+	@Override
+	public boolean isException() {
+		return false;
 	}
 
 }

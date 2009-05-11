@@ -35,7 +35,7 @@ public class Checksum00 extends AbstractChecksumValidator {
 	}
 	
 	public Checksum00(int[] weights) {
-		this.weights = weights;
+		this.setWeights(weights);
 	}
 	
 	@Override
@@ -45,14 +45,28 @@ public class Checksum00 extends AbstractChecksumValidator {
 
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
-		for(int i=weights.length-1; i>=0; i--) {
-			sum += ChecksumUtils.qs(accountNumber[i] * weights[i]);
+		for(int i=getWeights().length-1; i>=0; i--) {
+			sum += ChecksumUtils.qs(accountNumber[i] * getWeights()[i]);
 		}
 		int checksum = (10 - (sum % 10)) % 10;
 	
 		LOG.finer("Calculated Checksum is: " + checksum);
 		
 		return checksum;
+	}
+
+	/**
+	 * @param weights the weights to set
+	 */
+	protected void setWeights(int[] weights) {
+		this.weights = weights;
+	}
+
+	/**
+	 * @return the weights
+	 */
+	public int[] getWeights() {
+		return weights;
 	}
 	
 }

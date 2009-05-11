@@ -14,6 +14,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  */
 public abstract class AbstractChecksumValidator implements ChecksumValidator {
 
+	private int alternative=0;
+	private boolean exception=false;
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -35,4 +38,33 @@ public abstract class AbstractChecksumValidator implements ChecksumValidator {
 	 */
 	public abstract boolean validate(int[] accountNumber)
 			throws ValidationException;
+
+	/**
+	 * @param alternative the alternative to set
+	 */
+	protected void setAlternative(int alternative) {
+		this.alternative = alternative;
+	}
+
+	/**
+	 * @return the alternative
+	 */
+	public int getAlternative() {
+		return alternative;
+	}
+
+	/**
+	 * @param exception the exception to set
+	 */
+	protected void setException(boolean exception) {
+		this.exception = exception;
+	}
+
+	/**
+	 * @return the exception
+	 */
+	public boolean isException() {
+		return exception;
+	}
+
 }

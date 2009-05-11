@@ -57,8 +57,7 @@ public class ChecksumM10H extends AbstractChecksumValidator {
 		for(int i=0; i<9; i++) {
 			int line = TRANSFORM_ORDER[i];
 			int value = accountNumber[i];
-			int newValue = TRANSFORM_LINES[line-1][9-value];
-			System.out.println(i + ": " + value + " -> "+ newValue);
+			int newValue = TRANSFORM_LINES[line-1][value];
 			sum += newValue;
 		}
 		

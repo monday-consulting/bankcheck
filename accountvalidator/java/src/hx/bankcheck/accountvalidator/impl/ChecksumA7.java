@@ -32,8 +32,6 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  */
 public class ChecksumA7 extends AbstractChecksumValidator {
 
-	private int alternative = 0;
-
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		if (new Checksum00().validate(accountNumber)) {
@@ -43,21 +41,6 @@ public class ChecksumA7 extends AbstractChecksumValidator {
 			setAlternative(1);
 			return new Checksum03().validate(accountNumber);
 		}
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
 	}
 
 }

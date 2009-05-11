@@ -38,8 +38,6 @@ public class Checksum98 extends AbstractChecksumValidator {
 	private static final int[] WEIGHTS_ALTERNATIVE2 = { 0, 0, 3, 7, 1, 3, 7, 1,
 			3 };
 
-	private int alternative = 0;
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -54,14 +52,6 @@ public class Checksum98 extends AbstractChecksumValidator {
 			setAlternative(1);
 			return new Checksum32(WEIGHTS_ALTERNATIVE2).validate(accountNumber);
 		}
-	}
-
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	public int getAlternative() {
-		return alternative;
 	}
 
 }

@@ -59,11 +59,14 @@ public class ChecksumB6 implements ChecksumValidator {
 		this.alternative = alternative;
 	}
 
-	/**
-	 * @return the alternative
-	 */
+	@Override
 	public int getAlternative() {
 		return alternative;
+	}
+
+	@Override
+	public boolean isException() {
+		return false;
 	}
 
 }
