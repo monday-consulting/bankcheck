@@ -24,14 +24,12 @@ public class Checksum01 extends AbstractChecksumValidator {
 	// Weights from left to right
 	private final static int[] WEIGHTS = { 1, 7, 3, 1, 7, 3, 1, 7, 3 };
 	
-	private int[] weights;
-	
 	public Checksum01() {
 		this(WEIGHTS);
 	}
 	
 	public Checksum01(int[] weights) {
-		this.weights = weights;
+		setWeights(weights);
 	}
 	
 	@Override
@@ -43,8 +41,8 @@ public class Checksum01 extends AbstractChecksumValidator {
 	
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
-		for(int i=0; i<WEIGHTS.length; i++) {
-			sum += accountNumber[i] * weights[i];
+		for(int i=0; i<getWeights().length; i++) {
+			sum += accountNumber[i] * getWeights()[i];
 		}
 		int checksum = (10 - (sum % 10)) % 10;
 		

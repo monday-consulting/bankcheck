@@ -124,9 +124,9 @@ public class ChecksumUtils {
 
 		return result;
 	}
-	
+
 	/**
-	 * Returns the number of neutral(=0) leading digits. 
+	 * Returns the number of neutral(=0) leading digits.
 	 * 
 	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
@@ -143,5 +143,19 @@ public class ChecksumUtils {
 		}
 		return c;
 	}
-	
+
+	/**
+	 * Returns the difference to the next half decade (5,15,25,35,...)
+	 * 
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @version 1.0
+	 * 
+	 * @param number
+	 *            The Number
+	 * @return The difference
+	 */
+	public static int getDiffToHalfDecade(int number) {
+		return ((number % 10) <= 5) ? (5 - (number % 10))
+				: (10 - ((number % 10) % 5));
+	}
 }

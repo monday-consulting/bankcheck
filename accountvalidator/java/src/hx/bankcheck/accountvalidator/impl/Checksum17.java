@@ -27,7 +27,6 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  */
 public class Checksum17 extends AbstractChecksumValidator {
 	private final static int[] WEIGHTS = { 1, 2, 1, 2, 1, 2 };
-	private int[] weights;
 
 	public Checksum17() {
 		this(WEIGHTS);
@@ -58,21 +57,6 @@ public class Checksum17 extends AbstractChecksumValidator {
 			checksum = 10 - x;
 
 		return checksum;
-	}
-
-	/**
-	 * @param weights
-	 *            the weights to set
-	 */
-	protected void setWeights(int[] weights) {
-		this.weights = weights;
-	}
-
-	/**
-	 * @return the weights
-	 */
-	public int[] getWeights() {
-		return weights;
 	}
 
 }

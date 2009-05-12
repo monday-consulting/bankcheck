@@ -20,7 +20,7 @@ public class Checksum21 extends Checksum00 {
 	public int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		for (int i = 8; i >= 0; i--) {
-			sum += ChecksumUtils.qs(accountNumber[i] * WEIGHTS[i]);
+			sum += ChecksumUtils.qs(accountNumber[i] * getWeights()[i]);
 		}
 		while(sum > 9) {
 			sum = ChecksumUtils.qs(sum);

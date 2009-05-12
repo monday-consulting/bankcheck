@@ -30,14 +30,12 @@ public class Checksum06 extends AbstractChecksumValidator {
 	// Weights from left to right
 	private final static int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 
-	private int[] weights;
-	
 	public Checksum06() {
 		this(WEIGHTS);
 	}
 	
 	public Checksum06(int[] weights) {
-		this.weights = weights;
+		setWeights(weights);
 	}
 	
 	public boolean validate(int[] accountNumber) throws ValidationException {
@@ -55,8 +53,8 @@ public class Checksum06 extends AbstractChecksumValidator {
 
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
-		for(int i=0; i<weights.length; i++) {
-			sum += accountNumber[i] * weights[i];
+		for(int i=0; i<getWeights().length; i++) {
+			sum += accountNumber[i] * getWeights()[i];
 		}
 		int checksum = 11 - (sum % 11);
 		

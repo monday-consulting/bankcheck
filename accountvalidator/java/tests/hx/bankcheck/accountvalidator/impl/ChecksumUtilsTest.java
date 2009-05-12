@@ -87,7 +87,7 @@ public class ChecksumUtilsTest {
 	}
 
 	@Test
-	public void testcountNeutralLeadingDigits(){
+	public void testCountNeutralLeadingDigits(){
 
 		int[] a = { 0, 0, 0, 0, 0, 0, 0, 0, 1, 2 };
 		int[] b = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -96,6 +96,16 @@ public class ChecksumUtilsTest {
 		assertTrue(ChecksumUtils.countNeutralLeadingDigits(a)==8);
 		assertTrue(ChecksumUtils.countNeutralLeadingDigits(b)==1);
 		assertTrue(ChecksumUtils.countNeutralLeadingDigits(c)==5);
+	}
+	
+	@Test
+	public void testGetDiffToHalfDecade(){
+		int[] baseValues={0,1,2,3,4,5,6,7,8,9};
+		int[] expectedValues={5,4,3,2,1,0,9,8,7,6};
+		
+		for (int i = 0; i < baseValues.length; i++) {
+			assertTrue(expectedValues[i]==ChecksumUtils.getDiffToHalfDecade(baseValues[i]));
+		}
 	}
 
 }

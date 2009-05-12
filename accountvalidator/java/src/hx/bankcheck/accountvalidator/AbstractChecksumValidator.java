@@ -16,6 +16,7 @@ public abstract class AbstractChecksumValidator implements ChecksumValidator {
 
 	private int alternative=0;
 	private boolean exception=false;
+	private int[] weights=null;
 	
 	/*
 	 * (non-Javadoc)
@@ -65,6 +66,20 @@ public abstract class AbstractChecksumValidator implements ChecksumValidator {
 	 */
 	public boolean isException() {
 		return exception;
+	}
+
+	/**
+	 * @param weights the weights to set
+	 */
+	protected void setWeights(int[] weights) {
+		this.weights = weights;
+	}
+
+	/**
+	 * @return the weights
+	 */
+	public int[] getWeights() {
+		return weights;
 	}
 
 }

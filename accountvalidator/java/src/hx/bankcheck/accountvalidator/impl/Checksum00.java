@@ -28,14 +28,12 @@ public class Checksum00 extends AbstractChecksumValidator {
 	
 	protected final static int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2 };
 	
-	private int[] weights;
-	
 	public Checksum00() {
 		this(WEIGHTS);
 	}
 	
 	public Checksum00(int[] weights) {
-		this.setWeights(weights);
+		setWeights(weights);
 	}
 	
 	@Override
@@ -55,18 +53,4 @@ public class Checksum00 extends AbstractChecksumValidator {
 		return checksum;
 	}
 
-	/**
-	 * @param weights the weights to set
-	 */
-	protected void setWeights(int[] weights) {
-		this.weights = weights;
-	}
-
-	/**
-	 * @return the weights
-	 */
-	public int[] getWeights() {
-		return weights;
-	}
-	
 }

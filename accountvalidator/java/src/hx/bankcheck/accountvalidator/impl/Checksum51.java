@@ -106,9 +106,6 @@ public class Checksum51 extends AbstractChecksumValidator {
 	private static final int[] WEIGHTS_EXCEPTION_ALTERNATIVE2 = { 10, 9, 8, 7,
 			6, 5, 4, 3, 2 };
 
-	private int alternative = 0;
-	private boolean exception = false;
-
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		setAlternative(0);
@@ -145,36 +142,6 @@ public class Checksum51 extends AbstractChecksumValidator {
 		}
 		return (sum % 7 == 0) ? 0 : (7 - sum % 7);
 
-	}
-
-	/**
-	 * @param alternative
-	 *            the alternative to set
-	 */
-	public void setAlternative(int alternative) {
-		this.alternative = alternative;
-	}
-
-	/**
-	 * @return the alternative
-	 */
-	public int getAlternative() {
-		return alternative;
-	}
-
-	/**
-	 * @param exception
-	 *            the exception to set
-	 */
-	protected void setException(boolean exception) {
-		this.exception = exception;
-	}
-
-	/**
-	 * @return the exception
-	 */
-	public boolean isException() {
-		return exception;
 	}
 
 }

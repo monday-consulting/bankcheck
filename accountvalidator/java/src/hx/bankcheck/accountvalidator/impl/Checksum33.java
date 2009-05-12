@@ -1,7 +1,5 @@
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
-import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6<br/>
@@ -21,28 +19,17 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class Checksum33 extends AbstractChecksumValidator {
+public class Checksum33 extends Checksum06 {
 
 	// Weights from left to right
 	private static final int[] WEIGHTS = { 0, 0, 0, 0, 6, 5, 4, 3, 2 };
-	private int[] weights;
 
 	public Checksum33() {
-		this.weights = WEIGHTS;
+		super(WEIGHTS);
 	}
 
 	public Checksum33(int[] weights) {
-		this.weights = weights;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see hx.bankcheck.accountvalidator.ChecksumValidator#validate(int[])
-	 */
-	@Override
-	public boolean validate(int[] accountNumber) throws ValidationException {
-		return new Checksum06(weights).validate(accountNumber);
+		super(weights);
 	}
 
 }

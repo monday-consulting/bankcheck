@@ -3,7 +3,6 @@
  */
 package hx.bankcheck.accountvalidator.impl;
 
-import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -44,10 +43,14 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * @version 1.0
  * 
  */
-public class ChecksumD1 extends AbstractChecksumValidator {
+public class ChecksumD1 extends Checksum00 {
 
 	private static final int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,
 			2, 1, 2 };
+	
+	public ChecksumD1() {
+		super(WEIGHTS);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -71,8 +74,7 @@ public class ChecksumD1 extends AbstractChecksumValidator {
 			for (int i = 0; i < accountNumber.length - 1; i++) {
 				mergedAccountNumber[i + 6] = accountNumber[i];
 			}
-			return (accountNumber[9] == new Checksum00(WEIGHTS)
-					.calcChecksum(mergedAccountNumber));
+			return (accountNumber[9] == calcChecksum(mergedAccountNumber));
 		}
 	}
 
