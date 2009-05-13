@@ -157,19 +157,19 @@ public class Checksum87 extends AbstractChecksumValidator {
 					if ((c2 == 0) && (d2 == 0)) {
 						c2 = 1;
 						d2 = 1;
-						a5 += 6 - (konto[i - 1] - 6);
+						a5 = a5 + 6 - (konto[i - 1] - 6);
 					} else {
 						c2 = 0;
 						d2 = 0;
-						a5 += konto[i - 1];
+						a5 = a5 + konto[i - 1];
 					}
 				} else {
 					if ((c2 == 0) && (d2 == 0)) {
 						c2 = 1;
-						a5 += konto[i - 1];
+						a5 = a5 + konto[i - 1];
 					} else {
 						c2 = 0;
-						a5 += konto[i - 1];
+						a5 = a5 + konto[i - 1];
 					}
 				}
 			} else {
@@ -177,7 +177,7 @@ public class Checksum87 extends AbstractChecksumValidator {
 					if (c2 == 0) {
 						c2 = 1;
 						d2 = 0;
-						a5 -= 6 + (konto[i - 1] - 6);
+						a5 = a5 - 6 + (konto[i - 1] - 6);
 					} else {
 						c2 = 0;
 						d2 = 1;
@@ -186,10 +186,10 @@ public class Checksum87 extends AbstractChecksumValidator {
 				} else {
 					if (c2 == 0) {
 						c2 = 1;
-						a5 -= konto[i - 1];
+						a5 = a5 - konto[i - 1];
 					} else {
 						c2 = 0;
-						a5 -= konto[i - 1];
+						a5 = a5 - konto[i - 1];
 					}
 				}
 			}
