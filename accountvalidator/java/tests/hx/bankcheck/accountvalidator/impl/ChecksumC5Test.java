@@ -1,11 +1,7 @@
 package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.AbstractChecksumTest;
-import hx.bankcheck.accountvalidator.exceptions.ValidationException;
-import hx.bankcheck.accountvalidator.impl.ChecksumC5;
-import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
-
-import java.util.Random;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
 
 /**
  * Testclass for testing algorithm C5.
@@ -17,9 +13,9 @@ import java.util.Random;
 public class ChecksumC5Test extends AbstractChecksumTest {
 
 	@Override
-	public void testValidate() throws ValidationException {
+	public void testValidate() throws Throwable {
 
-		ChecksumC5 checksum = new ChecksumC5();
+		ChecksumValidator validator = new ChecksumC5();
 
 		// Valid account numbers for alternative 1
 		int[] validAccountNumberAlternative1_1 = { 0, 0, 0, 0, 3, 0, 1, 1, 6, 8 };
@@ -82,103 +78,99 @@ public class ChecksumC5Test extends AbstractChecksumTest {
 				1 };
 
 		// Should be valid using alternative 1
-		assertTrue((checksum.validate(validAccountNumberAlternative1_1))
-				&& (checksum.getAlternative() == 0));
-		assertTrue((checksum.validate(validAccountNumberAlternative1_2))
-				&& (checksum.getAlternative() == 0));
-		assertTrue((checksum.validate(validAccountNumberAlternative1_3))
-				&& (checksum.getAlternative() == 0));
-		assertTrue((checksum.validate(validAccountNumberAlternative1_4))
-				&& (checksum.getAlternative() == 0));
+		assertTrue((validator.validate(validAccountNumberAlternative1_1, null))
+				&& (validator.getAlternative() == 0));
+		assertTrue((validator.validate(validAccountNumberAlternative1_2, null))
+				&& (validator.getAlternative() == 0));
+		assertTrue((validator.validate(validAccountNumberAlternative1_3, null))
+				&& (validator.getAlternative() == 0));
+		assertTrue((validator.validate(validAccountNumberAlternative1_4, null))
+				&& (validator.getAlternative() == 0));
 
 		// Should be invalid using alternative 1
-		assertFalse((checksum.validate(invalidAccountNumberAlternative1_1))
-				&& (checksum.getAlternative() == 0));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative1_2))
-				&& (checksum.getAlternative() == 0));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative1_3))
-				&& (checksum.getAlternative() == 0));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative1_4))
-				&& (checksum.getAlternative() == 0));
+		assertFalse((validator.validate(invalidAccountNumberAlternative1_1,
+				null))
+				&& (validator.getAlternative() == 0));
+		assertFalse((validator.validate(invalidAccountNumberAlternative1_2,
+				null))
+				&& (validator.getAlternative() == 0));
+		assertFalse((validator.validate(invalidAccountNumberAlternative1_3,
+				null))
+				&& (validator.getAlternative() == 0));
+		assertFalse((validator.validate(invalidAccountNumberAlternative1_4,
+				null))
+				&& (validator.getAlternative() == 0));
 
 		// Should be valid using alternative 2
-		assertTrue((checksum.validate(validAccountNumberAlternative2_1))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_2))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_3))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_4))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_5))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_6))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_7))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_8))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_9))
-				&& (checksum.getAlternative() == 1));
-		assertTrue((checksum.validate(validAccountNumberAlternative2_X))
-				&& (checksum.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_1, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_2, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_3, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_4, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_5, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_6, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_7, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_8, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_9, null))
+				&& (validator.getAlternative() == 1));
+		assertTrue((validator.validate(validAccountNumberAlternative2_X, null))
+				&& (validator.getAlternative() == 1));
 
 		// Should be invalid using alternative 2
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_1))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_2))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_3))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_4))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_5))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_6))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_7))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_8))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_9))
-				&& (checksum.getAlternative() == 1));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative2_X))
-				&& (checksum.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_1,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_2,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_3,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_4,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_5,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_6,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_7,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_8,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_9,
+				null))
+				&& (validator.getAlternative() == 1));
+		assertFalse((validator.validate(invalidAccountNumberAlternative2_X,
+				null))
+				&& (validator.getAlternative() == 1));
 
 		// Should be valid using alternative 3
-		assertTrue((checksum.validate(validAccountNumberAlternative3_1))
-				&& (checksum.getAlternative() == 2));
-		assertTrue((checksum.validate(validAccountNumberAlternative3_2))
-				&& (checksum.getAlternative() == 2));
+		assertTrue((validator.validate(validAccountNumberAlternative3_1, null))
+				&& (validator.getAlternative() == 2));
+		assertTrue((validator.validate(validAccountNumberAlternative3_2, null))
+				&& (validator.getAlternative() == 2));
 
 		// Should be invalid using alternative 3
-		assertFalse((checksum.validate(invalidAccountNumberAlternative3_1))
-				&& (checksum.getAlternative() == 2));
-		assertFalse((checksum.validate(invalidAccountNumberAlternative3_2))
-				&& (checksum.getAlternative() == 2));
+		assertFalse((validator.validate(invalidAccountNumberAlternative3_1,
+				null))
+				&& (validator.getAlternative() == 2));
+		assertFalse((validator.validate(invalidAccountNumberAlternative3_2,
+				null))
+				&& (validator.getAlternative() == 2));
 
 		// Should be valid using alternative 4
-
-		Random rnd = new Random();
-		long range = 59999999l - 30000000l;
-		int i = 0;
-
-		while (i++ < 10000) {
-			long testNumber = 30000000l + (long) (rnd.nextDouble() * range);
-			assertTrue(checksum.validate(ChecksumUtils
-					.parseAccountNumber(testNumber))
-					&& checksum.getAlternative() == 3);
-		}
-
-		range = 59999999l - 30000000l;
-		i = 0;
-
-		while (i++ < 10000) {
-			long testNumber = 30000000l + (long) (rnd.nextDouble() * range);
-			assertTrue(checksum.validate(ChecksumUtils
-					.parseAccountNumber(testNumber))
-					&& checksum.getAlternative() == 3);
-		}
+		checkRangeOfAccountNumbers(30000000l, 59999999l, null, 3, false, validator, 10000);
 
 	}
 }

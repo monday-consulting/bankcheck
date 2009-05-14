@@ -2,6 +2,7 @@ package hx.bankcheck.accountvalidator.impl;
 
 import static org.junit.Assert.assertArrayEquals;
 import hx.bankcheck.accountvalidator.AbstractChecksumTest;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.IllegalAccountNumberException;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.impl.Checksum52;
@@ -20,7 +21,7 @@ public class Checksum52Test  extends AbstractChecksumTest {
 	@Override
 	public void testValidate() throws ValidationException {
 
-		Checksum52 checksum = new Checksum52();
+		ChecksumValidator validator = new Checksum52();
 
 		// Valid account number + bank number pair
 		int[] validAccountNumber = { 0, 0, 4, 3, 0, 0, 1, 5, 0, 0 };
@@ -30,8 +31,8 @@ public class Checksum52Test  extends AbstractChecksumTest {
 		int[] invalidAccountNumber = { 0, 0, 4, 2, 0, 0, 1, 5, 0, 0 };
 		int[] invalidBankNumber = { 1, 3, 0, 5, 1, 1, 7, 2 };
 
-		assertTrue(checksum.validate(validAccountNumber, validbankNumber));
-		assertFalse(checksum.validate(invalidAccountNumber, invalidBankNumber));
+		assertTrue(validator.validate(validAccountNumber, validbankNumber));
+		assertFalse(validator.validate(invalidAccountNumber, invalidBankNumber));
 	}
 
 	@Test

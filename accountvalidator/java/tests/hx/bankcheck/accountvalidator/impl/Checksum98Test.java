@@ -1,6 +1,7 @@
 package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.AbstractChecksumTest;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.impl.Checksum98;
 
@@ -11,12 +12,12 @@ import hx.bankcheck.accountvalidator.impl.Checksum98;
  * @version 1.0
  * 
  */
-public class Checksum98Test  extends AbstractChecksumTest {
-	
+public class Checksum98Test extends AbstractChecksumTest {
+
 	@Override
 	public void testValidate() throws ValidationException {
 
-		Checksum98 checksum = new Checksum98();
+		ChecksumValidator validator = new Checksum98();
 
 		// Valid account number
 		int[] validAccountNumber1 = { 9, 6, 1, 9, 4, 3, 9, 2, 1, 3 };
@@ -28,13 +29,13 @@ public class Checksum98Test  extends AbstractChecksumTest {
 		int[] validAccountNumber7 = { 9, 6, 1, 9, 6, 0, 8, 1, 1, 8 };
 
 		// Should be valid
-		assertTrue(checksum.validate(validAccountNumber1));
-		assertTrue(checksum.validate(validAccountNumber2));
-		assertTrue(checksum.validate(validAccountNumber3));
-		assertTrue(checksum.validate(validAccountNumber4));
-		assertTrue(checksum.validate(validAccountNumber5));
-		assertTrue(checksum.validate(validAccountNumber6));
-		assertTrue(checksum.validate(validAccountNumber7));
+		assertTrue(validator.validate(validAccountNumber1, null));
+		assertTrue(validator.validate(validAccountNumber2, null));
+		assertTrue(validator.validate(validAccountNumber3, null));
+		assertTrue(validator.validate(validAccountNumber4, null));
+		assertTrue(validator.validate(validAccountNumber5, null));
+		assertTrue(validator.validate(validAccountNumber6, null));
+		assertTrue(validator.validate(validAccountNumber7, null));
 
 	}
 }

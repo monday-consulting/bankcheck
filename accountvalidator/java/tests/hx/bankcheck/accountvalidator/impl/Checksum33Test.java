@@ -1,8 +1,8 @@
 package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.AbstractChecksumTest;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
-import hx.bankcheck.accountvalidator.impl.Checksum33;
 
 /**
  * Testclass for testing algorithm 33.
@@ -11,20 +11,20 @@ import hx.bankcheck.accountvalidator.impl.Checksum33;
  * @version 1.0
  * 
  */
-public class Checksum33Test  extends AbstractChecksumTest {
-	
+public class Checksum33Test extends AbstractChecksumTest {
+
 	@Override
 	public void testValidate() throws ValidationException {
 
-		Checksum33 checksum = new Checksum33();
+		ChecksumValidator validator = new Checksum33();
 
 		// Valid account numbers
 		int[] validAccountNumber1 = { 0, 0, 0, 0, 0, 4, 8, 6, 5, 8 };
 		int[] validAccountNumber2 = { 0, 0, 0, 0, 0, 8, 4, 9, 5, 6 };
 
 		// Should be valid
-		assertTrue(checksum.validate(validAccountNumber1));
-		assertTrue(checksum.validate(validAccountNumber2));
+		assertTrue(validator.validate(validAccountNumber1, null));
+		assertTrue(validator.validate(validAccountNumber2, null));
 
 	}
 }

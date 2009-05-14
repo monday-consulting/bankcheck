@@ -1,6 +1,7 @@
 package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.AbstractChecksumTest;
+import hx.bankcheck.accountvalidator.ChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.impl.Checksum97;
 
@@ -11,17 +12,18 @@ import hx.bankcheck.accountvalidator.impl.Checksum97;
  * @version 1.0
  * 
  */
-public class Checksum97Test  extends AbstractChecksumTest {
-	
+public class Checksum97Test extends AbstractChecksumTest {
+
 	@Override
 	public void testValidate() throws ValidationException {
-		Checksum97 checksum = new Checksum97();
+
+		ChecksumValidator validator = new Checksum97();
 
 		// Valid account number
 		int[] validAccountNumber = { 0, 0, 2, 4, 0, 1, 0, 0, 1, 9 };
 
 		// Should be valid
-		assertTrue(checksum.validate(validAccountNumber));
+		assertTrue(validator.validate(validAccountNumber, null));
 
 	}
 
