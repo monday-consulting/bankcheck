@@ -129,7 +129,7 @@ public class Checksum87 extends AbstractChecksumValidator {
 		int i, c2, d2, a5, p;
 
 		i = 4;
-		while (konto[i - 1] == 0) {
+		while ((konto[i - 1] == 0)&&(i<10)) {
 			i++;
 		}
 		c2 = i % 2;

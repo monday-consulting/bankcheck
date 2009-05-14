@@ -4,6 +4,7 @@
 package hx.bankcheck.accountvalidator.impl;
 
 import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
+import hx.bankcheck.accountvalidator.exceptions.AccountNumberNotTestableException;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
@@ -77,7 +78,7 @@ public class Checksum76 extends AbstractChecksumValidator {
 			0 };
 	private static final int[] WEIGHTS_7_DIGITS = { 0, 7, 6, 5, 4, 3, 2, 0, 0,
 			0 };
-	private static final int[] WEIGHTS_EXCEPTION = { 0, 0, 0, 0, 6, 5, 4, 3, 2 };
+	private static final int[] WEIGHTS_EXCEPTION = { 0, 0, 0, 7, 6, 5, 4, 3, 2 };
 
 	/*
 	 * (non-Javadoc)
@@ -92,23 +93,35 @@ public class Checksum76 extends AbstractChecksumValidator {
 				&& (accountNumber[0] != 8) && (accountNumber[0] != 9)) {
 			return false;
 		} else {
-			if ((accountNumber[8] != 0)
-					&& (accountNumber[9] != 0)
-					&& (ChecksumUtils.countNeutralLeadingDigits(accountNumber) >= 2)) {
-				setException(true);
-				setWeights(WEIGHTS_EXCEPTION);
-				return accountNumber[9] == calcChecksum(accountNumber);
+			if ((accountNumber[1] == 0) && (accountNumber[2] == 0)) {
+				setWeights(WEIGHTS_5_DIGITS);
 			} else {
-				if ((accountNumber[1] == 0) && (accountNumber[2] == 0)) {
-					setWeights(WEIGHTS_5_DIGITS);
+				if ((accountNumber[1] == 0) && (accountNumber[2] != 0)) {
+					setWeights(WEIGHTS_6_DIGITS);
 				} else {
-					if ((accountNumber[1] == 0) && (accountNumber[2] != 0)) {
-						setWeights(WEIGHTS_6_DIGITS);
-					} else {
-						setWeights(WEIGHTS_7_DIGITS);
+					setWeights(WEIGHTS_7_DIGITS);
+				}
+			}
+			int checksum = calcChecksum(accountNumber);
+			if (checksum == 10) {
+				throw new AccountNumberNotTestableException();
+			} else {
+				if(accountNumber[7] == calcChecksum(accountNumber)){
+					return true;
+				}else{
+					if (ChecksumUtils.countNeutralLeadingDigits(accountNumber) >= 2) {
+						setException(true);
+						setWeights(WEIGHTS_EXCEPTION);
+						checksum=calcChecksum(accountNumber);
+						if (checksum == 10) {
+							throw new AccountNumberNotTestableException();
+						} else {
+							return accountNumber[9] == checksum;
+						}
+					}else {
+						return false;
 					}
 				}
-				return accountNumber[7] == calcChecksum(accountNumber);
 			}
 		}
 	}
@@ -118,6 +131,6 @@ public class Checksum76 extends AbstractChecksumValidator {
 		for (int i = 0; i < getWeights().length; i++) {
 			sum += accountNumber[i] * getWeights()[i];
 		}
-		return ((sum % 11) == 0) ? -1 : (sum % 11);
+		return (sum % 11);
 	}
 }

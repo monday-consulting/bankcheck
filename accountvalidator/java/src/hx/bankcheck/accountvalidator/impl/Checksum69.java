@@ -74,8 +74,8 @@ public class Checksum69 extends AbstractChecksumValidator {
 			{ 0, 1, 5, 9, 3, 7, 4, 8, 2, 6 }, { 0, 1, 7, 6, 9, 8, 3, 2, 5, 4 },
 			{ 0, 1, 8, 4, 6, 2, 9, 5, 7, 3 }, { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
 
-	private static final int[] WEIGHTS_ALTERNATIVE1 = { 0, 0, 8, 7, 6, 5, 4, 3,
-			2 };
+	private static final int[] WEIGHTS_ALTERNATIVE1 = { 8, 7, 6, 5, 4, 3, 2, 0,
+			0, 0 };
 	private static final int[] WEIGHTS_ALTERNATIVE2 = { 1, 4, 3, 2, 1, 4, 3, 2,
 			1 };
 
