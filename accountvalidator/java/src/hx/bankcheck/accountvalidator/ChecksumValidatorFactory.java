@@ -79,7 +79,7 @@ public class ChecksumValidatorFactory {
 					throw new IllegalBankNumberException(
 							"bankNumber has to have 8 digits");
 
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < 8; i++) {
 					if (bankNumber[i] > 9 || bankNumber[i] < 0) {
 						throw new IllegalAccountNumberException("Value "
 								+ bankNumber[i] + " for digit " + (i + 1)
