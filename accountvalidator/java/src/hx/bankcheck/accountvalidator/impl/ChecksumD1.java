@@ -6,48 +6,99 @@ package hx.bankcheck.accountvalidator.impl;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist 10-stellig, ggf. ist die Kontonummer für die
- * Prüfzifferberechnung durch linksbündige Auffüllung mit Nullen 10-stellig
- * darzustellen. Die 10. Stelle der Konto-nummer ist die Prüfziffer. <br/>
+ * Die Kontonummer ist 10-stellig, ggf. ist die Kontonummer fÃ¼r die
+ * PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit Nullen 10-stellig
+ * darzustellen. Die 10. Stelle der Konto-nummer ist die PrÃ¼fziffer. <br/>
+ * <br/>
+ * Die Kontonummern sind wie folgt zu prÃ¼fen: FÃ¼r die Berechnung der PrÃ¼fziffer
+ * werden die Stellen 1 bis 9 der Kontonummer von links verwendet. Diese Stellen
+ * sind links um eine Zahl (Konstante) gemÃ¤ÃŸ der folgenden Tabelle zu ergÃ¤nzen.<br/>
  * 
- * Kontonummern, die an der 1. Stelle von links der 10-stelligen Kontonummer
- * einen der Werte 0, 3 oder 9 beinhalten sind falsch. Kontonummern, die an der
- * 1. Stelle von links der 10-stelligen Kontonummer einen der Werte 1, 2, 4, 5,
- * 6, 7, oder 8 beinhalten, sind wie folgt zu prüfen: <br/>
+ * <table border="1">
+ * <tr>
+ * <th>1. Stelle von links der 10-stelligen Kontonummer</th>
+ * <th>Zahl (Konstante)</th>
+ * </tr>
+ * <tr>
+ * <td>0, 3, 4, 5,9</td>
+ * <td>436338</td>
+ * <tr>
+ * <td>1, 2, 6, 7, 8</td>
+ * <td>428259</td>
+ * </tr>
+ * </table>
  * 
- * Modulus 10, Gewichtung 1, 2, 1, 2, 1, 2, 1, 2 <br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 00.<br/>
+ * <br/>
+ * Beispiel:<br/>
+ * Kontonummer: 7000005021 <br/>
+ * Stellen 1 bis 9: 700000502 <br/>
+ * ErgÃ¤nzt um Konstante (15 Stellen): 428259700000502 <br/>
  * 
- * Für die Berechnung der Prüfziffer werden die Stellen 1 bis 9 der Kontonummer
- * verwendet. Diese Stellen sind links um Zahl (Konstante) „428259“ zu ergänzen.
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 00. <br/>
+ * <table border="1">
+ * <tr>
+ * <th>15 Stellen</th>
+ * <td>
  * 
- * <b>Beispiel:</b> <br/>
+ * <pre>
+ * 4 2  8 2  5 9  7 0 0 0 0 0  5 0 2
+ * </pre>
  * 
- * Kontonummer: 1000005016 <br/>
- * Stellen 1 bis 9: 100000501 <br/>
- * Ergänzt um Konstante (15 Stellen): 428259100000501 <br/>
+ * </td>
+ * </tr>
+ * <tr>
+ * <th>Gewichtung</th>
+ * <td>
  * 
- * 15 Stellen 428259100000501<br/>
- * Gewichtung 212121212121212<br/>
- * Produkt 821621092000001002<br/>
- * Quersumme 827219200000102<br/>
+ * <pre>
+ * 2 1  2 1  2 1  2 1 2 1 2 1  2 1 2
+ * </pre>
  * 
- * Summe = 34 <br/>
+ * </td>
+ * </tr>
+ * <tr>
+ * <th>Produkt</th>
+ * <td>
  * 
- * 10 - 4 (Einerstelle) = 6 = Prüfziffer <br/>
+ * <pre>
+ * 8 2 16 2 10 9 14 0 0 0 0 0 10 0 4
+ * </pre>
  * 
- * Testkontonummern (richtig): 1000004019, 4000008014, 6100020013, 8300042011 <br/>
- * Testkontonummern (falsch): 2000005018, 5000064015, 7400041011<br/>
+ * </td>
+ * </tr>
+ * <tr>
+ * <th>Quersumme</th>
+ * <td>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
- * @version 1.0
+ * <pre>
+ * 8 2  7 2  1 9  5 0 0 0 0 0  1 0 4
+ * </pre>
+ * 
+ * <td>
+ * </tr>
+ * </table>
+ * 
+ * Summe: 39<br/>
+ * <br/>
+ * 10 - 9 (Einerstelle) = 1 = PrÃ¼fziffer<br/>
+ * <br/>
+ * <br/>
+ * Testkontonummern (richtig): 3002000027, 9000430223, 2003455182, 1031405201,
+ * 0082012203, 5000065514<br/>
+ * <br/>
+ * Testkontonummern (falsch): 7000062025, 4006003027, 8003306026, 2001501026,
+ * 9000641509, 0000260986
+ * 
+ * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
+ * @author Tobias Mayer (backcheck@tobiasm.de)
+ * @version 1.1
  * 
  */
 public class ChecksumD1 extends Checksum00 {
 
 	private static final int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,
 			2, 1, 2 };
-	
+
 	public ChecksumD1() {
 		super(WEIGHTS);
 	}
@@ -60,22 +111,28 @@ public class ChecksumD1 extends Checksum00 {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
+		int[] mergedAccountNumber = new int[15];
 		if ((accountNumber[0] == 0) || (accountNumber[0] == 3)
+				|| (accountNumber[0] == 4) || (accountNumber[0] == 5)
 				|| (accountNumber[0] == 9)) {
-			return false;
+			mergedAccountNumber[0] = 4;
+			mergedAccountNumber[1] = 3;
+			mergedAccountNumber[2] = 6;
+			mergedAccountNumber[3] = 3;
+			mergedAccountNumber[4] = 3;
+			mergedAccountNumber[5] = 8;
 		} else {
-			int[] mergedAccountNumber = new int[15];
 			mergedAccountNumber[0] = 4;
 			mergedAccountNumber[1] = 2;
 			mergedAccountNumber[2] = 8;
 			mergedAccountNumber[3] = 2;
 			mergedAccountNumber[4] = 5;
 			mergedAccountNumber[5] = 9;
-			for (int i = 0; i < accountNumber.length - 1; i++) {
-				mergedAccountNumber[i + 6] = accountNumber[i];
-			}
-			return (accountNumber[9] == calcChecksum(mergedAccountNumber));
 		}
+		for (int i = 0; i < accountNumber.length - 1; i++) {
+			mergedAccountNumber[i + 6] = accountNumber[i];
+		}
+		return (accountNumber[9] == calcChecksum(mergedAccountNumber));
 	}
 
 }
