@@ -34,15 +34,16 @@ import java.util.Map;
  * 
  * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 00.
  * 
- *Testkontonummern (richtig): 7008199027, 7002000023, 7000202027, 9000430223,
- * 9000781153, 2003455189, 2004001016, 1031405209, 1082012201, 0000065516,
- * 0203178249 <br/>
- * Testkontonummern (falsch): 7000062022, 7006003027, 7003306026, 7001501029,
- * 9000641509, 9000260986, 2004306518, 2016001206, 1082311275, 1000118821,
- * 0525111212, 0091423614<br/>
+ *Testkontonummern (richtig): 7008199027, 7002000023, 9000430223, 9000781153,
+ * 2003455189, 2004001016, 1031405209, 1082012201, 0000065516, 0203178249,
+ * 3110150986, 3068459207 <br/>
+ * Testkontonummern (falsch): 7000062022, 7006003027, 9000641509, 9000260986,
+ * 2004306518, 2016001206, 1082311275, 1000118821, 0525111212, 0091423614,
+ * 3462816371, 3622548632, 4642847318, 8348300005<br/>
  * 
  * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
- * @version 1.0
+ * @author Tobias Mayer (bankcheck@tobiasm.de)
+ * @version 1.1
  * 
  */
 public class ChecksumC6 extends AbstractChecksumValidator {
@@ -62,7 +63,7 @@ public class ChecksumC6 extends AbstractChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		if (((accountNumber[0] > 2) && (accountNumber[0] < 7))
+		if (((accountNumber[0] > 3) && (accountNumber[0] < 7))
 				|| (accountNumber[0] == 8)) {
 			return false;
 		} else {
@@ -80,14 +81,13 @@ public class ChecksumC6 extends AbstractChecksumValidator {
 
 	private void initConstants() {
 		this.constants = new HashMap<Integer, int[]>();
-		int[][] tmp = { { 4, 4, 5, 1, 9, 7, 0 }, { 4, 4, 5, 1, 9, 8, 1, },
-				{ 4, 4, 5, 1, 9, 9, 2 }, { 5, 4, 9, 9, 5, 7, 0 },
-				{ 5, 4, 9, 9, 5, 7, 9 } };
-		this.constants.put(new Integer(0), tmp[0]);
-		this.constants.put(new Integer(1), tmp[1]);
-		this.constants.put(new Integer(2), tmp[2]);
-		this.constants.put(new Integer(7), tmp[3]);
-		this.constants.put(new Integer(9), tmp[4]);
+
+		this.constants.put(new Integer(0), new int[] { 4, 4, 5, 1, 9, 7, 0 });
+		this.constants.put(new Integer(1), new int[] { 4, 4, 5, 1, 9, 8, 1 });
+		this.constants.put(new Integer(2), new int[] { 4, 4, 5, 1, 9, 9, 2 });
+		this.constants.put(new Integer(3), new int[] { 4, 4, 5, 1, 9, 9, 3 });
+		this.constants.put(new Integer(7), new int[] { 5, 4, 9, 9, 5, 7, 0 });
+		this.constants.put(new Integer(9), new int[] { 5, 4, 9, 9, 5, 7, 9 });
 	}
 
 }
