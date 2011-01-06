@@ -10,30 +10,60 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Prüfzifferberechnung durch linksbündige Auffüllung mit Nullen 10-stellig
  * darzustellen. Die 10. Stelle der Konto-nummer ist die Prüfziffer. <br/>
  * <br/>
- * Die Kontonummern sind wie folgt zu prüfen: Für die Berechnung der Prüfziffer
- * werden die Stellen 1 bis 9 der Kontonummer von links verwendet. Diese Stellen
- * sind links um eine Zahl (Konstante) gemäß der folgenden Tabelle zu ergänzen.<br/>
- * 
+ * Kontonummern, die an der 1. Stelle von links der 10-stelligen
+ * Kontonummer einen der Wert 2, 7 oder 8 beinhalten sind
+ * falsch.
+ * <br/>
+ * Kontonummern, die an der 1. Stelle von links der 10-stelligen
+ * Kontonummer einen der Werte 0, 1, 3, 4, 5, 6 oder 9
+ * beinhalten sind wie folgt zu prüfen:
+ * <br/>
+ * Für die Berechnung der Prüfziffer werden die Stellen 2 bis 9
+ * der Kontonummer von links verwendet. Diese Stellen sind
+ * links um eine Zahl (Konstante) gemäß der folgenden Tabelle
+ * zu ergänzen.
+ * <br/>
  * <table border="1">
  * <tr>
  * <th>1. Stelle von links der 10-stelligen Kontonummer</th>
  * <th>Zahl (Konstante)</th>
  * </tr>
  * <tr>
- * <td>0, 3, 4, 5,9</td>
- * <td>436338</td>
+ * <td>0</td>
+ * <td>4363380</td>
+ * </tr>
  * <tr>
- * <td>1, 2, 6, 7, 8</td>
- * <td>428259</td>
+ * <td>1</td>
+ * <td>4363381</td>
+ * </tr>
+ * <tr>
+ * <td>3</td>
+ * <td>4363383</td>
+ * </tr>
+ * <tr>
+ * <td>4</td>
+ * <td>4363384</td>
+ * </tr>
+ * <tr>
+ * <td>5</td>
+ * <td>4363385</td>
+ * </tr>
+ * <tr>
+ * <td>6</td>
+ * <td>4363386</td>
+ * </tr>
+ * <tr>
+ * <td>9</td>
+ * <td>4363389</td>
  * </tr>
  * </table>
  * 
  * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 00.<br/>
  * <br/>
  * Beispiel:<br/>
- * Kontonummer: 7000005021 <br/>
- * Stellen 1 bis 9: 700000502 <br/>
- * Ergänzt um Konstante (15 Stellen): 428259700000502 <br/>
+ * Kontonummer: 3002000027 <br/>
+ * Stellen 2 bis 9: 00200002 <br/>
+ * Ergänzt um Konstante (15 Stellen): 436338300200002 <br/>
  * 
  * <table border="1">
  * <tr>
@@ -41,7 +71,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <td>
  * 
  * <pre>
- * 4 2  8 2  5 9  7 0 0 0 0 0  5 0 2
+ * 4 3  6 3 3 8 3 0 0 2 0 0 0 0 2
  * </pre>
  * 
  * </td>
@@ -51,7 +81,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <td>
  * 
  * <pre>
- * 2 1  2 1  2 1  2 1 2 1 2 1  2 1 2
+ * 2 1  2 1 2 1 2 1 2 1 2 1 2 1 2
  * </pre>
  * 
  * </td>
@@ -61,7 +91,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <td>
  * 
  * <pre>
- * 8 2 16 2 10 9 14 0 0 0 0 0 10 0 4
+ * 8 3 12 3 6 8 6 0 0 2 0 0 0 0 4
  * </pre>
  * 
  * </td>
@@ -71,27 +101,28 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <td>
  * 
  * <pre>
- * 8 2  7 2  1 9  5 0 0 0 0 0  1 0 4
+ * 8 3  3 3 6 8 6 0 0 2 0 0 0 0 4
  * </pre>
  * 
  * <td>
  * </tr>
  * </table>
  * 
- * Summe: 39<br/>
+ * Summe: 43<br/>
  * <br/>
- * 10 - 9 (Einerstelle) = 1 = Prüfziffer<br/>
+ * 10 - 3 (Einerstelle) = 7 = Prüfziffer<br/>
  * <br/>
  * <br/>
- * Testkontonummern (richtig): 3002000027, 9000430223, 2003455182, 1031405201,
- * 0082012203, 5000065514<br/>
+ * Testkontonummern (richtig): 0082012203, 1452683581, 3002000027, 4230001407,
+ * 5000065514, 6001526215, 9000430223 
  * <br/>
- * Testkontonummern (falsch): 7000062025, 4006003027, 8003306026, 2001501026,
- * 9000641509, 0000260986
+ * <br/>
+ * Testkontonummern (falsch): 0000260986, 1062813622, 2001501026, 3012084101,
+ * 4006003027, 5814500990, 6128462594, 7000062025, 8003306026, 9000641509
  * 
  * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
  * @author Tobias Mayer (backcheck@tobiasm.de)
- * @version 1.1
+ * @version 1.2
  * 
  */
 public class ChecksumD1 extends Checksum00 {
@@ -111,27 +142,27 @@ public class ChecksumD1 extends Checksum00 {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
+		int[] extension;
+		switch(accountNumber[0]) {
+		case 0: extension = new int[] { 4,3,6,3,3,8,0 }; break;
+		case 1: extension = new int[] { 4,3,6,3,3,8,1 }; break;
+		case 3: extension = new int[] { 4,3,6,3,3,8,3 }; break;
+		case 4: extension = new int[] { 4,3,6,3,3,8,4 }; break;
+		case 5: extension = new int[] { 4,3,6,3,3,8,5 }; break;
+		case 6: extension = new int[] { 4,3,6,3,3,8,6 }; break;
+		case 9: extension = new int[] { 4,3,6,3,3,8,9 }; break;
+		default: return false;
+		}
+		
 		int[] mergedAccountNumber = new int[15];
-		if ((accountNumber[0] == 0) || (accountNumber[0] == 3)
-				|| (accountNumber[0] == 4) || (accountNumber[0] == 5)
-				|| (accountNumber[0] == 9)) {
-			mergedAccountNumber[0] = 4;
-			mergedAccountNumber[1] = 3;
-			mergedAccountNumber[2] = 6;
-			mergedAccountNumber[3] = 3;
-			mergedAccountNumber[4] = 3;
-			mergedAccountNumber[5] = 8;
-		} else {
-			mergedAccountNumber[0] = 4;
-			mergedAccountNumber[1] = 2;
-			mergedAccountNumber[2] = 8;
-			mergedAccountNumber[3] = 2;
-			mergedAccountNumber[4] = 5;
-			mergedAccountNumber[5] = 9;
+		for (int i = 0; i < extension.length; i++) {
+			mergedAccountNumber[i] = extension[i];
 		}
-		for (int i = 0; i < accountNumber.length - 1; i++) {
-			mergedAccountNumber[i + 6] = accountNumber[i];
+		
+		for (int i = 0; i < accountNumber.length - 2; i++) {
+			mergedAccountNumber[i + extension.length] = accountNumber[i+1];
 		}
+		
 		return (accountNumber[9] == calcChecksum(mergedAccountNumber));
 	}
 
