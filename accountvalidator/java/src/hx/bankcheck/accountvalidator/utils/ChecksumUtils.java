@@ -170,13 +170,6 @@ public class ChecksumUtils {
 	 * @return sum of products
 	 */
 	public static int calcWeightedSum(int[] accountNumber, int[] weights, int start, int end) {
-		if (start < 0 || start > 8)
-			throw new IllegalArgumentException("start must be between 0 and 8!");
-		if (end < 1 || end > 9)
-			throw new IllegalArgumentException("end must be between 1 and 9");
-		if (accountNumber.length != 10)
-			throw new IllegalArgumentException("accountNumber or weights has wrong length");
-		
 		int sum = 0;
 		for(int i=start; i<=end; i++) {
 			sum += accountNumber[i] * weights[i];
