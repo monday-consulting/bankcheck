@@ -25,7 +25,7 @@ public class ChecksumUtils {
 	 * Fills up the account number by adding '0' to the left until size is
 	 * reached.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param sizeOfAccountNumber
@@ -68,7 +68,7 @@ public class ChecksumUtils {
 	/**
 	 * Parses the given account number as int[].
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumberAsLong
@@ -98,7 +98,7 @@ public class ChecksumUtils {
 	/**
 	 * Parses the given ESER system account number as int[].
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumberAsLong
@@ -128,7 +128,7 @@ public class ChecksumUtils {
 	/**
 	 * Returns the number of neutral(=0) leading digits.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumber
@@ -147,7 +147,7 @@ public class ChecksumUtils {
 	/**
 	 * Returns the difference to the next half decade (5,15,25,35,...)
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param number
@@ -157,5 +157,31 @@ public class ChecksumUtils {
 	public static int getDiffToHalfDecade(int number) {
 		return ((number % 10) <= 5) ? (5 - (number % 10))
 				: (10 - ((number % 10) % 5));
+	}
+
+	/**
+	 * Calculates the sum of the product made by multiplying each field of
+	 * accountnumber with the weight at the same index.
+	 * <pre><code>sum = account[start] * weight[start] + account[start+1] * weight[start+1] + ... + account[end] * weight[end]</code></pre>
+	 * @author Tobias Mayer (bankcheck@tobiasm.de)
+	 * 
+	 * @param accountNumber
+	 * @param weights
+	 * @return sum of products
+	 */
+	public static int calcWeightedSum(int[] accountNumber, int[] weights, int start, int end) {
+		if (start < 0 || start > 8)
+			throw new IllegalArgumentException("start must be between 0 and 8!");
+		if (end < 1 || end > 9)
+			throw new IllegalArgumentException("end must be between 1 and 9");
+		if (accountNumber.length != 10)
+			throw new IllegalArgumentException("accountNumber or weights has wrong length");
+		
+		int sum = 0;
+		for(int i=start; i<=end; i++) {
+			sum += accountNumber[i] * weights[i];
+		}
+		
+		return sum;
 	}
 }
