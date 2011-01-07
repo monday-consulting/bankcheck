@@ -14,6 +14,8 @@ import java.util.Arrays;
  * $Id$
  */
 public class ChecksumD5Test extends AbstractChecksumTest {
+	
+	@Override
 	public void testValidate() throws Exception {
 		int[][] correct = {
 				{ 5,9,9,9,7,1,8,1,3,8 },
