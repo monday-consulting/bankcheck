@@ -25,7 +25,7 @@ public class ChecksumUtils {
 	 * Fills up the account number by adding '0' to the left until size is
 	 * reached.
 	 * 
-	 * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param sizeOfAccountNumber
@@ -68,7 +68,7 @@ public class ChecksumUtils {
 	/**
 	 * Parses the given account number as int[].
 	 * 
-	 * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumberAsLong
@@ -96,9 +96,29 @@ public class ChecksumUtils {
 	}
 
 	/**
+	 * Parses the given BLZ as int[].
+	 * 
+	 * @param blzAsLong
+	 *            blz to parse
+	 * @return int[] containing the blz
+	 */
+	public static int[] parseBlz(long blzAsLong) {
+		int[] result = new int[8];
+		int pos = 0;
+		do {
+			int intValue = (int) (blzAsLong % 10);
+			result[7 - pos] = intValue;
+			blzAsLong /= 10;
+			pos++;
+		} while (blzAsLong != 0 && pos < 8);
+
+		return result;
+	}
+
+	/**
 	 * Parses the given ESER system account number as int[].
 	 * 
-	 * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumberAsLong
@@ -128,7 +148,7 @@ public class ChecksumUtils {
 	/**
 	 * Returns the number of neutral(=0) leading digits.
 	 * 
-	 * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumber
@@ -147,7 +167,7 @@ public class ChecksumUtils {
 	/**
 	 * Returns the difference to the next half decade (5,15,25,35,...)
 	 * 
-	 * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param number
