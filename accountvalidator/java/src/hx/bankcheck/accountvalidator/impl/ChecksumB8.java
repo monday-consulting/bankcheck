@@ -4,30 +4,46 @@ import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieï¿½lich der Prï¿½fziffer 10-stellig, ggf. ist die
+ * Kontonummer fï¿½r die Prï¿½fzifferberechnung durch linksbï¿½ndige Auffï¿½llung mit
  * Nullen 10-stellig darzustellen. Die 10. Stelle der Kontonummer ist die
- * Prüfziffer.<br/>
+ * Prï¿½fziffer.<br/>
  * 
  * <b>Variante 1:</b> <br/>
  * 
- * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 3 (modifiziert) Die Berechnung
- * und mögliche Ergebnisse entsprechen der Methode 20. Führt die Berechnung nach
- * Variante 1 zu einem Prüfzifferfehler, so ist nach Variante 2 zu prüfen. <br/>
+ * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 3 (modifiziert)
+ * 
+ * Die Berechnung und mï¿½gliche Ergebnisse entsprechen der Methode 20. Fï¿½hrt die
+ * Berechnung nach Variante 1 zu einem Prï¿½fzifferfehler, so ist nach Variante 2
+ * zu prï¿½fen. <br/>
  * 
  * Testkontonummern (richtig): 0734192657, 6932875274<br/>
- * Testkontonummern (falsch): 3145863029, 2938692523, 0132572975 <br/>
+ * Testkontonummern (falsch): 3145863029, 2938692523, 0132572975, 5432198760,
+ * 9070873333, 5011654366 9000412340, 9310305011 <br/>
  * 
  * <b>Variante 2:</b><br/>
  * 
  * Modulus 10,iterierte Transformation <br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 29. <br/>
+ * Die Berechnung und mï¿½gliche Ergebnisse entsprechen der Methode 29. <br/>
  * 
  * Testkontonummern (richtig): 3145863029, 2938692523 <br/>
- * Testkontonummern (falsch): 0132572975<br/>
+ * Testkontonummern (falsch): 0132572975, 5432198760, 9070873333, 9000412340,
+ * 9310305011 <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * <b>Variante 3:</b><br/>
+ * FÃ¼r die folgenden Kontonummernkreise gilt die Methode 09 (keine
+ * PrÃ¼fzifferberechnung).
+ * <ul>
+ * <li>10-stellige Kontonummer; 1. + 2. Stelle = 51 - 59 Kontonummernkreis
+ * 5100000000 â€“ 5999999999</li>
+ * <li>10-stellige Kontonummer; Stellen 1 - 3 = 901 - 910 Kontonummernkreis
+ * 9010000000 â€“ 9109999999</li>
+ * </ul>
+ * 
+ * 
+ * 
+ * @author Sascha Dï¿½mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
@@ -35,6 +51,7 @@ public class ChecksumB8 extends AbstractChecksumValidator {
 
 	// Weights from left to right
 	private static final int[] WEIGHTS = { 3, 9, 8, 7, 6, 5, 4, 3, 2 };
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -43,12 +60,24 @@ public class ChecksumB8 extends AbstractChecksumValidator {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		if(new Checksum20(WEIGHTS).validate(accountNumber)){
+		if (new Checksum20(WEIGHTS).validate(accountNumber)) {
 			setAlternative(0);
 			return true;
-		}else{
+		} else if (new Checksum29().validate(accountNumber)) {
 			setAlternative(1);
-			return new Checksum29().validate(accountNumber);
+			return true;
+		} else if ((accountNumber[0] == 5 && accountNumber[1] != 0)) {
+			setAlternative(2);
+			return true;
+		} else {
+			int i = accountNumber[0] * 100 + accountNumber[1] * 10
+					+ accountNumber[2];
+			if (i >= 901 && i <= 910) {
+				setAlternative(2);
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 
