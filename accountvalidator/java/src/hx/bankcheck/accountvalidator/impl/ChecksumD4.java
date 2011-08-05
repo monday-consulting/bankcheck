@@ -48,9 +48,7 @@ public class ChecksumD4 extends Checksum00 {
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		int[] mergedAccountNumber = new int[15];
-		if ((accountNumber[0] == 0) || (accountNumber[0] == 1)
-				|| (accountNumber[0] == 2) || (accountNumber[0] == 6)
-				|| (accountNumber[0] == 7) || (accountNumber[0] == 8)) {
+		if (accountNumber[0] == 0) {
 			return false;
 		} else {
 			mergedAccountNumber[0] = 4;
