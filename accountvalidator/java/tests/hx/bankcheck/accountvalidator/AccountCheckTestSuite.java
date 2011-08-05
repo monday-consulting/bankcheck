@@ -51,7 +51,9 @@ import org.junit.runners.Suite.SuiteClasses;
 		ChecksumC3Test.class, ChecksumC4Test.class, ChecksumC5Test.class,
 		ChecksumC6Test.class, ChecksumC7Test.class, ChecksumC8Test.class,
 		ChecksumC9Test.class, ChecksumD0Test.class, ChecksumD1Test.class,
-		ChecksumD2Test.class, ChecksumD3Test.class, ChecksumD4Test.class })
+		ChecksumD2Test.class, ChecksumD3Test.class, ChecksumD4Test.class,
+		ChecksumD5Test.class, ChecksumD6Test.class, ChecksumD7Test.class,
+		ChecksumD8Test.class})
 public class AccountCheckTestSuite {
 	// Empty space
 }
