@@ -6,22 +6,23 @@ package hx.bankcheck.accountvalidator.impl;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
+ * Modulus 10, Gewichtung 1, 2, 1, 2, 1, 2, 1, 2
+ * 
  * Die Kontonummer ist 10-stellig, ggf. ist die Kontonummer für die
  * Prüfzifferberechnung durch linksbündige Auffüllung mit Nullen 10-stellig
- * darzustellen. Die 10. Stelle der Konto-nummer ist die Prüfziffer. <br/>
- * <br/>
- * Kontonummern, die an der 1. Stelle von links der 10-stelligen
- * Kontonummer einen der Wert 2, 7 oder 8 beinhalten sind
- * falsch.
- * <br/>
- * Kontonummern, die an der 1. Stelle von links der 10-stelligen
- * Kontonummer einen der Werte 0, 1, 3, 4, 5, 6 oder 9
- * beinhalten sind wie folgt zu prüfen:
- * <br/>
- * Für die Berechnung der Prüfziffer werden die Stellen 2 bis 9
- * der Kontonummer von links verwendet. Diese Stellen sind
- * links um eine Zahl (Konstante) gemäß der folgenden Tabelle
- * zu ergänzen.
+ * darzustellen. Die 10. Stelle der Konto- nummer ist die Prüfziffer.
+ * 
+ * Kontonummern, die an der 1. Stelle von links der 10-stelligen Kontonummer
+ * einen der Wert 7 oder 8 beinhalten sind falsch.
+ * 
+ * Kontonummern, die an der 1. Stelle von links der 10-stelligen Kontonummer
+ * einen der Werte 0, 1, 2, 3, 4, 5, 6 oder 9 beinhalten sind wie folgt zu
+ * prüfen:
+ * 
+ * Für die Berechnung der Prüfziffer werden die Stellen 2 bis 9 der Kontonummer
+ * von links verwendet. Diese Stellen sind links um eine Zahl (Konstante) gemäß
+ * der folgenden Tabelle zu ergänzen.
+ * 
  * <br/>
  * <table border="1">
  * <tr>
@@ -35,6 +36,10 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <tr>
  * <td>1</td>
  * <td>4363381</td>
+ * </tr>
+ * <tr>
+ * <td>2</td>
+ * <td>4363382</td>
  * </tr>
  * <tr>
  * <td>3</td>
@@ -113,12 +118,14 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 10 - 3 (Einerstelle) = 7 = Prüfziffer<br/>
  * <br/>
  * <br/>
- * Testkontonummern (richtig): 0082012203, 1452683581, 3002000027, 4230001407,
- * 5000065514, 6001526215, 9000430223 
+ * Testkontonummern (richtig): 0082012203, 1452683581, 2129642505, 3002000027,
+ * 4230001407, 5000065514, 6001526215, 9000430223
+ * 
  * <br/>
  * <br/>
- * Testkontonummern (falsch): 0000260986, 1062813622, 2001501026, 3012084101,
+ * Testkontonummern (falsch): 0000260986, 1062813622, 2256412314, 3012084101,
  * 4006003027, 5814500990, 6128462594, 7000062025, 8003306026, 9000641509
+ * 
  * 
  * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
  * @author Tobias Mayer (backcheck@tobiasm.de)
@@ -143,26 +150,48 @@ public class ChecksumD1 extends Checksum00 {
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
 		int[] extension;
-		switch(accountNumber[0]) {
-		case 0: extension = new int[] { 4,3,6,3,3,8,0 }; break;
-		case 1: extension = new int[] { 4,3,6,3,3,8,1 }; break;
-		case 3: extension = new int[] { 4,3,6,3,3,8,3 }; break;
-		case 4: extension = new int[] { 4,3,6,3,3,8,4 }; break;
-		case 5: extension = new int[] { 4,3,6,3,3,8,5 }; break;
-		case 6: extension = new int[] { 4,3,6,3,3,8,6 }; break;
-		case 9: extension = new int[] { 4,3,6,3,3,8,9 }; break;
-		default: return false;
+		switch (accountNumber[0]) {
+		case 0:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 0 };
+			break;
+		case 1:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 1 };
+			break;
+		case 2:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 2 };
+			break;
+		case 3:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 3 };
+			break;
+		case 4:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 4 };
+			break;
+		case 5:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 5 };
+			break;
+		case 6:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 6 };
+			break;
+		case 7:
+			return false;
+		case 8:
+			return false;
+		case 9:
+			extension = new int[] { 4, 3, 6, 3, 3, 8, 9 };
+			break;
+		default:
+			return false;
 		}
-		
+
 		int[] mergedAccountNumber = new int[15];
 		for (int i = 0; i < extension.length; i++) {
 			mergedAccountNumber[i] = extension[i];
 		}
-		
+
 		for (int i = 0; i < accountNumber.length - 2; i++) {
-			mergedAccountNumber[i + extension.length] = accountNumber[i+1];
+			mergedAccountNumber[i + extension.length] = accountNumber[i + 1];
 		}
-		
+
 		return (accountNumber[9] == calcChecksum(mergedAccountNumber));
 	}
 

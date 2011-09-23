@@ -1,4 +1,4 @@
 List with expainations of the validator algorithms:
 http://www.bundesbank.de/download/zahlungsverkehr/zv_pz200903.pdf
-
+http://www.bundesbank.de/download/zahlungsverkehr/zv_pz201109.pdf
 
