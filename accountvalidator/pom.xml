@@ -1,0 +1,26 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>hx.banking</groupId>
+    <artifactId>bankcheck</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>accountvalidator</artifactId>
+
+  <build>
+    <sourceDirectory>java/src</sourceDirectory>
+    <testSourceDirectory>java/src</testSourceDirectory>
+    <outputDirectory>java/build</outputDirectory>
+    <testOutputDirectory>java/build</testOutputDirectory>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
