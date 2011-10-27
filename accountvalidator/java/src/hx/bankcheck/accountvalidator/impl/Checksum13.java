@@ -19,7 +19,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonummer vorher um zwei Stellen nach links zu 
  * verschieben.
  *
- * @author tma
+ * @author Tobias Mayer <github@tobiasm.de>
  *
  */
 public class Checksum13 extends Checksum00 {
@@ -30,7 +30,7 @@ public class Checksum13 extends Checksum00 {
 		
 		int checksum = calcChecksum(n);
 		boolean checkOk = checksum == num[7];
-		if (!checkOk && num[0] + num[1] == 0) {
+		if (!checkOk && num[0] == 0 && num[1] == 0) {
 			n = new int[] { 0, 0, 0, num[3], num[4], num[5], num[6], num[7], num[8], 0 };
 			
 			checksum = calcChecksum(n);
