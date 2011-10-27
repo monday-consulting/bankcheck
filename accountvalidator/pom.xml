@@ -10,9 +10,9 @@
 
   <build>
     <sourceDirectory>java/src</sourceDirectory>
-    <testSourceDirectory>java/src</testSourceDirectory>
+    <testSourceDirectory>java/tests</testSourceDirectory>
     <outputDirectory>java/build</outputDirectory>
-    <testOutputDirectory>java/build</testOutputDirectory>
+    <testOutputDirectory>java/build-tests</testOutputDirectory>
   </build>
 
   <dependencies>
