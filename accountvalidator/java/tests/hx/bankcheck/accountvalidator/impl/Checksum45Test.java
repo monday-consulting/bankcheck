@@ -10,7 +10,7 @@ import hx.bankcheck.accountvalidator.exceptions.AccountNumberNotTestableExceptio
 /**
  * Testclass for testing algorithm 45.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -12,32 +12,32 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die Kontonummer ist immer 10-stellig. Die Stellen 2 bis 7 sind von links nach
  * rechts mit den Ziffern 6, 5, 4, 3, 2, 1 zu multiplizieren. Die Summe ist
  * durch 11 zu dividieren. Der verbleibende Rest wird vom Divisor (11)
- * subtrahiert. Das Ergebnis ist die Prüfziffer.<br/>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer.<br/>
  * 
  * <b>Ausnahmen:</b> <br/>
  * 
- * Verbleibt nach der Division durch 11 kein Rest, ist die Prüfziffer 0. Ergibt
+ * Verbleibt nach der Division durch 11 kein Rest, ist die PrÃ¼fziffer 0. Ergibt
  * sich als Rest 1, entsteht bei der Subtraktion 11 - 1 = 10; die Zehnerstelle
- * (1) ist dann die Prüfziffer.<br/>
+ * (1) ist dann die PrÃ¼fziffer.<br/>
  * 
  * Darstellung der Kontonummer: S G G K K K K U U P <br/>
  * S = Sachgebiet <br/>
- * G = Geschäftsstelle <br/>
+ * G = GeschÃ¤ftsstelle <br/>
  * K = Kundennummer <br/>
  * U = Unternummer <br/>
- * P = Prüfziffer <br/>
+ * P = PrÃ¼fziffer <br/>
  * 
- * <b>Prüfzifferberechnung: </b><br/>
+ * <b>PrÃ¼fzifferberechnung: </b><br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: 7 1 0 1 2 3 4 0 0 P <br/>
  * Gewichtung: 6 5 4 3 2 1 6 + 0 + 4 + 6 + 6 + 4 = 26 71 26 : 11 = 2, Rest 4 11
  * - 4 = 7 <br/>
  * 
- * Die Prüfziffer ist in diesem Fall die 7 und die vollständige Kontonummer
+ * Die PrÃ¼fziffer ist in diesem Fall die 7 und die vollstÃ¤ndige Kontonummer
  * lautet: 7 1 0 1 2 3 4 0 0 7<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

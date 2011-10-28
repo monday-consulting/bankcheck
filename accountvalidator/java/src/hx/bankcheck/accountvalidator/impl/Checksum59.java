@@ -11,9 +11,9 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Die Berechnung erfolgt wie bei Verfahren 00; es ist jedoch zu beachten, dass
  * Kontonummern, die kleiner als 9-stellig sind, nicht in die
- * Prüfzifferberechnung einbezogen und als richtig behandelt werden.
+ * PrÃ¼fzifferberechnung einbezogen und als richtig behandelt werden.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

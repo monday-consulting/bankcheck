@@ -4,8 +4,8 @@ import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Die 10. Stelle ist per Definition die Prüfziffer. <br/>
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Die 10. Stelle ist per Definition die PrÃ¼fziffer. <br/>
  * 
  * <b>Variante 1:</b><br/>
  * 
@@ -13,9 +13,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Die Stellen 4 bis 9 der Kontonummer werden von rechts nach links mit den
  * Ziffern 2, 3, 4, 5, 6, 7 multipliziert. Die weitere Berechnung und die
- * möglichen Ergebnisse entsprechen dem Verfahren 06. Führt die Berechnung nach
- * Variante 1 zu einem Prüfzifferfehler, so sind die Konten nach Variante 2 zu
- * prüfen. <br/>
+ * mÃ¶glichen Ergebnisse entsprechen dem Verfahren 06. FÃ¼hrt die Berechnung nach
+ * Variante 1 zu einem PrÃ¼fzifferfehler, so sind die Konten nach Variante 2 zu
+ * prÃ¼fen. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A=10)<br/>
  * Kontonr.: x x x x x x x x x P <br/>
@@ -30,7 +30,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Die Stellen 4 bis 9 der Kontonummer werden von rechts nach links mit den
  * Ziffern 2, 1, 2, 1, 2, 1 multipliziert. Die weiter Berechnung und die
- * möglichen Ergebnisse entsprechen dem Verfahren 00. <br/>
+ * mÃ¶glichen Ergebnisse entsprechen dem Verfahren 00. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A=10)<br/>
  * Kontonr.: x x x x x x x x x P <br/>
@@ -41,11 +41,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * <b>Ausnahme: </b><br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemäß der Ausnahme in
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemÃ¤ÃŸ der Ausnahme in
  * Methode 51 mit den gleichen Ergebnissen und Testkontonummern.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

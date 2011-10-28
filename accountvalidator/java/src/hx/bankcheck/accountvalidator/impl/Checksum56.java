@@ -12,7 +12,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die Stellen 1 bis 9 der Kontonummer werden von rechts nach links mit den
  * Ziffern 2, 3, 4, 5, 6, 7, 2, 3, 4 multipliziert. Die jeweiligen Produkte
  * werden addiert und die Summe durch 11 dividiert. Der Rest wird von 11
- * abgezogen, das Ergebnis ist die Prüfziffer. Prüfziffer ist die 10. Stelle der
+ * abgezogen, das Ergebnis ist die PrÃ¼fziffer. PrÃ¼fziffer ist die 10. Stelle der
  * Kontonummer. <br/>
  * 
  * Beispiel 1) <br/>
@@ -21,16 +21,16 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonr.: 0 2 9 0 5 4 5 0 0 P <br/>
  * Gewichtung: 4 3 2 7 6 5 4 3 2 0 + 6 + 18 + 0 + 30 + 20 + 20 + 0 + 0 = 94 : 11
  * = 8, Rest 6 11 - 6 = 5 <br/>
- * Die Prüfziffer ist 5 <br/>
+ * Die PrÃ¼fziffer ist 5 <br/>
  * 
- * Bei dem Ergebnis 10 oder 11 ist die Kontonummer ungültig. <br/>
+ * Bei dem Ergebnis 10 oder 11 ist die Kontonummer ungÃ¼ltig. <br/>
  * 
  * Beispiel 2) <br/>
  * 
  * Beginnt eine 10-stellige Kontonummer mit 9, so wird beim Ergebnis 10 die
- * Prüfziffer = 7 und beim Ergebnis 11 die Prüfziffer = 8 gesetzt. <br/>
+ * PrÃ¼fziffer = 7 und beim Ergebnis 11 die PrÃ¼fziffer = 8 gesetzt. <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

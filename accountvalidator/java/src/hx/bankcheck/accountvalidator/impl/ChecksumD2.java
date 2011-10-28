@@ -11,9 +11,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 2, 3, 4<br/>
  * 
- * Die Berechnung, Ausnahmen und möglichenErgebnisse entsprechen der Methode 95.
- * Führt die Berechnung nach Variante 1 zu einem Prüfzifferfehler, so ist nach
- * Variante 2 zu prüfen. <br/>
+ * Die Berechnung, Ausnahmen und mÃ¶glichenErgebnisse entsprechen der Methode 95.
+ * FÃ¼hrt die Berechnung nach Variante 1 zu einem PrÃ¼fzifferfehler, so ist nach
+ * Variante 2 zu prÃ¼fen. <br/>
  * 
  * Testkontonummern (richtig): 189912137, 235308215<br/>
  * Testkontonummern (falsch): 4455667784, 1234567897, 51181008, 71214205
@@ -23,9 +23,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 <br/>
  * 
- * Die Berechnung und möglichen Ergebnisse entsprechen der Methode 00. Führt
- * auch die Berechnung nach Variante 2 zu einem Prüfzifferfehler, so ist nach
- * Variante 3 zu prüfen. <br/>
+ * Die Berechnung und mÃ¶glichen Ergebnisse entsprechen der Methode 00. FÃ¼hrt
+ * auch die Berechnung nach Variante 2 zu einem PrÃ¼fzifferfehler, so ist nach
+ * Variante 3 zu prÃ¼fen. <br/>
  * 
  * Testkontonummern (richtig): 4455667784, 1234567897<br/>
  * Testkontonummern (falsch): 51181008, 71214205, 6414241, 179751314<br/>
@@ -34,14 +34,14 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 <br/>
  * 
- * Die Berechnung, Ausnahmen und möglichen Ergebnisse entsprechen der Methode
- * 68. Führt auch die Berechnung nach Variante 3 zu einem Prüfzifferfehler, so
+ * Die Berechnung, Ausnahmen und mÃ¶glichen Ergebnisse entsprechen der Methode
+ * 68. FÃ¼hrt auch die Berechnung nach Variante 3 zu einem PrÃ¼fzifferfehler, so
  * ist die Kontonummer falsch. <br/>
  * 
  * Testkontonummern (richtig): 51181008, 71214205 <br/>
  * Testkontonummern (falsch): 6414241, 179751314<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

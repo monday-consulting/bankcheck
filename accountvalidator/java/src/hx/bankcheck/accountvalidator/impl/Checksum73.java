@@ -7,8 +7,8 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Kontonummer ist durch linksbündiges Auffüllen mit Nullen 10-stellig
- * darzustellen. Die 10. Stelle der Kontonummer ist die Prüfziffer.<br/>
+ * Die Kontonummer ist durch linksbÃ¼ndiges AuffÃ¼llen mit Nullen 10-stellig
+ * darzustellen. Die 10. Stelle der Kontonummer ist die PrÃ¼fziffer.<br/>
  * 
  * <b>Variante 1:</b><br/>
  * 
@@ -25,7 +25,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Testkontonummern: richtig: 0003503398, 0001340967 <br/>
  * falsch: 0003503391, 0001340966 <br/>
  * 
- * Führt die Berechnung nach Variante 1 zu einem Prüfzifferfehler, ist eine
+ * FÃ¼hrt die Berechnung nach Variante 1 zu einem PrÃ¼fzifferfehler, ist eine
  * weitere Berechnung nach Variante 2 vorzunehmen: <br/>
  * 
  * <b>Variante 2: </b>
@@ -33,13 +33,13 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2 <br/>
  * 
  * Das Berechnungsverfahren entspricht Variante 1, es ist jedoch zu beachten,
- * dass nur die Stellen 5 bis 9 in das Prüfziffernberechnungsverfahren
+ * dass nur die Stellen 5 bis 9 in das PrÃ¼fziffernberechnungsverfahren
  * einbezogen werden. <br/>
  * 
  * Testkontonummern: richtig: 0003503391, 0001340968<br/>
  * falsch: 0003503392, 0001340966<br/>
  * 
- * Führt die Berechnung auch nach Variante 2 zu einem Prüfzifferfehler, ist die
+ * FÃ¼hrt die Berechnung auch nach Variante 2 zu einem PrÃ¼fzifferfehler, ist die
  * Berechnung nach Variante 3 vorzunehmen:<br/>
  * 
  * <b>Variante 3 </b><br/>
@@ -48,19 +48,19 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Das Berechnungsverfahren entspricht Variante 2. Die Summe der
  * Produkt-Quersummen ist jedoch durch 7 zu dividieren. Der verbleibende Rest
- * wird vom Divisor (7) subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt
- * nach der Division kein Rest, ist die Prüfziffer = 0 <br/>
+ * wird vom Divisor (7) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt
+ * nach der Division kein Rest, ist die PrÃ¼fziffer = 0 <br/>
  * 
  * Testkontonummern: richtig: 0003503392, 0001340966, 123456 <br/>
  * falsch: 121212, 987654321 <br/>
  * 
  * <b>Ausnahme: </b><br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemäß der Ausnahme in
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemÃ¤ÃŸ der Ausnahme in
  * Methode 51 mit den gleichen Ergebnissen und Testkontonummern.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

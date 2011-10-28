@@ -8,14 +8,14 @@ import hx.bankcheck.accountvalidator.utils.Checksum57Util;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen. <br/>
  * 
- * Die Berechnung der Prüfziffer und die möglichen Ergebnisse richten sich nach
+ * Die Berechnung der PrÃ¼fziffer und die mÃ¶glichen Ergebnisse richten sich nach
  * dem jeweils bei der entsprechenden Variante angegebenen Kontonummernkreis.
- * Führt die Berechnung der Prüfziffer nach der vorgegebenen Variante zu einem
- * Prüfzifferfehler, so ist die Kontonummer ungültig. <br/>
+ * FÃ¼hrt die Berechnung der PrÃ¼fziffer nach der vorgegebenen Variante zu einem
+ * PrÃ¼fzifferfehler, so ist die Kontonummer ungÃ¼ltig. <br/>
  * 
  * Kontonummern, die mit 00 beginnen sind immer als falsch zu bewerten.<br/>
  * 
@@ -23,12 +23,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Modulus 10, Gewichtung 1, 2, 1, 2, 1, 2, 1, 2, 1 <br/>
  * 
- * Anzuwenden ist dieses Verfahren für Kontonummern, die mit den folgenden
+ * Anzuwenden ist dieses Verfahren fÃ¼r Kontonummern, die mit den folgenden
  * Zahlen beginnen: 51, 55, 61, 64, 65, 66, 70, 73, 75 bis 82, 88, 94 und 95.<br/>
  * 
  * Die Stellen 1 bis 9 der Kontonummer sind von links beginnend mit den
- * Gewichten zu multiplizieren. Die 10. Stelle ist die Prüfziffer. Die
- * Berechnung und mögliche Ergebnisse entsprechen der Methode 00.<br/>
+ * Gewichten zu multiplizieren. Die 10. Stelle ist die PrÃ¼fziffer. Die
+ * Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 00.<br/>
  * 
  * Stellen-Nr.: 1 2 3 4 5 6 7 8 9 10 <br/>
  * Konto-Nr.: X X X X X X X X X P <br/>
@@ -37,19 +37,19 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * <b>Ausnahme:</b><br/>
  * 
  * Kontonummern, die mit den Zahlen 777777 oder 888888 beginnen sind immer als
- * richtig (= Methode 09; keine Prüfzifferberechnung) zu bewerten. <br/>
+ * richtig (= Methode 09; keine PrÃ¼fzifferberechnung) zu bewerten. <br/>
  * 
  * <b>Variante 2</b>:<br/>
  * 
  * Modulus 10, Gewichtung 1, 2, 1, 2, 1, 2, 1, 2, 1 <br/>
  * 
- * Anzuwenden ist dieses Verfahren für Kontonummern, die mit den folgenden
+ * Anzuwenden ist dieses Verfahren fÃ¼r Kontonummern, die mit den folgenden
  * Zahlen beginnen: 32 bis 39, 41 bis 49, 52, 53, 54, 56 bis 60, 62, 63, 67, 68,
  * 69, 71, 72, 74, 83 bis 87, 89, 90, 92, 93, 96, 97 und 98.<br/>
  * 
  * Die Stellen 1, 2, 4, 5, 6, 7, 8, 9 und 10 der Kontonummer sind von links
  * beginnend mit den Gewichten zu multiplizieren. Die 3. Stelle ist die
- * Prüfziffer. Die Berechnung und mögliche Ergebnisse entsprechen der Methode
+ * PrÃ¼fziffer. Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode
  * 00.<br/>
  * 
  * Stellen-Nr.: 1 2 3 4 5 6 7 8 9 10 <br/>
@@ -58,8 +58,8 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * <b>Variante 3: </b><br/>
  * 
- * Für die Kontonummern, die mit den folgenden Zahlen beginnen gilt die Methode
- * 09 (keine Prüfzifferberechnung): 40, 50, 91 und 99 <br/>
+ * FÃ¼r die Kontonummern, die mit den folgenden Zahlen beginnen gilt die Methode
+ * 09 (keine PrÃ¼fzifferberechnung): 40, 50, 91 und 99 <br/>
  * 
  * <b>Variante 4: </b><br/>
  * 
@@ -76,7 +76,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 9322111030 <br/>
  * Testkontonummern (falsch): 5302707782, 6412121212,
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -8,11 +8,11 @@ package hx.bankcheck.accountvalidator.impl;
  * 
  * Die Kontonummer ist 10-stellig. Es wird das Berechnungsverfahren 28 mit
  * modifizierter Gewichtung angewendet. Die Gewichtung lautet 2, 4, 8, 5, A, 9,
- * 7. Dabei steht der Buchstabe A für den Wert 10. <br/>
+ * 7. Dabei steht der Buchstabe A fÃ¼r den Wert 10. <br/>
  * 
  * Testkontonummern: 9913000700, 9914001000<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

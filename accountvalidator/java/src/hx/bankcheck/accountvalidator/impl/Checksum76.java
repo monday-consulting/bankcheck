@@ -11,21 +11,21 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 11, Gewichtung 2, 3, 4, 5 ff. <br/>
  * 
- * Die einzelnen Stellen der für die Berechnung der Prüfziffer relevanten 5-, 6-
+ * Die einzelnen Stellen der fÃ¼r die Berechnung der PrÃ¼fziffer relevanten 5-, 6-
  * oder 7-stelligen Stammnummer sind von rechts nach links mit den Ziffern 2, 3,
  * 4, 5 ff. zu multiplizieren. Die jeweiligen Produkte werden addiert. Die Summe
- * ist durch 11 zu dividieren. Der verbleibende Rest ist die Prüfziffer. Ist der
- * Rest 10, kann die Kontonummer nicht geprüft werden.<br/>
+ * ist durch 11 zu dividieren. Der verbleibende Rest ist die PrÃ¼fziffer. Ist der
+ * Rest 10, kann die Kontonummer nicht geprÃ¼ft werden.<br/>
  * 
  * Zusammensetzung der Kontonummer: <br/>
  * 
  * S = Stammnummer (5-, 6- oder 7-stellig; die letzte Stelle dieser Nummer ist
- * die Prüfziffer, sie wird jedoch nicht in die Prüfzifferberechnung einbezogen) <br/>
+ * die PrÃ¼fziffer, sie wird jedoch nicht in die PrÃ¼fzifferberechnung einbezogen) <br/>
  * A = Kontoart (1-stellig)*<br/>
- * P = Prüfziffer Prüfzifferberech<br/>
+ * P = PrÃ¼fziffer PrÃ¼fzifferberech<br/>
  * U = Unterkontonummer (2-stellig) <br/>
  * 
- * (Werden nicht in die Prüfziffernberechnung einbezogen)<br/>
+ * (Werden nicht in die PrÃ¼fziffernberechnung einbezogen)<br/>
  * 
  * Die Kontoart kann den Wert 0, 4, 6, 7, 8 oder 9 haben.<br/>
  * 
@@ -38,27 +38,27 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Beispiel: <br/>
  * 
- * Prüfzifferberechnung für eine 6-stellige Kontonummer, Kontoart ist "0".<br/>
+ * PrÃ¼fzifferberechnung fÃ¼r eine 6-stellige Kontonummer, Kontoart ist "0".<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: 0 0 1 2 3 4 5 6 0 0<br/>
  * Gewichtung: 6 5 4 3 2 6 + 10 + 12 + 12 + 10 = 50 50 : 11 = 4 Rest 6 =
- * Prüfziffer<br/>
+ * PrÃ¼fziffer<br/>
  * 
  * Ausnahme: <br/>
  * 
  * Ist die Unterkontonummer "00" kann es vorkommen, dass sie auf den
- * Zahlungsverkehrsbelegen oder in beleglosen Datensätzen nicht angegeben ist,
- * die Kontonummer jedoch um führende Nullen ergänzt wurde. <br/>
+ * Zahlungsverkehrsbelegen oder in beleglosen DatensÃ¤tzen nicht angegeben ist,
+ * die Kontonummer jedoch um fÃ¼hrende Nullen ergÃ¤nzt wurde. <br/>
  * 
- * Die Prüfziffer ist dann an die 10. Stelle gerückt. Die Berechnung der
- * Prüfziffer ist wie folgt durchzuführen: <br/>
+ * Die PrÃ¼fziffer ist dann an die 10. Stelle gerÃ¼ckt. Die Berechnung der
+ * PrÃ¼fziffer ist wie folgt durchzufÃ¼hren: <br/>
  * 
  * Beispiel (Kontoart = 0):<br/>
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: 0 0 0 0 1 2 3 4 5 6 <br/>
  * Gewichtung: 6 5 4 3 2 6 + 10 + 12 + 12 + 10 = 50 50 : 11 = 4 Rest 6 =
- * Prüfziffer <br/>
+ * PrÃ¼fziffer <br/>
  * 
  * Testkontonummern:<br/>
  * 
@@ -66,7 +66,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 6-stellige Kontonr. (Kontoart = 9) 9012345600 <br/>
  * 7-stellige Kontonr. (Kontoart = 7) 7876543100 <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

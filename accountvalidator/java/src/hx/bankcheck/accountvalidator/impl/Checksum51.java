@@ -4,17 +4,17 @@ import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist durch linksbündige Nullenauffüllung immer 10-stellig
- * darzustellen. Die für die Berechnung relevante Kundennummer (K) befindet sich
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung immer 10-stellig
+ * darzustellen. Die fÃ¼r die Berechnung relevante Kundennummer (K) befindet sich
  * bei der Methode A in den Stellen 4 bis 9 der Kontonummer und bei den Methoden
- * B + C in den Stellen 5 bis 9, die Prüfziffer in Stelle 10 der Kontonummer.<br/>
+ * B + C in den Stellen 5 bis 9, die PrÃ¼fziffer in Stelle 10 der Kontonummer.<br/>
  * 
  * 
  * <b>Methode A: </b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7<br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen dem Verfahren 06.<br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen dem Verfahren 06.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x K K K K K K P <br/>
@@ -22,14 +22,14 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern: 0001156071, 0001156136<br/>
  * 
- * Ergibt die Berechnung der Prüfziffer nach der Methode A einen
- * Prüfzifferfehler, ist eine weitere Berechnung mit der Methode B vorzunehmen. <br/>
+ * Ergibt die Berechnung der PrÃ¼fziffer nach der Methode A einen
+ * PrÃ¼fzifferfehler, ist eine weitere Berechnung mit der Methode B vorzunehmen. <br/>
  * 
  * <b>Methode B:</b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6<br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen dem Verfahren 33.<br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen dem Verfahren 33.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x x K K K K K P<br/>
@@ -37,37 +37,37 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummer: 0000156078 <br/>
  * 
- * Ergibt auch die Berechnung der Prüfziffer nach Methode B einen
- * Prüfzifferfehler, ist eine weitere Berechnung mit der Methode C vorzunehmen.
+ * Ergibt auch die Berechnung der PrÃ¼fziffer nach Methode B einen
+ * PrÃ¼fzifferfehler, ist eine weitere Berechnung mit der Methode C vorzunehmen.
  * 
  * <b>Methode C: </b><br/>
  * 
  * Kontonummern, die bis zur Methode C gelangen und in der 10. Stelle eine 7, 8
- * oder 9 haben, sind ungültig.<br/>
+ * oder 9 haben, sind ungÃ¼ltig.<br/>
  * 
  * Modulus 7, Gewichtung 2, 3, 4, 5, 6<br/>
  * 
  * Das Berechnungsverfahren entspricht Methode B. Die Summe der Produkte ist
  * jedoch durch 7 zu dividieren. Der verbleibendeRest wird vom Divisor (7)
- * subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt kein Rest, ist die
- * Prüfziffer 0. <br/>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt kein Rest, ist die
+ * PrÃ¼fziffer 0. <br/>
  * 
  * Testkontonummer: 0000156071<br/>
  * 
  * <b>Ausnahme: </b><br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
  * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung wie folgt:<br/>
  * 
  * <b>Variante 1 zur Ausnahme </b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8
  * 
- * Die für die Berechnung relevanten Stellen 3 bis 9 werden von rechts nach
+ * Die fÃ¼r die Berechnung relevanten Stellen 3 bis 9 werden von rechts nach
  * links mit den Ziffern 2, 3, 4, 5, 6, 7, 8 multipliziert. Die Produkte werden
  * addiert. Die Summe ist durch 11 zu dividieren. Der verbleibende Rest wird vom
- * Divisor (11) subtrahiert. Das Ergebnis ist die Prüfziffer. Ergibt sich als
- * Rest 1 oder 0, ist die Prüfziffer 0.
+ * Divisor (11) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Ergibt sich als
+ * Rest 1 oder 0, ist die PrÃ¼fziffer 0.
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A=10)<br/>
  * Kontonr.; x x 9 x x x x x x P <br/>
@@ -76,7 +76,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern (richtig): 0199100002, 0099100010, 2599100002<br/>
  * Testkontonummern (falsch): 0199100004, 2599100003, 0099345678
  * 
- * Führt die Variante 1 zur Ausnahme zu einem Prüfzifferfehler, ist eine weitere
+ * FÃ¼hrt die Variante 1 zur Ausnahme zu einem PrÃ¼fzifferfehler, ist eine weitere
  * Berechnung nach der Variante 2 vorzunehmen.<br/>
  * 
  * <b>Variante 2 zur Ausnahme </b><br/>
@@ -88,7 +88,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern (richtig): 0199100004, 2599100003, 3199204090<br/>
  * Testkontonummern (falsch): 0099345678, 0099100110, 0199100040<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

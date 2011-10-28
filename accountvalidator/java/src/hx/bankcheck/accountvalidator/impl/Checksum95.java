@@ -15,12 +15,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Kontonr.: 0396000000 bis 0499999999 <br/>
  * Kontonr.: 0700000000 bis 0799999999 <br/>
  * 
- * Für diese Kontonummernkreise ist keine Prüfziffer-berechnung möglich. Sie
+ * FÃ¼r diese Kontonummernkreise ist keine PrÃ¼fziffer-berechnung mÃ¶glich. Sie
  * sind als richtig anzusehen.<br/>
  * 
  * Testkontonummern: 0068007003, 0847321750, 6450060494, 6454000003
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

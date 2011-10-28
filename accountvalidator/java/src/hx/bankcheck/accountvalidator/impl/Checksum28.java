@@ -9,20 +9,20 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8 <br/>
  * 
  * Die Kontonummer ist 10-stellig. Die zweistellige Unterkontonummer (Stellen 9
- * und 10) wird nicht in das Berechnungsverfahren einbezogen. Die für die
+ * und 10) wird nicht in das Berechnungsverfahren einbezogen. Die fÃ¼r die
  * Berechnung relevanten Stellen 1 bis 7 werden von rechts nach links mit den
- * Ziffern 2, 3, 4, 5, 6, 7, 8 multipliziert. Die 8. Stelle ist die Prüfziffer.
+ * Ziffern 2, 3, 4, 5, 6, 7, 8 multipliziert. Die 8. Stelle ist die PrÃ¼fziffer.
  * Die Berechnung und Ergebnisse entsprechen dem Verfahren 06. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x x x x P x x <br/>
  * Gewichtung: 8 7 6 5 4 3 2 <br/>
  * 
- * Wird als Rest eine 0 oder eine 1 ermittelt, so lautet die Prüfziffer 0. <br/>
+ * Wird als Rest eine 0 oder eine 1 ermittelt, so lautet die PrÃ¼fziffer 0. <br/>
  * 
  * Testkontonummern: 19999000, 9130000201<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

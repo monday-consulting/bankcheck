@@ -20,14 +20,14 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Ist die 4. Stelle der Kontonummer = 5 oder die 4. bis 5. Stelle der
  * Kontonummer= 69, so werden die Stellen 1 bis 3 nicht in die
- * Prüfzifferermittlung einbezogen.<br/>
+ * PrÃ¼fzifferermittlung einbezogen.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x 5 x x x x x P <br/>
  * Kontonr.: x x x 6 9 x x x x P <br/>
  * Gewichtung: 7 6 5 4 3 2<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

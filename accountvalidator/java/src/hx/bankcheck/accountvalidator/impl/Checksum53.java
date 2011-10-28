@@ -6,23 +6,23 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Berechnung entspricht dem Verfahren 52, jedoch für neunstellige
+ * Die Berechnung entspricht dem Verfahren 52, jedoch fÃ¼r neunstellige
  * Kontonummern.<br/>
  * 
  * Bildung der Kontonummern des ESER-Altsystems aus angegebener Bankleitzahl und
  * angegebener neunstelliger Kontonummer:<br/>
  * 
  * BLZ: XXX5XXXX <br/>
- * Konto-Nr.: XTPXXXXXX (P = Prüfziffer, T) <br/>
+ * Konto-Nr.: XTPXXXXXX (P = PrÃ¼fziffer, T) <br/>
  * 
  * Kontonummer des ESER-Altsystems: XXTX-XP-XXXXXX <br/>
  * 
- * (XXXXXX = variable Länge, da evtl. vorlaufende Nullen eliminiert werden).
+ * (XXXXXX = variable LÃ¤nge, da evtl. vorlaufende Nullen eliminiert werden).
  * 
- * Bei 10-stelligen, mit 9 beginnenden Kontonummern ist die Prüfziffer nach
+ * Bei 10-stelligen, mit 9 beginnenden Kontonummern ist die PrÃ¼fziffer nach
  * Verfahren 20 zu berechnen.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
@@ -82,7 +82,7 @@ public class Checksum53 implements ChecksumValidator {
 	/**
 	 * Generates the account number for the ESER system.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumber
@@ -139,7 +139,7 @@ public class Checksum53 implements ChecksumValidator {
 	/**
 	 * Resets the checksum digit at the given position to 0.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumber

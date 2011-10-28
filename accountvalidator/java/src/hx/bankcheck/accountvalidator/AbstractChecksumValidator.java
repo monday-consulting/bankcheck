@@ -8,7 +8,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Abstract class for algorithms needing no bank number for validation.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

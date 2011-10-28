@@ -8,33 +8,33 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 11, Gewichtung 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4 <br/>
  * 
- * Zur Berechnung der Prüfziffer muss zunächst aus der angegebenen Bankleitzahl
- * und der angegebenen achtstelligen Kontonummer die zugehörige Kontonummer des
+ * Zur Berechnung der PrÃ¼fziffer muss zunÃ¤chst aus der angegebenen Bankleitzahl
+ * und der angegebenen achtstelligen Kontonummer die zugehÃ¶rige Kontonummer des
  * ESER-Altsystems (maximal 12-stellig) ermittelt werden.<br/>
  * 
  * Die einzelnen Stellen dieser Alt-Kontonummer sind von rechts nach links mit
  * den Ziffern 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4 zu multiplizieren. Dabei ist
- * für die Prüfziffer, die sich immer an der 6. Stelle von links der
+ * fÃ¼r die PrÃ¼fziffer, die sich immer an der 6. Stelle von links der
  * Alt-Kontonummer befindet, 0 zu setzen.<br/>
  * 
  * Die jeweiligen Produkte werden addiert und die Summe durch 11 dividiert. Zum
  * Divisionsrest (ggf. auch 0) ist das Gewicht oder ein Vielfaches des Gewichtes
- * über der Prüfziffer zu addieren. Die Summe wird durch 11 dividiert; der
- * Divisionsrest muss 10 lauten. Die Prüfziffer ist der verwendete Faktor des
+ * Ã¼ber der PrÃ¼fziffer zu addieren. Die Summe wird durch 11 dividiert; der
+ * Divisionsrest muss 10 lauten. Die PrÃ¼fziffer ist der verwendete Faktor des
  * Gewichtes. Kann bei der Division kein Rest 10 erreicht werden, ist die
  * Konto-Nr. nicht verwendbar.
  * 
  * Bildung der Konto-Nr. des ESER-Altsystems aus angegebener Bankleitzahl und
  * Konto-Nr.: <br/>
  * 
- * BLZ Konto-Nr. XXX5XXXX XPXXXXXX (P = Prüfziffer) Kontonummer des Altsystems:
- * XXXX-XP-XXXXX (XXXX = variable Länge, da evtl. vorlaufende Nullen elimi-niert
+ * BLZ Konto-Nr. XXX5XXXX XPXXXXXX (P = PrÃ¼fziffer) Kontonummer des Altsystems:
+ * XXXX-XP-XXXXX (XXXX = variable LÃ¤nge, da evtl. vorlaufende Nullen elimi-niert
  * werden) <br/>
  * 
- * Bei 10-stelligen, mit 9 beginnenden Kontonummern ist die Prüfziffer nach
+ * Bei 10-stelligen, mit 9 beginnenden Kontonummern ist die PrÃ¼fziffer nach
  * Verfahren 20 zu berechnen.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
@@ -94,7 +94,7 @@ public class Checksum52 implements ChecksumValidator {
 	/**
 	 * Generates the account number for the ESER system.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumber
@@ -143,7 +143,7 @@ public class Checksum52 implements ChecksumValidator {
 	/**
 	 * Resets the checksum digit at the given position to 0.
 	 * 
-	 * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+	 * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
 	 * @version 1.0
 	 * 
 	 * @param accountNumber

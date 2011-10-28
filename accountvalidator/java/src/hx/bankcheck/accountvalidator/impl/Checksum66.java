@@ -12,44 +12,44 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Aufbau der 9-stelligen Kontonummer (innerhalb des zwischenbetrieblich
  * 10-stelligen Feldes) <br/>
  * 
- * Stelle 1 = gehört nicht zur Kontonummer, muss daher 0 sein <br/>
+ * Stelle 1 = gehÃ¶rt nicht zur Kontonummer, muss daher 0 sein <br/>
  * Stelle 2 = Stammnummer<br/>
- * Stellen 3 - 4 = Unterkontonummer, wird bei der Prüf- zifferberechnung nicht
- * berücksichtigt <br/>
+ * Stellen 3 - 4 = Unterkontonummer, wird bei der PrÃ¼f- zifferberechnung nicht
+ * berÃ¼cksichtigt <br/>
  * Stellen 5 - 9 = Stammnummer <br/>
- * Stelle 10 = Prüfziffer <br/>
+ * Stelle 10 = PrÃ¼fziffer <br/>
  * 
- * Der 9-stelligen Kontonummer wird für die Prüfzifferberechnung eine 0
- * vorangestellt. Die Prüfziffer steht in Stelle 10. Die für die Berechnung
+ * Der 9-stelligen Kontonummer wird fÃ¼r die PrÃ¼fzifferberechnung eine 0
+ * vorangestellt. Die PrÃ¼fziffer steht in Stelle 10. Die fÃ¼r die Berechnung
  * relevante 6-stellige Stammnummer (Kundenummer) befindet sich in den Stellen 2
  * und 5 bis 9. Die zweistellige Unterkontonummer (Stellen 3 und 4) wird nicht
- * in das Prüfzifferberechnungsverfahren mit einbezogen und daher mit 0
+ * in das PrÃ¼fzifferberechnungsverfahren mit einbezogen und daher mit 0
  * gewichtet. Die einzelnen Stellen der Stammnummer sind von rechts nach links
  * mit den Ziffern 2, 3, 4, 5, 6, 0, 0, 7 zu multiplizieren. Die jeweiligen
  * Produkte werden addiert. Die Summe ist durch 11 zu dividieren. Bei einem
- * verbleibenden Rest von 0 ist die Prüfziffer 1. Bei einem Rest von 1 ist die
- * Prüfziffer 0. Verbleibt ein Rest von 2 bis 10, so wird dieser vom Divisor
- * (11) subtrahiert. Die Differenz ist dann die Prüfziffer. <br/>
+ * verbleibenden Rest von 0 ist die PrÃ¼fziffer 1. Bei einem Rest von 1 ist die
+ * PrÃ¼fziffer 0. Verbleibt ein Rest von 2 bis 10, so wird dieser vom Divisor
+ * (11) subtrahiert. Die Differenz ist dann die PrÃ¼fziffer. <br/>
  * 
  * <b>Zusammengefasst: </b><br/>
  * 
  * Summe dividiert durch 11 = x, Rest <br/>
  * 
- * Rest = 0 Prüfziffer = 1 <br/>
- * Rest = 1 Prüfziffer = 0 <br/>
+ * Rest = 0 PrÃ¼fziffer = 1 <br/>
+ * Rest = 1 PrÃ¼fziffer = 0 <br/>
  * Rest = 2 bis 10 <br/>
- * Prüfziffer = 11 minus Rest<br/>
+ * PrÃ¼fziffer = 11 minus Rest<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 10 <br/>
  * Kontonr.: 0 1 0 0 1 5 0 5 0 P <br/>
  * Gewichtung: 0 7 0 0 6 5 4 3 2 0 + 7 + 0 + 0 + 6 +25 + 0 +15 + 0 = 53 53 : 11
  * = 4, Rest 9, 11-9=2, <br/>
- * Prüfziffer = 2 <br/>
- * Die vollständige Kontonummer lautet: 100150502<br/>
+ * PrÃ¼fziffer = 2 <br/>
+ * Die vollstÃ¤ndige Kontonummer lautet: 100150502<br/>
  * 
  * Testkontonummern: 100154508, 101154508, 100154516, 101154516<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

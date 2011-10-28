@@ -9,11 +9,11 @@ package hx.bankcheck.accountvalidator.impl;
  * 
  * Die Berechnung erfolgt wie bei Verfahren 00. Es ist jedoch zu beachten, dass
  * die zweistellige Unterkontonummer (Stellen 1 und 2) nicht in das
- * Prüfziffernverfahren mit einbezogen werden darf. Die für die Berechnung
+ * PrÃ¼fziffernverfahren mit einbezogen werden darf. Die fÃ¼r die Berechnung
  * relevante siebenstellige Grundnummer befindet sich in den Stellen 3 bis 9,
- * die Prüfziffer in der Stelle 10.<br/>
+ * die PrÃ¼fziffer in der Stelle 10.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

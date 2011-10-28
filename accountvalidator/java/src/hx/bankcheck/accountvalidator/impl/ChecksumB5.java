@@ -7,8 +7,8 @@ import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen.<br/>
  * 
  * <b>Variante 1:</b><br/>
@@ -16,10 +16,10 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Modulus 10, Gewichtung 7, 3, 1 ,7 , 3, 1, 7, 3, 1<br/>
  * 
  * Die Gewichtung entspricht der Methode (Kennzeichen) 05. Die Berechnung
- * entspricht der Methode (Kennzeichen) 01. Führt die Berechnung nach der
- * Variante 1 zu einem Prüfzifferfehler, so sind Kontonummern, die an der 1.
+ * entspricht der Methode (Kennzeichen) 01. FÃ¼hrt die Berechnung nach der
+ * Variante 1 zu einem PrÃ¼fzifferfehler, so sind Kontonummern, die an der 1.
  * Stelle von links der 10-stelligen Kontonummer den Wert 8 oder 9 beinhalten,
- * falsch. Alle anderen Kontonummern sind nach der Variante 2 zu prüfen.<br/>
+ * falsch. Alle anderen Kontonummern sind nach der Variante 2 zu prÃ¼fen.<br/>
  * 
  * Testkontonummern (richtig): 0159006955, 2000123451, 1151043216, 9000939033<br/>
  * 
@@ -35,7 +35,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern (richtig): 0123456782, 0130098767, 1045000252<br/>
  * Testkontonummern (falsch): 0159004165, 0023456787, 0056789018, 3045000333<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -9,15 +9,15 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7 </br>
  * 
- * Die für die Berechnung relevante Grundnummer befindet sich in den Stellen 1
- * bis 6, die Prüfziffer in Stelle 7 (von links nach rechts gezählt). Die
+ * Die fÃ¼r die Berechnung relevante Grundnummer befindet sich in den Stellen 1
+ * bis 6, die PrÃ¼fziffer in Stelle 7 (von links nach rechts gezÃ¤hlt). Die
  * Stellen 1 bis 6 werden mit den Ziffern 7, 6, 5, 4, 3, 2 multipliziert. Die
  * restliche Berechnung und Ergebnisse entsprechen dem Verfahren 06. Die
  * dreistellige Unternummer (Stellen 8 bis 10) darf nicht in das
- * Prüfzifferberechnungs-verfahren einbezogen werden. Ist die Unternummer »000«,
+ * PrÃ¼fzifferberechnungs-verfahren einbezogen werden. Ist die Unternummer Â»000Â«,
  * so kommt es vor, dass diese nicht angegeben ist. Ergibt die erste Berechnung
- * einen Prüfzifferfehler, wird empfohlen, die Prüfzifferberechnung ein zweites
- * Mal durchzuführen und dabei die »gedachte« Unternummer 000 an die Stellen 8
+ * einen PrÃ¼fzifferfehler, wird empfohlen, die PrÃ¼fzifferberechnung ein zweites
+ * Mal durchzufÃ¼hren und dabei die Â»gedachteÂ« Unternummer 000 an die Stellen 8
  * bis 10 zu setzen und die vorhandene Kontonummer vorher um drei Stellen nach
  * links zu verschieben.</br>
  * 
@@ -29,7 +29,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Testkontonummern: 4000005001,4444442001</br>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

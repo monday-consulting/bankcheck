@@ -8,26 +8,26 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Kontonummern sind einschließlich der Prüfziffer 6- oder 8- bis
- * 10-stellig, ggf. ist die Kontonummer für die Prüfziffer-berechnung durch
- * linksbündige Auffüllung mit Nullen 10-stellig darzustellen. Die Berechnung
- * der Prüfziffer und die möglichen Ergebnisse richten sich nach dem jeweils bei
+ * Die Kontonummern sind einschlieÃŸlich der PrÃ¼fziffer 6- oder 8- bis
+ * 10-stellig, ggf. ist die Kontonummer fÃ¼r die PrÃ¼fziffer-berechnung durch
+ * linksbÃ¼ndige AuffÃ¼llung mit Nullen 10-stellig darzustellen. Die Berechnung
+ * der PrÃ¼fziffer und die mÃ¶glichen Ergebnisse richten sich nach dem jeweils bei
  * der entsprechenden Variante angegebenen Kontonummernkreis. <br/>
  * 
  * Entspricht eine Kontonummer keinem der vorgegebenen Kontonummern-kreise oder
- * führt die Berechnung der Prüfziffer nach der vorgegebenen Variante zu einem
- * Prüfzifferfehler, so ist die Kontonummer ungültig. <br/>
+ * fÃ¼hrt die Berechnung der PrÃ¼fziffer nach der vorgegebenen Variante zu einem
+ * PrÃ¼fzifferfehler, so ist die Kontonummer ungÃ¼ltig. <br/>
  * 
- * S = Ziffer der Kontonummer, die in die Prüfzifferberechnung einbezogen wird <br/>
+ * S = Ziffer der Kontonummer, die in die PrÃ¼fzifferberechnung einbezogen wird <br/>
  * X = Weitere Ziffern der Kontonummer, die jedoch nicht in die
- * Prüfzifferberechnung mit einbezogen werden <br/>
- * P = Prüfziffer <br/>
+ * PrÃ¼fzifferberechnung mit einbezogen werden <br/>
+ * P = PrÃ¼fziffer <br/>
  * 
  * <b>Variante 1: </b><br/>
  * 
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2 <br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 75.<br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 75.<br/>
  * 
  * 6-stellige Kontonummern; 5. Stelle = 1-8 Kontonummernkreis 0000100000 bis
  * 0000899999<br/>
@@ -42,7 +42,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * <b>Variante 2:</b><br/>
  * 
- * Modulus 10, iterierte Transformation Die Berechnung und mögliche Ergebnisse
+ * Modulus 10, iterierte Transformation Die Berechnung und mÃ¶gliche Ergebnisse
  * entsprechen der Methode 29.<br/>
  * 
  * 10-stellige Kontonummern, 1. Stelle = 1, 4, 5, 6 oder 9 Kontonummernkreis
@@ -58,7 +58,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 </br>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 00.<br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 00.<br/>
  * 
  * 10-stellige Kontonummern, 1. Stelle = 3 Kontonummernkreis 3000000000 bis
  * 3999999999<br/>
@@ -68,8 +68,8 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * <b>Variante 4: </b><br/>
  * 
- * Für die folgenden Kontonummernkreise gilt die Methode 09 (keine
- * Prüfzifferberechnung).<br>
+ * FÃ¼r die folgenden Kontonummernkreise gilt die Methode 09 (keine
+ * PrÃ¼fzifferberechnung).<br>
  * 
  * 8-stellige Kontonummern; 3. Stelle = 3, 4 oder 5 Kontonummernkreis 0030000000
  * bis 0059999999 <br/>
@@ -77,7 +77,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 10-stellige Kontonummern; 1.+ 2. Stelle = 70 oder 85 Kontonummernkreis
  * 7000000000 bis 7099999999 Kontonummernkreis 8500000000 bis 8599999999
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

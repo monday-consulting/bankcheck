@@ -13,12 +13,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * <b>Ausnahme:</b><br/>
  * 
- * 8-stellige Kontonummern sind nicht prüfbar, da diese Nummern keine Prüfziffer
+ * 8-stellige Kontonummern sind nicht prÃ¼fbar, da diese Nummern keine PrÃ¼fziffer
  * enthalten.<br/>
  * 
  * Testkontonummern: 7581499, 9999999981<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

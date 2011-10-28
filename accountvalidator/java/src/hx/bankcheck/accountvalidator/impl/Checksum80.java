@@ -12,18 +12,18 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * <b>Methode A </b><br/>
  * 
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Die Berechnung und die möglichen Ergebnisse entsprechen dem
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Die Berechnung und die mÃ¶glichen Ergebnisse entsprechen dem
  * Verfahren 00; es ist jedoch zu beachten, dass nur die Stellen 5 bis 9 in das
- * Prüfzifferberechnungsverfahren einbezogen werden. Die Stelle 10 der
- * Kontonummer ist die Prüfziffer.<br/>
+ * PrÃ¼fzifferberechnungsverfahren einbezogen werden. Die Stelle 10 der
+ * Kontonummer ist die PrÃ¼fziffer.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x x x x x x P<br/>
  * Gewichtung: 2 1 2 1 2<br/>
  * Testkontonummer: 340968<br/>
  * 
- * Führt die Berechnung nach Methode A zu einem Prüfziffe-fehler, ist die
+ * FÃ¼hrt die Berechnung nach Methode A zu einem PrÃ¼fziffe-fehler, ist die
  * Berechnung nach Methode B vorzunehmen.<br/>
  * 
  * <b>Methode B</b><br/>
@@ -32,18 +32,18 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Das Berechnungsverfahren entspricht Methode A. Die Summe der
  * Produkt-Quersummen ist jedoch durch 7 zu dividieren. Der verbleibende Rest
- * wird vom Divisor (7) subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt
- * nach der Division kein Rest, ist die Prüfziffer = 0<br/>
+ * wird vom Divisor (7) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt
+ * nach der Division kein Rest, ist die PrÃ¼fziffer = 0<br/>
  * 
  * Testkontonummer: 340966<br/>
  * 
  * <b>Ausnahme: </b><br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemäß der Ausnahme in
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemÃ¤ÃŸ der Ausnahme in
  * Methode 51 mit den gleichen Ergebnissen und Testkontonummern.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

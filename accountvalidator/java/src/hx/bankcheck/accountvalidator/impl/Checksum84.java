@@ -12,17 +12,17 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * <b>Methode A </b><br/>
  * 
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Die 10. Stelle ist per Definition die Prüfziffer. Die für die
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Die 10. Stelle ist per Definition die PrÃ¼fziffer. Die fÃ¼r die
  * Berechnung relevanten Stellen werden von rechts nach links mit den Ziffern 2,
- * 3, 4, 5, 6 multipliziert. Die weitere Berechnung und die möglichen Ergebnisse
+ * 3, 4, 5, 6 multipliziert. Die weitere Berechnung und die mÃ¶glichen Ergebnisse
  * entsprechen dem Verfahren 33.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x x x x x x x P <br/>
  * Gewichtung: 6 5 4 3 2 <br/>
  * 
- * Führt die Berechnung nach Methode A zu einem Prüfziffer-fehler, ist die
+ * FÃ¼hrt die Berechnung nach Methode A zu einem PrÃ¼fziffer-fehler, ist die
  * Berechnung nach Methode B vorzunehmen.
  * 
  * <b>Methode B </b><br/>
@@ -32,18 +32,18 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die Stellen 5 bis 9 der Kontonummer werden von rechts nach links mit den
  * Gewichten multipliziert. Die jeweiligen Produkte werden addiert. Die Summe
  * ist durch 7 zu dividieren. Der verbleibende Rest wird vom Divisor (7)
- * subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt nach der Division
- * kein Rest, ist die Prüfziffer = 0. <br/>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt nach der Division
+ * kein Rest, ist die PrÃ¼fziffer = 0. <br/>
  * 
  * Testkontonummern: 100005, 393814, 950360<br/>
  * 
  * <b>Ausnahme:</b><br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemäß der Ausnahme in
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemÃ¤ÃŸ der Ausnahme in
  * Methode 51 mit den gleichen Ergebnissen und Testkontonummern.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

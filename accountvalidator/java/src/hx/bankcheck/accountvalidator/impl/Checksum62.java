@@ -11,21 +11,21 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2 <br/>
  * 
  * Die beiden ersten und die beiden letzten Stellen sind nicht zu
- * berücksichtigen. Die Stellen drei bis sieben sind von rechts nach links mit
+ * berÃ¼cksichtigen. Die Stellen drei bis sieben sind von rechts nach links mit
  * den Ziffern 2, 1, 2, 1, 2 zu multiplizieren. Aus zweistelligen
  * Einzelergebnissen ist eine Quersumme zu bilden. Alle Ergebnisse sind dann zu
- * addieren. Die Differenz zum nächsten Zehner ergibt die Prüfziffer auf Stelle
- * acht. Ist die Differenz 10, ist die Prüfziffer 0.<br/>
+ * addieren. Die Differenz zum nÃ¤chsten Zehner ergibt die PrÃ¼fziffer auf Stelle
+ * acht. Ist die Differenz 10, ist die PrÃ¼fziffer 0.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: 5 0 2 9 0 7 6 P 0 1<br/>
  * Gewichtung: 2 1 2 1 2 4 + 9 + 0 + 7 + 3 = 23 (Q) (Q = Quersumme) <br/>
  * Die Einerstelle wird vom Wert 10 subtrahiert 10 - 3 = 7. <br/>
  * 
- * Die Prüfziffer ist in diesem Fall die 7 und die vollständige Kontonummer
+ * Die PrÃ¼fziffer ist in diesem Fall die 7 und die vollstÃ¤ndige Kontonummer
  * lautet: 5 0 2 9 0 7 6 7 0 1<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

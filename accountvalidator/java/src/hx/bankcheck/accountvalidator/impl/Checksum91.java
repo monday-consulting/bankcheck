@@ -10,20 +10,20 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 3. Modulus 11, Gewichtung 2, 3, 4, 0, 5, 6, 7, 8, 9, A (A = 10) <br />
  * 4. Modulus 11, Gewichtung 2, 4, 8, 5, 10, 9<br />
  * 
- * Gemeinsame Hinweise für die Berechnungsvarianten 1 bis 4: <br />
+ * Gemeinsame Hinweise fÃ¼r die Berechnungsvarianten 1 bis 4: <br />
  * 
  * Die Kontonummer ist immer 10-stellig. Die einzelnen Stellen der Kontonummer
  * werden von links nach rechts von 1 bis 10 durchnummeriert. Die Stelle 7 der
- * Kontonummer ist die Prüfziffer. Die für die Berechnung relevanten
+ * Kontonummer ist die PrÃ¼fziffer. Die fÃ¼r die Berechnung relevanten
  * Kundennummern (K) sind von rechts nach links mit den jeweiligen Gewichten zu
- * multiplizieren. Die restliche Berechnung und möglichen Ergebnisse entsprechen
+ * multiplizieren. Die restliche Berechnung und mÃ¶glichen Ergebnisse entsprechen
  * dem Verfahren 06.<br />
  * 
  * Ergibt die Berechnung nach der ersten beschriebenen Variante einen
- * Prüfzifferfehler, so sind in der angegebenen Reihenfolge weitere Berechnungen
+ * PrÃ¼fzifferfehler, so sind in der angegebenen Reihenfolge weitere Berechnungen
  * mit den anderen Varianten vorzunehmen, bis die Berechnung keinen
- * Prüfzifferfehler mehr ergibt. Kontonummern, die endgültig nicht zu einem
- * richtigen Ergebnis führen, sind nicht prüfbar. <br />
+ * PrÃ¼fzifferfehler mehr ergibt. Kontonummern, die endgÃ¼ltig nicht zu einem
+ * richtigen Ergebnis fÃ¼hren, sind nicht prÃ¼fbar. <br />
  * 
  * <b>Variante 1:</b><br />
  * 
@@ -76,7 +76,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern (richtig): 8840012000, 8840055000, 8840080000 <br />
  * Testkontonummern (falsch): 8840010000, 8840057000<br />
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

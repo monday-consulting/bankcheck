@@ -14,7 +14,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * mit den Ziffern 2, 3, 4, 5, 6, 7, 2 zu multiplizieren. Die jeweiligen
  * Produkte werden addiert. Die Summe ist durch 11 zu dividieren. Der
  * verbleibende Rest wird vom Divisor (11) subtrahiert. Das Ergebnis ist die
- * Prüfziffer. Ergibt sich als Rest 0 oder 1, ist die Prüfziffer zweistellig und
+ * PrÃ¼fziffer. Ergibt sich als Rest 0 oder 1, ist die PrÃ¼fziffer zweistellig und
  * kann nicht verwendet werden. Die Kontonummer ist dann nicht verwendbar.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
@@ -23,7 +23,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern: (49) 64137395, (49) 00010987<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

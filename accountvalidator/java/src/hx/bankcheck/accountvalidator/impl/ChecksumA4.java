@@ -13,20 +13,20 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 4. Modulus 11, Gewichtung 2, 3, 4, 5, 6 <br/>
  * Modulus 7, Gewichtung 2, 3, 4, 5, 6 <br/>
  * 
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
- * Nullen 10-stellig darzustellen. Zur Prüfung einerKontonummer sind die
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
+ * Nullen 10-stellig darzustellen. Zur PrÃ¼fung einerKontonummer sind die
  * folgenden Varianten zu rechnen. Dabei ist zu beachten, dass Kontonummern mit
  * der Ziffernfolge 99 an den Stellen 3 und 4 (XX99XXXXXX) nur nach Variante 3
- * und ggf. 4 zu prüfen sind. Alle anderen Kontonummern sind nacheinander nach
- * den Varianten 1, ggf. 2 und ggf. 4 zu prüfen.<br/>
+ * und ggf. 4 zu prÃ¼fen sind. Alle anderen Kontonummern sind nacheinander nach
+ * den Varianten 1, ggf. 2 und ggf. 4 zu prÃ¼fen.<br/>
  * 
  * <b>Variante 1:</b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 0, 0, 0<br/>
  * 
- * In die Prüfzifferberechnung werden nur die Stellen 4 bis 9 einbezogen. Die
- * Stelle 10 ist die Prüfziffer.Die weitere Berechnung erfolgt nach dem
+ * In die PrÃ¼fzifferberechnung werden nur die Stellen 4 bis 9 einbezogen. Die
+ * Stelle 10 ist die PrÃ¼fziffer.Die weitere Berechnung erfolgt nach dem
  * Verfahren 06.<br/>
  * 
  * Beispiel: <br/>
@@ -40,7 +40,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern (richtig): 0004711173, 0007093330<br/>
  * Testkontonummern (falsch): 0004711172, 8623420004, 0001123458 <br/>
  * 
- * Führt die Berechnung zu einem Fehler, ist nach Variante 2 zu prüfen. <br/>
+ * FÃ¼hrt die Berechnung zu einem Fehler, ist nach Variante 2 zu prÃ¼fen. <br/>
  * 
  * <b>Variante 2:</b><br/>
  * 
@@ -49,8 +49,8 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die Stellen 4 bis 9 der Kontonummer werden von rechts nach links mit den
  * Gewichten multipliziert. Die jeweiligen Produkte werden addiert. Die Summe
  * ist durch 7 zu dividieren. Der verbleibende Rest wird vom Divisor (7)
- * subtrahiert. Das Ergebnis ist die Prüfziffer (Stelle 10). Verbleibt nach der
- * Division kein Rest, ist die Prüfziffer 0.<br/>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer (Stelle 10). Verbleibt nach der
+ * Division kein Rest, ist die PrÃ¼fziffer 0.<br/>
  * 
  * Beispiel:<br/>
  * 
@@ -62,14 +62,14 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern (richtig): 0004711172, 0007093335<br/>
  * Testkontonummern (falsch): 8623420000, 0001123458<br/>
  * 
- * Führt die Berechnung zu einem Fehler, ist nach Variante 4 zu prüfen.
+ * FÃ¼hrt die Berechnung zu einem Fehler, ist nach Variante 4 zu prÃ¼fen.
  * 
  * <b>Variante 3: </b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 0, 0, 0, 0<br/>
  * 
- * In die Prüfzifferberechnung werden nur die Stellen 5 bis 9 einbezogen. Die
- * Stelle 10 ist die Prüfziffer. Die weitere Berechnung erfolgt nach dem
+ * In die PrÃ¼fzifferberechnung werden nur die Stellen 5 bis 9 einbezogen. Die
+ * Stelle 10 ist die PrÃ¼fziffer. Die weitere Berechnung erfolgt nach dem
  * Verfahren 06.<br/>
  * 
  * Beispiel: <br/>
@@ -83,7 +83,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern(richtig): 1199503010, 8499421235 <br/>
  * Testkontonummern (falsch): 1299503117, 6099702031<br/>
  * 
- * Führt die Berechnung zu einem Fehler, ist nach Variante 4 zu prüfen.
+ * FÃ¼hrt die Berechnung zu einem Fehler, ist nach Variante 4 zu prÃ¼fen.
  * 
  * <b>Variante 4:</b><br/>
  * 
@@ -98,7 +98,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern (falsch): 0000399443, 0000553313<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

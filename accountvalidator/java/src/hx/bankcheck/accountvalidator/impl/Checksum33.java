@@ -7,7 +7,7 @@ package hx.bankcheck.accountvalidator.impl;
  * Die Kontonummer ist 10-stellig. Die Stellen 5 bis 9 der Kontonummer werden
  * von rechts nach links mit den Ziffern 2, 3, 4, 5, 6 multipliziert. Die
  * restliche Berechnung und Ergebnisse entsprechen dem Verfahren 06. Die Stelle
- * 10 der Kontonummer ist per Definition die Prüfziffer. <br/>
+ * 10 der Kontonummer ist per Definition die PrÃ¼fziffer. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x x x x x x P <br/>
@@ -15,7 +15,7 @@ package hx.bankcheck.accountvalidator.impl;
  * 
  * Testkontonummern: 48658, 84956<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

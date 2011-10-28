@@ -9,7 +9,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 11, Gewichtung 1, 2, 3, 4, 5 <br/>
  * 
- * Die Kontonummer ist 10-stellig. Die für die Berechnung relevanten Stellen 6
+ * Die Kontonummer ist 10-stellig. Die fÃ¼r die Berechnung relevanten Stellen 6
  * bis 10 werden von rechts nach links mit den Ziffern 1, 2, 3, 4, 5
  * multipliziert. Die Produkte werden addiert. Die Summe ist durch 11 zu
  * dividieren. <br/>
@@ -19,7 +19,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Gewichtung: 5 4 3 2 1 20 + 28 + 18 + 14 + 8 = 88 88 : 11 = 8 Rest 0<br/>
  * 
  * Verbleibt nach der Division der Summe durch 11 ein Rest, ist folgende neue
- * Berechnung durchzuführen: <br/>
+ * Berechnung durchzufÃ¼hren: <br/>
  * 
  * Modulus 11, Gewichtung 5, 4, 3, 4, 5 <br/>
  * 
@@ -32,12 +32,12 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Ergibt sich bei der erneuten Berechnung wiederum ein Rest, dann ist die
  * Kontonummer falsch.
  * 
- * Erläuterung: x = weitere Ziffern der Kontonummer, die jedoch nicht in die
+ * ErlÃ¤uterung: x = weitere Ziffern der Kontonummer, die jedoch nicht in die
  * Berechnung einbezogen werden. <br/>
  * 
  * Testkontonummern: 10338, 13844, 65354, 69258<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

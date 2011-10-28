@@ -10,15 +10,15 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8<br/>
  * 
- * Für den Kontonummernkreis 9 300 000 000 bis 9 399 999 999 ist keine
- * Prüfzifferberechnung möglich = Kennzeichen 09.<br/>
+ * FÃ¼r den Kontonummernkreis 9 300 000 000 bis 9 399 999 999 ist keine
+ * PrÃ¼fzifferberechnung mÃ¶glich = Kennzeichen 09.<br/>
  * 
- * Für den Kontonummernkreis 9 700 000 000 bis 9 799 999 999 ist die
- * Prüfzifferberechnung nach Variante 2 vorzunehmen: <br/>
+ * FÃ¼r den Kontonummernkreis 9 700 000 000 bis 9 799 999 999 ist die
+ * PrÃ¼fzifferberechnung nach Variante 2 vorzunehmen: <br/>
  * 
- * Für alle anderen Kontonummern ist die Prüfziffer nach Variante 1 zu
- * ermitteln. Ergab die Berechnung nach Variante 1 einen Prüfzifferfehler, ist
- * die Prüfziffer nach Variante 2 zu ermitteln. <br/>
+ * FÃ¼r alle anderen Kontonummern ist die PrÃ¼fziffer nach Variante 1 zu
+ * ermitteln. Ergab die Berechnung nach Variante 1 einen PrÃ¼fzifferfehler, ist
+ * die PrÃ¼fziffer nach Variante 2 zu ermitteln. <br/>
  * 
  * <b>Variante 1 </b><br/>
  * 
@@ -30,13 +30,13 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Die Position der einzelnen Ziffern von rechts nach links innerhalb der
  * Kontonummer gibt die Zeile 1 bis 4 der Transforma-tionstabelle an. Aus ihr
- * sind die Übersetzungswerte zu summieren. Die Einerstelle wird von 10
- * subtrahiert und stellt die Prüfziffer dar. <br/>
+ * sind die Ãœbersetzungswerte zu summieren. Die Einerstelle wird von 10
+ * subtrahiert und stellt die PrÃ¼fziffer dar. <br/>
  * 
  * Beispiel: <br/>
  * 
  * Kontonr.: 9 7 2 1 1 3 4 8 6 P <br/>
- * Gewichtung: 1 4 3 2 1 4 3 2 1 (P = Prüfziffer) (Transf.-Zeile)<br/>
+ * Gewichtung: 1 4 3 2 1 4 3 2 1 (P = PrÃ¼fziffer) (Transf.-Zeile)<br/>
  * 
  * Transformationstabelle:<br/>
  * 
@@ -59,12 +59,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Ziffer 9 wird 6 aus Zeile 1 <br/>
  * __ Summe 41 == Die Einerstelle wird vom Wert 10 subtrahiert. <br/>
  * 
- * Das Ergebnis ist die Prüfziffer, in unserem Beispiel also 10 - 1 = Prüfziffer
+ * Das Ergebnis ist die PrÃ¼fziffer, in unserem Beispiel also 10 - 1 = PrÃ¼fziffer
  * 9, die Kontonummer lautet: 9 7 2 1 1 3 4 8 6 9. <br/>
  * 
  * Testkontonummern: 1234567900 (Variante 1) 1234567006 (Variante 2)
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

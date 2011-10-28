@@ -3,16 +3,16 @@ import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen. <br/>
  * 
  * <b>Variante 1: </b><br/>
  * 
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 <br/>
  * 
- * Gewichtung und Berechnung erfolgen nach der Methode 00. Führt die Berechnung
- * nach Variante 1 zu einem Prüfzifferfehler, so ist nach Variante 2 zu prüfen. <br/>
+ * Gewichtung und Berechnung erfolgen nach der Methode 00. FÃ¼hrt die Berechnung
+ * nach Variante 1 zu einem PrÃ¼fzifferfehler, so ist nach Variante 2 zu prÃ¼fen. <br/>
  * 
  * Testkontonummern (richtig): 3456789019, 5678901231<br/>
  * Testkontonummern (falsch): 3456789012, 0123456789, 1234567890, 9012345678<br/>
@@ -21,9 +21,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 2, 3, 4 <br/>
  * 
- * Gewichtung und Berechnung erfolgen nach der Methode 04. Führt auch die
- * Berechnung nach Variante 2 zu einem Prüfzifferfehler, so ist nach Variante 3
- * zu prüfen.<br/>
+ * Gewichtung und Berechnung erfolgen nach der Methode 04. FÃ¼hrt auch die
+ * Berechnung nach Variante 2 zu einem PrÃ¼fzifferfehler, so ist nach Variante 3
+ * zu prÃ¼fen.<br/>
  * 
  * Testkontonummer (richtig): 3456789012 <br/>
  * Testkontonummern (falsch): 0123456789, 1234567890, 9012345678 <br/>
@@ -37,7 +37,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummer (richtig): 0123456789 <br/>
  * Testkontonummer (falsch) : 1234567890, 9012345678 <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

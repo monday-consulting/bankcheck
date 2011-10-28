@@ -7,33 +7,33 @@ import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Der zur Prüfzifferberechnung heranzuziehende Teil befindet sich
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Der zur PrÃ¼fzifferberechnung heranzuziehende Teil befindet sich
  * bei der Methode A in den Stellen 4 bis 9 der Kontonummer und bei den Methoden
- * B und C in Stellen 5 - 9, die Prüfziffer in Stelle 10 der Kontonummer. <br/>
+ * B und C in Stellen 5 - 9, die PrÃ¼fziffer in Stelle 10 der Kontonummer. <br/>
  * 
- * Ergibt die erste Berechnung der Prüfziffer nach der Methode A einen
- * Prüfzifferfehler, so sind weitere Berechnungen mit den anderen Methoden
+ * Ergibt die erste Berechnung der PrÃ¼fziffer nach der Methode A einen
+ * PrÃ¼fzifferfehler, so sind weitere Berechnungen mit den anderen Methoden
  * vorzunehmen. <br/>
  * 
  * <b>Ausnahme:</b> <br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemäß der Ausnahme in
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemÃ¤ÃŸ der Ausnahme in
  * Methode 51 mit den gleichen Ergebnissen und Testkontonummern. <br/>
  * 
  * <b>Methode A:</b> <br/>
  * 
- * Für die Berechnung werden folgende Felder verwendet: <br/>
+ * FÃ¼r die Berechnung werden folgende Felder verwendet: <br/>
  * 
  * i = Hilfsvariable (Laufvariable) <br/>
  * C2 = Hilfsvariable (Kennung, ob gerade oder un-gerade Stelle bearbeitet wird)<br/>
  * D2 = Hilfsvariable <br/>
  * A5 = Hilfsvariable (Summenfeld), kann negativ werden <br/>
- * P = Hilfsvariable (zur Zwischenspeicherung der Prüfziffer)<br/>
+ * P = Hilfsvariable (zur Zwischenspeicherung der PrÃ¼fziffer)<br/>
  * KONTO = 10-stelliges Kontonummernfeld mit KONTO (i) = in Bearbeitung
  * befindliche Stelle; der Wert an jeder Stelle kann zweistellig werden <br/>
- * TAB1; TAB2 = Tabellen mit Prüfziffern:<br/>
+ * TAB1; TAB2 = Tabellen mit PrÃ¼fziffern:<br/>
  * 
  * Tabelle TAB1<br/>
  * Stelle | Inhalt<br/>
@@ -51,22 +51,22 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 3 --> 9<br/>
  * 4 --> 8<br/>
  * 
- * Führt die Berechnung nach Methode A zu einem Prüfzifferfehler, ist die
+ * FÃ¼hrt die Berechnung nach Methode A zu einem PrÃ¼fzifferfehler, ist die
  * Berechnung nach Methode B vorzunehmen.<br/>
  * 
  * <b>Methode B:</b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6 <br/>
  * 
- * Die für die Berechnung relevanten Stellen werden von rechts nach links mit
+ * Die fÃ¼r die Berechnung relevanten Stellen werden von rechts nach links mit
  * den Ziffern 2, 3, 4, 5, 6 multipliziert. Die weitere Berechnung und die
- * möglichen Ergebnisse entsprechen dem Verfahren 33. <br/>
+ * mÃ¶glichen Ergebnisse entsprechen dem Verfahren 33. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x x x x x x P <br/>
  * Gewichtung: 6 5 4 3 2 <br/>
  * 
- * Führt die Berechnung nach Methode B wiederum zu einem Prüfzifferfehlen, ist
+ * FÃ¼hrt die Berechnung nach Methode B wiederum zu einem PrÃ¼fzifferfehlen, ist
  * eine weitere Berechnung nach Methode C vorzunehmen.<br/>
  * 
  * <b>Methode C:</b><br/>
@@ -76,13 +76,13 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die Stellen 5 bis 9 der Kontonummer werden von rechts nach links mit den
  * Gewichten multipliziert. Die jeweiligen Produkte werden addiert. Die Summe
  * ist durch 7 zu dividieren. Der verbleibende Rest wird vom Divisor (7)
- * subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt nach der Division
- * kein Rest, ist die Prüfziffer = 0. <br/>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt nach der Division
+ * kein Rest, ist die PrÃ¼fziffer = 0. <br/>
  * 
  * Testkontonummern Methode B und C: 0000100005, 0000393814, 0000950360,
  * 3199500501<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

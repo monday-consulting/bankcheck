@@ -9,11 +9,11 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 1<br/>
  * 
- * Die Prüfziffernrechnung ist nach Kennzeichen 19 durchzuführen. <br/>
- * Führt die Berechnung nach Variante 1 zu einem Prüfzifferfehler, so ist die
+ * Die PrÃ¼fziffernrechnung ist nach Kennzeichen 19 durchzufÃ¼hren. <br/>
+ * FÃ¼hrt die Berechnung nach Variante 1 zu einem PrÃ¼fzifferfehler, so ist die
  * Berechnung nach Variante 2 vorzunehmen.<br/>
  * 
- * Gültige Kontonummern (Darstellung 10-stellig, einschl. Prüfziffer):<br/>
+ * GÃ¼ltige Kontonummern (Darstellung 10-stellig, einschl. PrÃ¼fziffer):<br/>
  * 
  * 0000254100, 9421000009<br/>
  * 
@@ -21,20 +21,20 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2 <br/>
  * 
- * Die Prüfziffernrechnung ist nach Kennzeichen 00 durchzuführen.<br/>
+ * Die PrÃ¼fziffernrechnung ist nach Kennzeichen 00 durchzufÃ¼hren.<br/>
  * 
- * Gültige Kontonummern (Darstellung 10-stellig, einschl. Prüfziffer): <br/>
+ * GÃ¼ltige Kontonummern (Darstellung 10-stellig, einschl. PrÃ¼fziffer): <br/>
  * 
  * 0000000208, 0101115152, 0301204301
  * 
  * <b>Variante 3 </b><br/>
  * 
- * Führen die Berechnungen nach Variante 1 und 2 zu Prüfzifferfehlern, so ist zu
- * prüfen, ob die Kontonummer zwischen 0001300000 und 0099399999 liegt. <br/>
- * Trifft dies zu, so gilt die Prüfziffer als richtig; trifft dies nicht zu, so
- * ist die Prüfziffer falsch.
+ * FÃ¼hren die Berechnungen nach Variante 1 und 2 zu PrÃ¼fzifferfehlern, so ist zu
+ * prÃ¼fen, ob die Kontonummer zwischen 0001300000 und 0099399999 liegt. <br/>
+ * Trifft dies zu, so gilt die PrÃ¼fziffer als richtig; trifft dies nicht zu, so
+ * ist die PrÃ¼fziffer falsch.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

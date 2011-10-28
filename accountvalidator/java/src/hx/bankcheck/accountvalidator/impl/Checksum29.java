@@ -6,17 +6,17 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 10, iterierte Transformation
  * 
- * Die einzelnen Ziffern der Kontonummer werden über eine Tabelle in andere
+ * Die einzelnen Ziffern der Kontonummer werden Ã¼ber eine Tabelle in andere
  * Werte transformiert. Jeder einzelnen Stelle der Kontonummer ist hierzu eine
  * der Zeilen 1 bis 4 der Transformationstabelle fest zugeordnet. Die
  * Transformationswerte werden addiert. Die Einerstelle der Summe wird von 10
- * subtrahiert. Das Ergebnis ist die Prüfziffer. (Ist das Ergebnis = 10, ist die
- * Prüfziffer = 0). </br>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. (Ist das Ergebnis = 10, ist die
+ * PrÃ¼fziffer = 0). </br>
  * 
  * <b>Beispiel:</b> </br>
  * 
- * Kontonummer: 3 1 4 5 8 6 3 0 2 P (P = Prüfziffer) </br> Die Kontonummer ist
- * 10-stellig. Die 10. Stelle ist die Prüfziffer. </br>
+ * Kontonummer: 3 1 4 5 8 6 3 0 2 P (P = PrÃ¼fziffer) </br> Die Kontonummer ist
+ * 10-stellig. Die 10. Stelle ist die PrÃ¼fziffer. </br>
  * 
  * Zugeordnete Zeile der Transformationstabelle: </br>
  * 
@@ -58,11 +58,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * </br> (Einerstelle = 1) </br>
  * 
- * Subtraktion : (10 - 1) = 9 (= Prüfziffer) </br>
+ * Subtraktion : (10 - 1) = 9 (= PrÃ¼fziffer) </br>
  * 
- * Kontonummer mit Prüfziffer: 3 1 4 5 8 6 3 0 2 9 </br>
+ * Kontonummer mit PrÃ¼fziffer: 3 1 4 5 8 6 3 0 2 9 </br>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

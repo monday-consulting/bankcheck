@@ -9,13 +9,13 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 10 <br/>
  * 
- * Die Kontonummer ist ggf. durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Die 10. Stelle der Kontonummer ist die Prüfziffer. Die Stellen
+ * Die Kontonummer ist ggf. durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Die 10. Stelle der Kontonummer ist die PrÃ¼fziffer. Die Stellen
  * 1 bis 9 der Kontonummer werden von rechts nach links mit den Ziffern 2, 3, 4,
  * ff. multipliziert. Die jeweiligen Produkte werden addiert. Die Summe der
  * Produkte ist durch 11 zu dividieren. Der verbleibende Rest ist die
- * Prüfziffer. Sollte jedoch der Rest 10 ergeben, so ist die Kontonummer
- * unabhängig vom eigentlichen Berechnungsergebnis richtig, wenn die Ziffern an
+ * PrÃ¼fziffer. Sollte jedoch der Rest 10 ergeben, so ist die Kontonummer
+ * unabhÃ¤ngig vom eigentlichen Berechnungsergebnis richtig, wenn die Ziffern an
  * 10. und 9. Stelle identisch sind. <br/>
  * 
  * Beispiel 1: <br/>
@@ -23,7 +23,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Stellennr.: 1 2 3 4 5 6 7 8 9 10 <br/>
  * Kontonr.: 0 0 0 0 1 0 8 4 4 3 <br/>
  * Gewichtung: 10 9 8 7 6 5 4 3 2 0+ 0+ 0+ 0+ 6+ 0+ 32+ 12+ 8 = 58 58 : 11 = 5
- * Rest 3 3 ist die Prüfziffer <br/>
+ * Rest 3 3 ist die PrÃ¼fziffer <br/>
  * 
  * Beispiel 2: <br/>
  * Stellennr.: 1 2 3 4 5 6 7 8 9 10 <br/>
@@ -33,7 +33,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Testkontonummern: 0000108443, 0000107451, 0000102921, 0000102349, 0000101709,
  * 0000101599<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -15,7 +15,7 @@ package hx.bankcheck.accountvalidator.impl;
  * 
  * Testkontonummern: 889006, 2618040504 <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

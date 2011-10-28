@@ -9,15 +9,15 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
  * 8- und 9-stellige Kontonummern sind mit dem Berechnungs-verfahren 10 zu
- * prüfen.<br/>
+ * prÃ¼fen.<br/>
  * 
- * 7-stellige Kontonummern sind wie folgt zu prüfen:<br/>
+ * 7-stellige Kontonummern sind wie folgt zu prÃ¼fen:<br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7<br/>
  * 
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Die für die Berechnung relevante 6- stellige Stammnummer (x)
- * befindet sich in den Stellen 4 bis 9, die Prüfziffer in Stelle 10 der
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Die fÃ¼r die Berechnung relevante 6- stellige Stammnummer (x)
+ * befindet sich in den Stellen 4 bis 9, die PrÃ¼fziffer in Stelle 10 der
  * Kontonummer. Die einzelnen Stellen der Stammnummer sind von rechts nach links
  * mit den Ziffern 2, 3, 4, 5, 6, 7 zu multiplizieren. Die jeweiligen Produkte
  * werden addiert, nachdem jeweils aus den 2-stelligen Produkten Quersummen
@@ -29,12 +29,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 7-stell. Kontonr.: 0 0 0 x x x x x x<br/>
  * P Gewichtung: 7 6 5 4 3 2<br/>
  * 
- * 1- bis 6- und 10-stellige Kontonummern sind nicht zu prüfen, da diese keine
- * Prüfziffer enthalten. <br/>
+ * 1- bis 6- und 10-stellige Kontonummern sind nicht zu prÃ¼fen, da diese keine
+ * PrÃ¼fziffer enthalten. <br/>
  * 
  * Testkontonummern: 1098506, 32028008, 218433000<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

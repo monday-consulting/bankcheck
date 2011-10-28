@@ -13,25 +13,25 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * B. Modulus 11, Gewichtung 2, 3, 4, 5, 6 <br/>
  * C. Modulus 7, Gewichtung 2, 3, 4, 5, 6 <br/>
  * 
- * Gemeinsame Anmerkungen für die Berechnungsverfahren <br/>
+ * Gemeinsame Anmerkungen fÃ¼r die Berechnungsverfahren <br/>
  * 
- * Die Kontonummer ist immer 10-stellig. Die für die Berechnung relevante
+ * Die Kontonummer ist immer 10-stellig. Die fÃ¼r die Berechnung relevante
  * Kundennummer (K) befindet sich bei der Methode A in den Stellen 4 bis 9 der
- * Kontonummer und bei den Methoden B + C in den Stellen 5 - 9, die Prüfziffer
+ * Kontonummer und bei den Methoden B + C in den Stellen 5 - 9, die PrÃ¼fziffer
  * in Stelle 10 der Kontonummer.
  * 
- * Ergibt die erste Berechnung der Prüfziffer nach dem Verfahren A einen
- * Prüfzifferfehler, so sind weitere Berechnungen mit den anderen Methoden
+ * Ergibt die erste Berechnung der PrÃ¼fziffer nach dem Verfahren A einen
+ * PrÃ¼fzifferfehler, so sind weitere Berechnungen mit den anderen Methoden
  * vorzunehmen. <br/>
  * 
- * Kontonummern, die nach Durchführung aller 3 Berechnungsmethoden nicht zu
- * einem richtigen Ergebnis führen, sind nicht prüfbar.<br/>
+ * Kontonummern, die nach DurchfÃ¼hrung aller 3 Berechnungsmethoden nicht zu
+ * einem richtigen Ergebnis fÃ¼hren, sind nicht prÃ¼fbar.<br/>
  * 
  * Methode A: <br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7 <br/>
  * 
- * Die Berechnung und möglichen Ergebnisse entsprechen dem Verfahren 32. <br/>
+ * Die Berechnung und mÃ¶glichen Ergebnisse entsprechen dem Verfahren 32. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x K K K K K K P <br/>
@@ -43,7 +43,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6 <br/>
  * 
- * Die Berechnung und möglichen Ergebnisse entsprechen dem Verfahren 33.<br/>
+ * Die Berechnung und mÃ¶glichen Ergebnisse entsprechen dem Verfahren 33.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x K K K K K P<br/>
@@ -54,11 +54,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <b>Methode C:</b> <br/>
  * 
  * Kontonummern, die bis zur Methode C gelangen und in der 10. Stelle eine 7, 8
- * oder 9 haben, sind ungültig. Modulus 7, Gewichtung 2, 3, 4, 5, 6 Das
+ * oder 9 haben, sind ungÃ¼ltig. Modulus 7, Gewichtung 2, 3, 4, 5, 6 Das
  * Berechnungsverfahren entspricht Methode B. Die Summe der Produkte ist jedoch
  * durch 7 zu dividieren. Der verbleibende Rest wird vom Divisor (7)
- * subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt kein Rest, ist die
- * Prüfziffer 0.<br/>
+ * subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt kein Rest, ist die
+ * PrÃ¼fziffer 0.<br/>
  * 
  * Testkontonummer: 0000156071<br/>
  * 
@@ -68,13 +68,13 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * A. Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8 <br/>
  * 
- * Die Sachkontonummer ist immer 10-stellig. Die für die Berechnung relevante
+ * Die Sachkontonummer ist immer 10-stellig. Die fÃ¼r die Berechnung relevante
  * Sachkontenstammnummer (S) befindet sich in den Stellen 3 bis 9 der
- * Kontonummer, wobei die 3. und 4. Stelle immer jeweils 9 sein müssen; die
- * Prüfziffer ist in Stelle 10 der Sachkontonummer. <br/>
+ * Kontonummer, wobei die 3. und 4. Stelle immer jeweils 9 sein mÃ¼ssen; die
+ * PrÃ¼fziffer ist in Stelle 10 der Sachkontonummer. <br/>
  * 
- * Führt die Berechnung nicht zu einem richtigen Ergebnis, ist die Nummer nicht
- * prüfbar.<br/>
+ * FÃ¼hrt die Berechnung nicht zu einem richtigen Ergebnis, ist die Nummer nicht
+ * prÃ¼fbar.<br/>
  * 
  * <b>Methode A:</b><br/>
  * 
@@ -87,12 +87,12 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * addiert. <br/>
  * 
  * Die Summe ist durch 11 zu dividieren. Der verbleibende Rest wird vom Divisor
- * (11) subtrahiert. Das Ergebnis ist die Prüfziffer. <br/>
+ * (11) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. <br/>
  * 
- * Verbleibt nach der Division durch die 11 kein Rest, ist die Prüfziffer "0". <br/>
+ * Verbleibt nach der Division durch die 11 kein Rest, ist die PrÃ¼fziffer "0". <br/>
  * 
  * Das Rechenergebnis "10" ist nicht verwendbar und muss auf eine Stelle
- * reduziert werden. Die rechte Stelle Null findet als Prüfziffer Verwendung.<br/>
+ * reduziert werden. Die rechte Stelle Null findet als PrÃ¼fziffer Verwendung.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x S S S S S S S P <br/>
@@ -100,7 +100,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummer: 0099100002<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

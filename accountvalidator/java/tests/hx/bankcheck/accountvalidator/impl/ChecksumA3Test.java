@@ -8,7 +8,7 @@ import hx.bankcheck.accountvalidator.impl.ChecksumA3;
 /**
  * Testclass for testing algorithm A3.
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -15,15 +15,15 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * B B B S S S S P A U (10-stellig)<br/>
  * B = Betriebsstellennummer <br/>
  * S = Stammnummer <br/>
- * P = Prüfziffer <br/>
+ * P = PrÃ¼fziffer <br/>
  * A = Artziffer <br/>
  * U = Unternummer <br/>
  * 
  * <b>Ausnahme: </b>
  * 
  * Ist die Artziffer (neunte Stelle der Kontonummer) eine 8, so werden die
- * neunte und zehnte Stelle der Kontonummer in die Prüfzifferermittlung
- * einbezogen. Die Berechnung erfolgt dann über Betriebsstellennummer,
+ * neunte und zehnte Stelle der Kontonummer in die PrÃ¼fzifferermittlung
+ * einbezogen. Die Berechnung erfolgt dann Ã¼ber Betriebsstellennummer,
  * Stammnummer, Artziffer und Unternummer mit der Gewichtung 2, 1, 2, 1, 2, 1,
  * 2, 1, 2. <br/>
  * 
@@ -33,8 +33,8 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Kontonr.: 2 0 6 3 0 9 9 0 0<br/>
  * Gewichtung: 2 1 2 1 2 1 2 4 + 0 + 3 + 3 + 0 + 9 + 9 = 28 <br/>
  * 
- * Die Einerstelle wird vom Wert 10 subtrahiert (10 - 8 = 2). Die Prüfziffer ist
- * in diesem Fall die 2 und die vollständige Kontonummer lautet: 2 0 6 3 0 9 9 2
+ * Die Einerstelle wird vom Wert 10 subtrahiert (10 - 8 = 2). Die PrÃ¼fziffer ist
+ * in diesem Fall die 2 und die vollstÃ¤ndige Kontonummer lautet: 2 0 6 3 0 9 9 2
  * 0 0 <br/>
  * 
  * <b>Beispiel 2: </b><br/>
@@ -43,12 +43,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Kontonr.: 0 2 6 0 7 6 0 8 1 <br/>
  * Gewichtung: 2 1 2 1 2 1 2 1 2 0 + 2 + 3 + 0 + 5 + 6 + 0 + 8 + 2 = 26 <br/>
  * 
- * Die Einerstelle wird vom Wert 10 subtrahiert (10 - 6 = 4). Die Prüfziffer ist
- * in diesem Fall die 4 und die vollständige Kontonummer lautet: 0 2 6 0 7 6 0 4
+ * Die Einerstelle wird vom Wert 10 subtrahiert (10 - 6 = 4). Die PrÃ¼fziffer ist
+ * in diesem Fall die 4 und die vollstÃ¤ndige Kontonummer lautet: 0 2 6 0 7 6 0 4
  * 8 1<br/>
  * s
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

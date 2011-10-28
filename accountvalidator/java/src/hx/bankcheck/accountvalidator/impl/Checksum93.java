@@ -10,10 +10,10 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Die Kontonummer ist 10-stellig.<br/>
  * 
- * Die für die Berechnung relevante Kundennummer (K) befindet sich entweder<br/>
+ * Die fÃ¼r die Berechnung relevante Kundennummer (K) befindet sich entweder<br/>
  * 
- * a) in den Stellen 1 bis 5, die Prüfziffer in Stelle 6 der Kontonummer oder<br/>
- * b) in den Stellen 5 bis 9, die Prüfziffer in Stelle 10<br/>
+ * a) in den Stellen 1 bis 5, die PrÃ¼fziffer in Stelle 6 der Kontonummer oder<br/>
+ * b) in den Stellen 5 bis 9, die PrÃ¼fziffer in Stelle 10<br/>
  * 
  * der Kontonummer.<br/>
  * 
@@ -21,11 +21,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * nicht in die Berechnung einbezogen.<br/>
  * 
  * Sie befinden sich im Fall a) an Stelle 7 bis 10 (UUAA).<br/>
- * Im Fall b) befinden sie sich an Stelle 1 bis 4 und müssen "0000" lauten.<br/>
+ * Im Fall b) befinden sie sich an Stelle 1 bis 4 und mÃ¼ssen "0000" lauten.<br/>
  * 
  * Die 5-stellige Kundennummer wird von rechts nach links mit den Gewichten
  * multipliziert.<br/>
- * Die weitere Berechnung und die möglichen Ergebnisse entsprechen dem Verfahren
+ * Die weitere Berechnung und die mÃ¶glichen Ergebnisse entsprechen dem Verfahren
  * 06.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
@@ -35,7 +35,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonr.: Fall b) 0 0 0 0 K K K K K P<br/>
  * Gewichtung: 6 5 4 3 2<br/>
  * 
- * Führt die Berechnung nach Variante 1 zu einem Prüfziffer-fehler, so ist die
+ * FÃ¼hrt die Berechnung nach Variante 1 zu einem PrÃ¼fziffer-fehler, so ist die
  * Berechnung nach Variante 2 vorzunehmen.<br/>
  * 
  * <b>Variante 2 </b><br/>
@@ -44,8 +44,8 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Das Berechnungsverfahren entspricht Variante 1. Die Summe der Produkte ist
  * jedoch durch 7 zu dividieren. Der verbleibende Rest wird vom Divisor (7)
- * subtrahiert. Das Ergebnis ist dann die Prüfziffer. Verbleibt nach der
- * Division durch 7 kein Rest, lautet die Prüfziffer 0.<br/>
+ * subtrahiert. Das Ergebnis ist dann die PrÃ¼fziffer. Verbleibt nach der
+ * Division durch 7 kein Rest, lautet die PrÃ¼fziffer 0.<br/>
  * 
  * Testkontonummern:<br/>
  * 
@@ -55,7 +55,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Modulus 11 und 7: 3067540000 bzw. 0000306754
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

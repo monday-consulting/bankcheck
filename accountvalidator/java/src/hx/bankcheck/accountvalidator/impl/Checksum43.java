@@ -13,9 +13,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * von rechts nach links mit den Faktoren 1, 2, 3, 4, 5, 6, 7, 8, 9
  * multipliziert. Die Summe der Produkte wird durch den Wert 10 dividiert. Der
  * Rest der Division wird vom Divisor subtrahiert. Die Differenz ist die
- * Prüfziffer. Ergibt die Berechnung eine Differenz von 10, lautet die
- * Prüfziffer 0. Die Stelle 10 der Kontonummer ist per Definition die
- * Prüfziffer. <br/>
+ * PrÃ¼fziffer. Ergibt die Berechnung eine Differenz von 10, lautet die
+ * PrÃ¼fziffer 0. Die Stelle 10 der Kontonummer ist per Definition die
+ * PrÃ¼fziffer. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x x x x x x x P <br/>
@@ -23,7 +23,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern: 6135244, 9516893476 <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

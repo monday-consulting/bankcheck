@@ -7,23 +7,23 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * <b>Modulus 11:</b><br/>
  * 
- * Die Kontonummer (5, 6, 7, 8, 9 o. 10-stellig) ist durch linksbündige
- * Nullenauffüllung 10-stellig darzustellen.Danach ist die 10. Stelle die
- * Prüfziffer.<br/>
+ * Die Kontonummer (5, 6, 7, 8, 9 o. 10-stellig) ist durch linksbÃ¼ndige
+ * NullenauffÃ¼llung 10-stellig darzustellen.Danach ist die 10. Stelle die
+ * PrÃ¼fziffer.<br/>
  * 
- * Die Kontonummer ist unter Weglassung der Prüfziffer (= Wert X) durch 11 zu
+ * Die Kontonummer ist unter Weglassung der PrÃ¼fziffer (= Wert X) durch 11 zu
  * teilen. Das Ergebnis der Division ist ohne die Nachkomma-Stellen mit 11 zu
  * multiplizieren. Das Produkt ist vom 'Wert X' zu subtrahieren. <br/>
  * 
- * Ist das Ergebnis < 10, so entspricht das Ergebnis der Prüfziffer. <br/>
- * Ist das Ergebnis = 10, so ist die Prüfziffer = 0<br/>
+ * Ist das Ergebnis < 10, so entspricht das Ergebnis der PrÃ¼fziffer. <br/>
+ * Ist das Ergebnis = 10, so ist die PrÃ¼fziffer = 0<br/>
  * 
  * Beispiel: 2 4 0 1 0 0 1 9 (8-stellige Kontonummer)<br/>
  * 1) 2 401 001 : 11 = 218 272,81<br/>
  * 2) 218 272 x 11 = 2 400 992 <br/>
  * 3) 2 401 001 - 2 400 992 = 9<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

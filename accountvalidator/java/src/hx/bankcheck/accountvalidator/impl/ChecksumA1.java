@@ -5,9 +5,9 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 0, 0 <br/>
  * 
- * Die Kontonummern sind 8- oder 10-stellig. Kontonummern (ohne führende Nullen
- * gezählt) mit 9 oder weniger als 8 Stellen sind falsch. 8-stellige
- * Kontonummern sind für die Prüfzifferberechnung durch linksbündige Auffüllung
+ * Die Kontonummern sind 8- oder 10-stellig. Kontonummern (ohne fÃ¼hrende Nullen
+ * gezÃ¤hlt) mit 9 oder weniger als 8 Stellen sind falsch. 8-stellige
+ * Kontonummern sind fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung
  * mit Nullen 10-stellig darzustellen.<br/> *
  * Die Berechnung erfolgt wie beim Verfahren 00.<br/>
  * 
@@ -20,7 +20,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern (falsch): 0110030005, 0010030998, 0000030005<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

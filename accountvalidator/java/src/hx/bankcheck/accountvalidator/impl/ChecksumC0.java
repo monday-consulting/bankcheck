@@ -8,20 +8,20 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen. <br/>
  * 
- * Kontonummern mit zwei führenden Nullen sind nach Variante 1 zu prüfen. Führt
- * die Berechnung nach der Variante 1 zu einem Prüfzifferfehler, ist die
+ * Kontonummern mit zwei fÃ¼hrenden Nullen sind nach Variante 1 zu prÃ¼fen. FÃ¼hrt
+ * die Berechnung nach der Variante 1 zu einem PrÃ¼fzifferfehler, ist die
  * Berechnung nach Variante 2 vorzunehmen. Kontonummern mit weniger oder mehr
- * als zwei führenden Nullen sind ausschließlich nach der Variante 2 zu prüfen. <br/>
+ * als zwei fÃ¼hrenden Nullen sind ausschlieÃŸlich nach der Variante 2 zu prÃ¼fen. <br/>
  * 
  * <b>Variante 1: </b><br/>
  * 
  * Modulus 11, Gewichtung 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4 <br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 52. <br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 52. <br/>
  * 
  * Testkontonummern (richtig) mit BLZ 130 511 72: 43001500, 48726458 <br/>
  * Testkontonummern (falsch) mit BLZ 130 511 72: 82335729, 29837521 <br/>
@@ -30,12 +30,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9,3 <br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 20.<br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 20.<br/>
  * 
  * Testkontonummern (richtig): 0082335729, 0734192657, 6932875274<br/>
  * Testkontonummern (falsch): 0132572975, 3038752371<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -13,50 +13,50 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Aufbau der 9-stelligen Kontonummer (innerhalb des zwischenbetrieblichen
  * 10-stelligen Feldes)</br>
  * 
- * Stelle 1 = gehört nicht zur Kontonummer, muss daher »0« oder »blank« sein<br/>
+ * Stelle 1 = gehÃ¶rt nicht zur Kontonummer, muss daher Â»0Â« oder Â»blankÂ« sein<br/>
  * 
- * Stelle 2-7 = Grundnummer (Kundennummer; kann auch führende Nullen enthalten) <br/>
+ * Stelle 2-7 = Grundnummer (Kundennummer; kann auch fÃ¼hrende Nullen enthalten) <br/>
  * 
- * Stelle 8 = Prüfziffer 9-10 = Unterkontonummer Die für die Berechnung
+ * Stelle 8 = PrÃ¼fziffer 9-10 = Unterkontonummer Die fÃ¼r die Berechnung
  * relevante 6-stellige Grundnummer (Kundennummer) befindet sich in den Stellen
- * 2 bis 7, die Prüfziffer in Stelle 8 der Kontonummer. <br/>
+ * 2 bis 7, die PrÃ¼fziffer in Stelle 8 der Kontonummer. <br/>
  * 
  * Die zweistellige Unterkontonummer (Stellen 9 und 10) ist nicht in das
- * Prüfzifferverfahren mit einzubeziehen.<br/>
+ * PrÃ¼fzifferverfahren mit einzubeziehen.<br/>
  * 
  * Die einzelnen Stellen der Grundnummer sind von rechts nach links mit den
  * Ziffern 2, 1, 2, 1, 2, 1 zu multiplizieren. Die jeweiligen Produkte werden
  * addiert, nachdem jeweils aus den zweistelligen Produkten die Quersumme
  * gebildet wurde (z. B. Produkt 16 = Quersumme 7). Nach der Addition bleiben
- * außer der Einerstelle alle anderen Stellen unberücksichtigt. Die Einerstelle
- * wird von dem Wert 10 subtrahiert. Das Ergebnis ist die Prüfziffer (Stelle 8).
- * Hat die Einerstelle den Wert »0«, ist die Prüfziffer »0«. <br/>
+ * auÃŸer der Einerstelle alle anderen Stellen unberÃ¼cksichtigt. Die Einerstelle
+ * wird von dem Wert 10 subtrahiert. Das Ergebnis ist die PrÃ¼fziffer (Stelle 8).
+ * Hat die Einerstelle den Wert Â»0Â«, ist die PrÃ¼fziffer Â»0Â«. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: 0 1 2 3 4 5 6 P 0 0<br/>
  * Gewichtung: 1 2 1 2 1 2 1 + 4 + 3 + 8 + 5 + 3 = 24 (Q) (Q = Quersumme)
  * 
  * Die Einerstelle wird vom Wert 10 subtrahiert (10 - 4 = 6).<br/>
- * Die Prüfziffer ist in dem Beispiel die 6 und die vollständige Kontonummer
+ * Die PrÃ¼fziffer ist in dem Beispiel die 6 und die vollstÃ¤ndige Kontonummer
  * lautet: 1 2 3 4 5 6 6 0 0<br/>
  * 
  * <b>Ausnahmen: </b><br/>
  * 
- * Ist die Ziffer in Stelle 1 vor der sechsstelligen Grundnummer nicht »0« (oder
- * »blank«), ist das Ergebnis als falsch zu werten. <br/>
+ * Ist die Ziffer in Stelle 1 vor der sechsstelligen Grundnummer nicht Â»0Â« (oder
+ * Â»blankÂ«), ist das Ergebnis als falsch zu werten. <br/>
  * 
- * Ist die Unterkontonummer »00«, kann es vorkommen, dass sie auf den
+ * Ist die Unterkontonummer Â»00Â«, kann es vorkommen, dass sie auf den
  * Zahlungsverkehrsbelegen nicht angegeben ist, die Kontonummer jedoch um
- * führende Nullen ergänzt wurde. In diesem Fall sind z. B. die Stellen 1 bis 3
- * »000« (oder »blank«), die Prüfziffer ist an der Stelle 10 und die Berechnung
- * ist wie folgt durchzuführen: <br/>
+ * fÃ¼hrende Nullen ergÃ¤nzt wurde. In diesem Fall sind z. B. die Stellen 1 bis 3
+ * Â»000Â« (oder Â»blankÂ«), die PrÃ¼fziffer ist an der Stelle 10 und die Berechnung
+ * ist wie folgt durchzufÃ¼hren: <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: 0 0 0 1 2 3 4 5 6 6 <br/>
  * Gewichtung: 0 0 0 1 2 1 2 1 2 1 + 4 + 3 + 8 + 5 + 3 = 24 (Q) (Q = Quersumme) <br/>
- * 10 - 4 = 6 Prüfziffer richtig
+ * 10 - 4 = 6 PrÃ¼fziffer richtig
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

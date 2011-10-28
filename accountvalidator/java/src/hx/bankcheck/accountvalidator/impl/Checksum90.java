@@ -5,31 +5,31 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
  * Die Kontonummer ist immer 10-stellig, ggf. ist die Kontonummer durch
- * linksbündige Auffüllung mit Nullen 10-stellig darzustellen.Die Stelle 10 der
- * Kontonummer ist per Definition die Prüfziffer. Kontonummern, die nach
- * Durchführung der unten näher aufgeführten Berechnungs-methoden nicht zu einem
- * richtigen Ergebnis führen, sind nicht gültig.<br/>
+ * linksbÃ¼ndige AuffÃ¼llung mit Nullen 10-stellig darzustellen.Die Stelle 10 der
+ * Kontonummer ist per Definition die PrÃ¼fziffer. Kontonummern, die nach
+ * DurchfÃ¼hrung der unten nÃ¤her aufgefÃ¼hrten Berechnungs-methoden nicht zu einem
+ * richtigen Ergebnis fÃ¼hren, sind nicht gÃ¼ltig.<br/>
  * 
- * Die für die Berechnung relevante Kundennummer (K) befindet sich bei der
+ * Die fÃ¼r die Berechnung relevante Kundennummer (K) befindet sich bei der
  * Methode A in den Stellen 4 bis 9 der Kontonummer und bei den Methoden B bis E
  * in den Stellen 5 bis 9.<br/> *
  * 
  * <b>Ausnahme:</b><br/>
  * 
- * Ist nach linksbündigem Auffüllen mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten) befindet sich die für die Berechnung relevante
+ * Ist nach linksbÃ¼ndigem AuffÃ¼llen mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten) befindet sich die fÃ¼r die Berechnung relevante
  * Sachkontonummer (S) in den Stellen 3 bis 9. Diese Kontonummern sind
- * ausschließlich nach Methode F zu prüfen.<br/>
+ * ausschlieÃŸlich nach Methode F zu prÃ¼fen.<br/>
  * 
  * <b>Kundenkonten</b><br/>
  * Kundenkonten haben im Gegensatz zu Sachkonten an der Stelle 3 nicht die
  * Ziffer 9 stehen.<br/>
  * 
- * Ergibt die Berechnung der Prüfziffer nach dem Verfahren A einen
- * Prüfzifferfehler, so sind weitere Berechnungen mit den Methoden B bis
- * Evorzunehmen. Kundenkontonummern, die nach Durchführung aller
- * Berechnungsmethoden A bis E nicht zu einem richtigen Ergebnis führen, sind
- * nicht gültig.<br/>
+ * Ergibt die Berechnung der PrÃ¼fziffer nach dem Verfahren A einen
+ * PrÃ¼fzifferfehler, so sind weitere Berechnungen mit den Methoden B bis
+ * Evorzunehmen. Kundenkontonummern, die nach DurchfÃ¼hrung aller
+ * Berechnungsmethoden A bis E nicht zu einem richtigen Ergebnis fÃ¼hren, sind
+ * nicht gÃ¼ltig.<br/>
  * 
  * <b>Methode A: </b><br/>
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7<br/>
@@ -37,7 +37,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonr.: x x x K K K K K K P <br/>
  * Gewichtung: 7 6 5 4 3 2 <br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen dem Verfahren 06.
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen dem Verfahren 06.
  * 
  * Testkontonummern:<br/>
  * 
@@ -52,7 +52,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonr.: x x x x K K K K K P<br/>
  * Gewichtung: 6 5 4 3 2<br/>
  * 
- * Die Berechnung und die möglichen Ergebnisse entsprechen dem Verfahren 06.<br/>
+ * Die Berechnung und die mÃ¶glichen Ergebnisse entsprechen dem Verfahren 06.<br/>
  * 
  * Testkontonummern:<br/>
  * 
@@ -70,11 +70,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die einzelnen Stellen der Kontonummer sind von rechts nach links mit den
  * Gewichten zu multiplizieren. Die jeweiligen Prdukte werden addiert. Die Summe
  * der Produkte ist durch 7 zu dividieren. Der verbleibende Rest wird vom
- * Divisor (7) subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt kein
- * Rest, ist die Prüfziffer 0. <br/>
+ * Divisor (7) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt kein
+ * Rest, ist die PrÃ¼fziffer 0. <br/>
  * 
  * Kontonummern, die in der Stelle 10 die Werte 7, 8 oder 9 haben, sind nach
- * dieser Methode nicht gültig.<br/>
+ * dieser Methode nicht gÃ¼ltig.<br/>
  * 
  * Testkontonummern:<br/>
  * richtig: 0000654321, 0000824491<br/>
@@ -92,11 +92,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die einzelnen Stellen der Kontonummer sind von rechts nach links mit den
  * Gewichten zu multiplizieren. Die jeweiligen Produkte werden addiert. Die
  * Summe der Produkte ist durch 9 zu dividieren. Der verbleibende Rest wird vom
- * Divisor (9) subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt kein
- * Rest, ist die Prüfziffer 0.<br/>
+ * Divisor (9) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt kein
+ * Rest, ist die PrÃ¼fziffer 0.<br/>
  * 
  * Kontonummern, die an der Stelle 10 den Wert 9 haben sind nach dieser Methode
- * nicht gültig.<br/>
+ * nicht gÃ¼ltig.<br/>
  * 
  * Testkontonummern: <br/>
  * 
@@ -115,8 +115,8 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Die einzelnen Stellen der Kontonummer sind von rechts nach links mit den
  * Gewichten zu multiplizieren. Die jeweiligen Produkte werden addiert. Die
  * Summe der Produkte ist durch 10 zu dividieren. Der verbleibende Rest wird vom
- * Divisor (10) subtrahiert. Das Ergebnis ist die Prüfziffer. Verbleibt kein
- * Rest, ist die Prüfziffer 0.<br/>
+ * Divisor (10) subtrahiert. Das Ergebnis ist die PrÃ¼fziffer. Verbleibt kein
+ * Rest, ist die PrÃ¼fziffer 0.<br/>
  * 
  * Testkontonummern: <br/>
  * 
@@ -135,7 +135,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonr.: x x S S S S S S S P <br/>
  * Gewichtung: 8 7 6 5 4 3 2 <br/>
  * 
- * Die Berechnung und die möglichen Ergebnisse entsprechen dem Verfahren 06. Es
+ * Die Berechnung und die mÃ¶glichen Ergebnisse entsprechen dem Verfahren 06. Es
  * ist jedoch die vorgenannte Gewichtung zu beachten.
  * 
  * Testkontonummern: <br/>
@@ -143,7 +143,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * richtig: 0099100002<br/>
  * falsch: 0099100007<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

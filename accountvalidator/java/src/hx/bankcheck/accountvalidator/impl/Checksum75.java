@@ -9,10 +9,10 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2<br/>
  * 
- * Die Kontonummer (6-, 7- oder 9-stellig) ist durch linksbündige
- * Nullenauffüllung 10-stellig darzustellen.<br/>
+ * Die Kontonummer (6-, 7- oder 9-stellig) ist durch linksbÃ¼ndige
+ * NullenauffÃ¼llung 10-stellig darzustellen.<br/>
  * 
- * Die für die Berechnung relevante 5-stellige Stammnummer (S) wird von links
+ * Die fÃ¼r die Berechnung relevante 5-stellige Stammnummer (S) wird von links
  * nach rechts mit den Ziffern 2, 1, 2, 1, 2 multipliziert.<br/>
  * 
  * Die weitere Berechnung und die Ergebnisse entsprechen dem Verfahren 00.<br/>
@@ -21,8 +21,8 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * S = Stammnummer <br/>
  * X = Weitere Ziffern der Kontonummer, die jedoch nicht in die
- * Prüfzifferberechnung mit einbezogen werden<br/>
- * P = Prüfziffer <br/>
+ * PrÃ¼fzifferberechnung mit einbezogen werden<br/>
+ * P = PrÃ¼fziffer <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * 6stell. Kontonr.: 0 0 0 0 S S S S S P <br/>
@@ -32,18 +32,18 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Anmerkungen: <br/>
  * 
- * Bei 6- und 7-stelligen Kontonummern befindet sich die für die Berechnung
- * relevante Stammnummer in den Stellen 5 bis 9, die Prüfziffer in Stelle 10 der
+ * Bei 6- und 7-stelligen Kontonummern befindet sich die fÃ¼r die Berechnung
+ * relevante Stammnummer in den Stellen 5 bis 9, die PrÃ¼fziffer in Stelle 10 der
  * Kontonummer.<br/>
  * 
- * Bei 9-stelligen Kontonummern befindet sich die für die Berechnung relevante
- * Stammnummer in den Stellen 2 bis 6, die Prüfziffer in der 7. Stelle der
+ * Bei 9-stelligen Kontonummern befindet sich die fÃ¼r die Berechnung relevante
+ * Stammnummer in den Stellen 2 bis 6, die PrÃ¼fziffer in der 7. Stelle der
  * Kontonummer. Ist die erste Stelle der 9-stelligen Kontonummer = 9 (2. Stelle
- * der »gedachten« Kontonummer), so befindet sich die für die Berechnung
- * relevante Stammnummer in den Stellen 3 bis 7, die Prüfziffer in der 8. Stelle
+ * der Â»gedachtenÂ« Kontonummer), so befindet sich die fÃ¼r die Berechnung
+ * relevante Stammnummer in den Stellen 3 bis 7, die PrÃ¼fziffer in der 8. Stelle
  * der Kontonummer.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

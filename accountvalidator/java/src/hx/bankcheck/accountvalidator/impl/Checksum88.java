@@ -9,12 +9,12 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7<br/>
  * 
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
  * darzustellen. Die Stellen 4 bis 9 werden von rechts nach links mit den
  * Gewichten 2, 3, 4, 5, 6, 7 multipliziert.<br/>
  * 
- * Die restliche Berechnung und mögliche Ergebnisse entsprechen dem Verfahren
- * 06. Die Stelle 10 der Kontonummer ist per Definition die Prüfziffer.<br/>
+ * Die restliche Berechnung und mÃ¶gliche Ergebnisse entsprechen dem Verfahren
+ * 06. Die Stelle 10 der Kontonummer ist per Definition die PrÃ¼fziffer.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10) <br/>
  * Kontonr.: x x x x x x x x x P<br/>
@@ -30,7 +30,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern: 2525259, 1000500, 90013000, 92525253, 99913003<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

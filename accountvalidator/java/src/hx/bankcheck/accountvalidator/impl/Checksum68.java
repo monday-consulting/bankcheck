@@ -9,12 +9,12 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2, 1, 2, 1, 2
  * 
- * Die Kontonummern sind 6- bis 10-stellig und enthalten keine führenden Nullen.
- * Die erste Stelle von rechts ist die Prüfziffer. Die Berechnung erfolgt wie
+ * Die Kontonummern sind 6- bis 10-stellig und enthalten keine fÃ¼hrenden Nullen.
+ * Die erste Stelle von rechts ist die PrÃ¼fziffer. Die Berechnung erfolgt wie
  * bei Verfahren 00, hierbei sind jedoch folgende Besonderheiten zu beachten:<br/>
  * 
- * Bei 10-stelligen Kontonummern erfolgt die Berechnung für die 2. bis 7.
- * Stelle. Stelle 7 muss eine »9« sein.<br/>
+ * Bei 10-stelligen Kontonummern erfolgt die Berechnung fÃ¼r die 2. bis 7.
+ * Stelle. Stelle 7 muss eine Â»9Â« sein.<br/>
  * 
  * Stellennr.: A 9 8 7 6 5 4 3 2 1 (A = 10)<br/>
  * Kontonr.: 8 8 8 9 6 5 4 3 2 P <br/>
@@ -22,40 +22,40 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Die Einerstelle der Summe wird vom Wert 10 subtrahiert (10 - 2 = 8).<br/>
  * 
- * Die Prüfziffer ist in diesem Fall die 8 und die vollständige Kontonummer
+ * Die PrÃ¼fziffer ist in diesem Fall die 8 und die vollstÃ¤ndige Kontonummer
  * lautet: 8 8 8 9 6 5 4 3 2 8<br/>
  * 
- * 6- bis 9-stellige Kontonummern sind in zwei Varianten prüfbar.<br/>
+ * 6- bis 9-stellige Kontonummern sind in zwei Varianten prÃ¼fbar.<br/>
  * 
- * <b>Variante 1: voll prüfbar</b><br/>
+ * <b>Variante 1: voll prÃ¼fbar</b><br/>
  * 
  * Kontonr.: 9 8 7 6 5 4 3 2 P Gewichtung: 1 2 1 2 1 2 1 2 9 + 7 + 7 + 3 + 5 + 8
  * + 3 + 4 = 46 (Q) (Q) (Q = Quersumme)<br/>
  * 
  * Die Einerstelle der Summe wird vom Wert 10 subtrahiert (10 - 6 = 4).<br/>
  * 
- * Die Prüfziffer ist in diesem Fall die 4 und die vollständige Kontonummer
+ * Die PrÃ¼fziffer ist in diesem Fall die 4 und die vollstÃ¤ndige Kontonummer
  * lautet: 9 8 7 6 5 4 3 2 4<br/>
  * 
- * Ergibt die Berechnung nach Variante 1 einen Prüfzifferfehler, muss Variante 2
- * zu einer korrekten Prüfziffer führen.<br/>
+ * Ergibt die Berechnung nach Variante 1 einen PrÃ¼fzifferfehler, muss Variante 2
+ * zu einer korrekten PrÃ¼fziffer fÃ¼hren.<br/>
  * 
  *<b> Variante 2:</b><br/>
  * 
- * Stellen 7 und 8 werden nicht geprüft.<br/>
+ * Stellen 7 und 8 werden nicht geprÃ¼ft.<br/>
  * 
  * Kontonr.: 9 8 7 6 5 4 3 2 P Gewichtung: 1 2 1 2 1 2 9 + 3 + 5 + 8 + 3 + 4 =
  * 32 (Q) (Q = Quersumme)<br/>
  * 
  * Die Einerstelle der Summe wird vom Wert 10 subtrahiert (10 - 2 = 8).<br/>
  * 
- * Die Prüfziffer ist in diesem Fall die 8 und die vollständige Kontonummer
+ * Die PrÃ¼fziffer ist in diesem Fall die 8 und die vollstÃ¤ndige Kontonummer
  * lautet: 9 8 7 6 5 4 3 2 8<br/>
  * 
  * 9-stellige Kontonummern im Nummernbereich 400 000 000 bis 499 999 999 sind
- * nicht prüfbar, da diese Nummern keine Prüfziffer enthalten.<br/>
+ * nicht prÃ¼fbar, da diese Nummern keine PrÃ¼fziffer enthalten.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

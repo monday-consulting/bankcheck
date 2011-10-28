@@ -13,17 +13,17 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * <b>Ausnahme: </b><br/>
  * 
  * Ist die 4. Stelle der Kontonummer (von links) = 9, so werden die Stellen 1
- * bis 3 nicht in die Prüfzifferberechnung einbezogen. <br/>
+ * bis 3 nicht in die PrÃ¼fzifferberechnung einbezogen. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 10 <br/>
  * Kontonr.: 4 0 1 9 1 1 0 0 0 8<br/>
  * Ktonr. umgesetzt 0 0 0 9 1 1 0 0 0 8 <br/>
- * Gewichtung: 1 2 1 2 1 2 9 + 2 + 1 + 0 + 0 + 0 = 12 10 - 2 = 8 8 = Prüfziffer <br/>
+ * Gewichtung: 1 2 1 2 1 2 9 + 2 + 1 + 0 + 0 + 0 = 12 10 - 2 = 8 8 = PrÃ¼fziffer <br/>
  * 
  * Testkontonummern: 4013410024, 4016660195, 0166805317 4019310079, 4019340829,
  * 4019151002<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

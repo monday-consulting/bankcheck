@@ -9,7 +9,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 10, Gewichtung 2, 0, 0, 0, 0, 1, 2, 1, 2 <br/>
  * 
- * Die letzte Stelle ist per Definition die Prüfziffer. Die einzelnen Stellen
+ * Die letzte Stelle ist per Definition die PrÃ¼fziffer. Die einzelnen Stellen
  * der Kontonummer sind ab der ersten Stelle von links nach rechts mit den
  * Ziffern 2, 0, 0, 0, 0, 1, 2, 1, 2 zu multiplizieren. Die jeweiligen Produkte
  * werden addiert (ohne Quersummenbildung). Die weitere Berechnung erfolgt wie
@@ -19,7 +19,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * Kontonr.: x x x x x x x x x P<br/>
  * Gewichtung: 2 0 0 0 0 1 2 1 2<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

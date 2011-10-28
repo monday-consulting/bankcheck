@@ -8,15 +8,15 @@ package hx.bankcheck.accountvalidator.impl;
  * Die Berechnung erfolgt wie bei Verfahren 01.<br />
  * 
  * Es ist jedoch zu beachten, dass nur die Stellen 4 bis 9 in das
- * Prüfzifferberechnungsverfahren einbezogen werden. <br />
+ * PrÃ¼fzifferberechnungsverfahren einbezogen werden. <br />
  * 
- * Die Stelle 10 der Kontonummer ist die Prüfziffer. <br />
+ * Die Stelle 10 der Kontonummer ist die PrÃ¼fziffer. <br />
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br />
  * Kontonr.: x x x x x x x x x P<br />
  * Gewichtung: 1 7 3 1 7 3<br />
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

@@ -11,29 +11,29 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * <b>Methode A</b><br/>
  * 
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
- * darzustellen. Die Berechnung und die möglichen Ergebnisse entsprechen dem
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
+ * darzustellen. Die Berechnung und die mÃ¶glichen Ergebnisse entsprechen dem
  * Verfahren 00; es ist jedoch zu beachten, dass nur die Stellen 4 bis 9 in das
- * Prüfzifferberechnungsverfahren einbezogen werden. Die Stelle 10 der
- * Kontonummer ist die Prüfziffer.<br/>
+ * PrÃ¼fzifferberechnungsverfahren einbezogen werden. Die Stelle 10 der
+ * Kontonummer ist die PrÃ¼fziffer.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x x x x x x P<br/>
  * Gewichtung: 1 2 1 2 1 2<br/>
  * Testkontonummern: 340968, 1001171, 1009588<br/>
  * 
- * Führt die Berechnung nach Methode A zu einem Prüfziffer-fehler, so ist die
+ * FÃ¼hrt die Berechnung nach Methode A zu einem PrÃ¼fziffer-fehler, so ist die
  * Berechnung nach Methode B vorzunehmen.<br/>
  * 
  * <b>Methode B</b><br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7<br/>
  * 
- * Die Kontonummer ist durch linksbündige Nullenauffüllung 10-stellig
+ * Die Kontonummer ist durch linksbÃ¼ndige NullenauffÃ¼llung 10-stellig
  * darzustellen. Die Stellen 4 bis 9 der Kontonummer werden von rechts nach
  * links mit den Ziffern 2, 3, 4, 5, 6, 7 multipliziert. Die weitere Berechnung
- * und die möglichen Ergebnisse entsprechen dem Verfahren 32. Die Stelle 10 ist
- * die Prüfziffer.<br/>
+ * und die mÃ¶glichen Ergebnisse entsprechen dem Verfahren 32. Die Stelle 10 ist
+ * die PrÃ¼fziffer.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
  * Kontonr.: x x x x x x x x x P<br/>
@@ -43,11 +43,11 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * <b>Ausnahme:</b><br/>
  * 
- * Ist nach linksbündiger Auffüllung mit Nullen auf 10 Stellen die 3. Stelle der
- * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemäß der Ausnahme in
+ * Ist nach linksbÃ¼ndiger AuffÃ¼llung mit Nullen auf 10 Stellen die 3. Stelle der
+ * Kontonummer = 9 (Sachkonten), so erfolgt die Berechnung gemÃ¤ÃŸ der Ausnahme in
  * Methode 51 mit den gleichen Ergebnissen und Testkontonummern.<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

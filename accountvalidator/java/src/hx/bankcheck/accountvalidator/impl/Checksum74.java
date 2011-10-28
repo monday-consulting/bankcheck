@@ -9,9 +9,9 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 /**
  * Modulus 10, Gewichtung 2, 1, 2, 1, 2 ff. <br/>
  * 
- * Die Kontonummer (2- bis 10-stellig) ist durch linksbündige Nullenauffüllung
- * 10-stellig darzustellen. Die 10. Stelle ist per Definition die Prüfziffer.
- * Die für die Berechnung relevanten Stellen werden von rechts nach links mit
+ * Die Kontonummer (2- bis 10-stellig) ist durch linksbÃ¼ndige NullenauffÃ¼llung
+ * 10-stellig darzustellen. Die 10. Stelle ist per Definition die PrÃ¼fziffer.
+ * Die fÃ¼r die Berechnung relevanten Stellen werden von rechts nach links mit
  * den Ziffern 2, 1, 2, 1, 2 ff. multipliziert. Dieweitere Berechnung und die
  * Ergebnisse entsprechen dem Verfahren 00. <br/>
  * 
@@ -19,10 +19,10 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Bei 6-stelligen Kontonummern ist folgende Besonderheit zu beachten: <br/>
  * 
- * Ergibt die erste Berechnung der Prüfziffer nach dem Verfahren 00 einen
- * Prüfzifferfehler, so ist eine weitere Berechnung vorzunehmen. Hierbei ist die
- * Summe der Produkte auf die nächste Halbdekade hochzurechnen. Die Differenz
- * ist die Prüfziffer.<br/>
+ * Ergibt die erste Berechnung der PrÃ¼fziffer nach dem Verfahren 00 einen
+ * PrÃ¼fzifferfehler, so ist eine weitere Berechnung vorzunehmen. Hierbei ist die
+ * Summe der Produkte auf die nÃ¤chste Halbdekade hochzurechnen. Die Differenz
+ * ist die PrÃ¼fziffer.<br/>
  * 
  * Beispiel: <br/>
  * 
@@ -31,14 +31,14 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Gewichtung: 2 1 2 1 2 4 + 3 + 9 + 3 + 2 = 21 (Q) (Q = Quersumme) <br/>
  * 
  * 1. Berechnung (Verfahren 00) 10 - 1 = 9 <br/>
- * 2. Berechnung 21 + 4 = 25 (nächste Halbdekade) <br/>
+ * 2. Berechnung 21 + 4 = 25 (nÃ¤chste Halbdekade) <br/>
  * 
- * In diesem Fall kann die Prüfziffer 4 oder 9 lauten. <br/>
+ * In diesem Fall kann die PrÃ¼fziffer 4 oder 9 lauten. <br/>
  * 
  * Testkontonummern (richtig): 1016, 26260, 242243, 242248, 18002113, 1821200043 <br/>
  * Testkontonummern (falsch): 1011, 26265, 18002118, 6160000024 <br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
