@@ -86,10 +86,8 @@ public class Checksum29 extends AbstractChecksumValidator {
 	protected int calcChecksum(int[] accountNumber) {
 		int sum = 0;
 		int j = 0;
-		String a = "KTO:";
 		for (int i = accountNumber.length - 2; i >= 0; i--) {
 			sum += transformationTable[j][accountNumber[i]];
-			a += transformationTable[j][accountNumber[i]];
 			j++;
 			j %= 4;
 		}
