@@ -18,11 +18,11 @@ public class ChecksumIBANTest {
 		String[] invalidIBANs = { "AT611904300235473201"};
 		
 		for (String iban : validIBANs) {
-			assertTrue(cs.validate(iban, null));
+			assertTrue(cs.validate(iban));
 		}
 		
 		for (String iban : invalidIBANs) {
-			assertFalse(cs.validate(iban, null));
+			assertFalse(cs.validate(iban));
 		}
 	}
 }

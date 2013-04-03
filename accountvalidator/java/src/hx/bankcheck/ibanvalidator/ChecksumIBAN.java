@@ -26,10 +26,9 @@ public class ChecksumIBAN {
 	 * Checks an IBAN for correctness
 	 * 
 	 * @param iban The IBAN.
-	 * @param bankNumber The 8-Digit bankNumber, right aligned.
-	 * @return
+	 * @return true, if the IBAN is valid, otherwise false.
 	 */
-	public boolean validate(String iban, int[] bankNumber) throws ValidationException {	
+	public boolean validate(String iban) throws ValidationException {	
 		BigInteger ibanNumeric = convertToNumeric(iban);
 		return ibanNumeric.mod(BI_97).intValue() == 1;
 	}

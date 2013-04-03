@@ -59,6 +59,6 @@ public class IBANValidator {
 		}
 		
 		ChecksumIBAN checksumIBAN =  new ChecksumIBAN();
-		return checksumIBAN.validate(iban, null);
+		return checksumIBAN.validate(iban);
 	}
 }
