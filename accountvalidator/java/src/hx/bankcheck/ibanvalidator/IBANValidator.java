@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
 
 public class IBANValidator {
 
-	private static final String IBAN_PATTERNS_FILENAME = "hx/bankcheck/ibanvalidator/europeanIbanPatterns.properties";
+	private static final String IBAN_PATTERNS_FILENAME = "hx/bankcheck/ibanvalidator/ibanPatterns.properties";
 	
-	private HashMap<String, Pattern> europeanIbanPatterns;
+	private HashMap<String, Pattern> ibanPatterns;
 
 	public IBANValidator() {
 		try {
@@ -26,14 +26,18 @@ public class IBANValidator {
 			Properties properties = new Properties();
 			properties.load(inputStream);
 			
-			europeanIbanPatterns = new HashMap<String, Pattern>();
+			ibanPatterns = new HashMap<String, Pattern>();
 			
 			for (Entry<Object, Object> entry : properties.entrySet()) {
-				europeanIbanPatterns.put((String) entry.getKey(), Pattern.compile((String) entry.getValue()));
+				ibanPatterns.put((String) entry.getKey(), Pattern.compile((String) entry.getValue()));
 			}
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
+	}
+	
+	public boolean isValid(String iban)	throws ValidationException {
+		return isValid(iban, null);
 	}
 
 	public boolean isValid(String iban, String country)	throws ValidationException {
@@ -48,7 +52,7 @@ public class IBANValidator {
 			return false;
 		}
 		
-		Pattern ibanPattern = europeanIbanPatterns.get(countryCode);
+		Pattern ibanPattern = ibanPatterns.get(countryCode);
 		if (ibanPattern == null) {
 			return false;
 		}
