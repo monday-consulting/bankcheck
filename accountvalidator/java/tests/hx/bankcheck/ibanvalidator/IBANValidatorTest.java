@@ -25,5 +25,4 @@ public class IBANValidatorTest {
 			assertFalse(ibanValidator.isValid(iban, null));
 		}
 	}
-
 }
