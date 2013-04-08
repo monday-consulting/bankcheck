@@ -53,7 +53,7 @@ public class BlzManager {
 		}
 	}
 	
-	private void load(InputStream input) throws FileNotFoundException, IOException, IllegalDataException {
+	public void load(InputStream input) throws FileNotFoundException, IOException, IllegalDataException {
 		int[] columns = new int[Column.values().length];
 		int i=0;
 		for(Column c: Column.values()) {
@@ -141,10 +141,10 @@ public class BlzManager {
 	public static void main(String[] args) throws FileNotFoundException, IOException, IllegalDataException {
 		BlzManager r = new BlzManager();
 		
-		File f = new File("data/blz_20101206.txt");
+		File f = new File("java/data/BLZ_20120604.txt");
 		r.loadFile(f);
 		
-		List<BankInfo> banks = r.findBank("79063060");
+		List<BankInfo> banks = r.findBank("25010030");
 		for(BankInfo b: banks)
 			System.out.println(b);
 	}
