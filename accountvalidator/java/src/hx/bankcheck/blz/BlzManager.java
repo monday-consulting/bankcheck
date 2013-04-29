@@ -137,6 +137,15 @@ public class BlzManager {
 		}
 		return r;
 	}
+	
+	public List<BankInfo> findBankByBic(String bic) {
+		List<BankInfo> r = new ArrayList<BankInfo>();
+		for (BankInfo b: banks) {
+			if (bic.equals(b.getBic()))
+				r.add(b);
+		}
+		return r;
+	}	
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, IllegalDataException {
 		BlzManager r = new BlzManager();
