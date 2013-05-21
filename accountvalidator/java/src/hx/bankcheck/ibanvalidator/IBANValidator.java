@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Properties;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IBANValidator {
@@ -15,6 +14,8 @@ public class IBANValidator {
 	private static final String IBAN_PATTERNS_FILENAME = "hx/bankcheck/ibanvalidator/ibanPatterns.properties";
 	
 	private HashMap<String, Pattern> ibanPatterns;
+	
+	private Pattern ALL_IBANS;
 
 	public IBANValidator() {
 		try {
@@ -31,6 +32,9 @@ public class IBANValidator {
 			for (Entry<Object, Object> entry : properties.entrySet()) {
 				ibanPatterns.put((String) entry.getKey(), Pattern.compile((String) entry.getValue()));
 			}
+			
+			ALL_IBANS = ibanPatterns.get("ALL");
+			
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
@@ -42,27 +46,29 @@ public class IBANValidator {
 
 	public boolean isValid(String iban, String country)	throws ValidationException {
 		
-		if (iban == null || iban.length() < 4) {
+		// validate format 
+		if (!ALL_IBANS.matcher(iban).matches()) {
 			return false;
 		}
 		
-		String countryCode = iban.substring(0, 2).toUpperCase();
+		// validate checksum
+		ChecksumIBAN checksumIBAN =  new ChecksumIBAN();
+		if (!checksumIBAN.validate(iban)) {
+			return false;
+		}
 		
+		// validate country code
+		String countryCode = iban.substring(0, 2).toUpperCase();
 		if (country != null && !country.toUpperCase().equals(countryCode)) {
 			return false;
 		}
 		
+		// validate against country-specific format 
 		Pattern ibanPattern = ibanPatterns.get(countryCode);
-		if (ibanPattern == null) {
+		if (ibanPattern != null && !ibanPattern.matcher(iban.toUpperCase()).matches()) {
 			return false;
 		}
 		
-		Matcher ibanMatcher = ibanPattern.matcher(iban.toUpperCase());
-		if (!ibanMatcher.matches()) {
-			return false;
-		}
-		
-		ChecksumIBAN checksumIBAN =  new ChecksumIBAN();
-		return checksumIBAN.validate(iban);
+		return true;
 	}
 }
