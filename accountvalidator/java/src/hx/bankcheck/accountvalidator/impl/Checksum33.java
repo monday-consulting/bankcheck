@@ -10,7 +10,7 @@ package hx.bankcheck.accountvalidator.impl;
  * 10 der Kontonummer ist per Definition die Prüfziffer. <br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 A (A = 10)<br/>
- * Kontonr.: x x x x x x x x x P <br/>
+ * Kontonr.: x x x x K K K K K P <br/>
  * Gewichtung: 6 5 4 3 2<br/>
  * 
  * Testkontonummern: 48658, 84956<br/>

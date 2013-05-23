@@ -8,21 +8,21 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
  * 
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen. <br/>
  * 
  * Kontonummern, die an der 1. und 2. Stelle der 10-stelligen Kontonummer einen
- * Wert ungleich „57“ beinhalten, sind nach der Variante 1 zu prüfen.
+ * Wert ungleich "57" beinhalten, sind nach der Variante 1 zu prÃ¼fen.
  * Kontonummern, die an der 1. und 2. Stelle der 10-stelligen Kontonummer den
- * Wert „57“ beinhalten, sind nach der Variante 2 zu prüfen. <br/>
+ * Wert "57" beinhalten, sind nach der Variante 2 zu prÃ¼fen. <br/>
  * 
  * <b>Variante 1:</b> <br/>
  * 
  * Modulus 11, Gewichtung 2, 3, 4, 5, 6, 7, 8, 9, 3 (modifiziert) <br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 20. Führt die
- * Berechnung nach der Variante 1 zu einem Prüfzifferfehler, so ist die
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 20. FÃ¼hrt die
+ * Berechnung nach der Variante 1 zu einem PrÃ¼fzifferfehler, so ist die
  * Kontonummer falsch. <br/>
  * 
  * Testkontonummern (richtig): 6100272324, 6100273479 <br/>
@@ -30,10 +30,10 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * <b>Variante 2:</b> <br/>
  * 
- * Für den Kontonummernkreis 5700000000 bis 5799999999 gilt die Methode 09
- * (keine Prüfzifferberechnung, alle Kontonummern sind als richtig zu werten).<br/>
+ * FÃ¼r den Kontonummernkreis 5700000000 bis 5799999999 gilt die Methode 09
+ * (keine PrÃ¼fzifferberechnung, alle Kontonummern sind als richtig zu werten).<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

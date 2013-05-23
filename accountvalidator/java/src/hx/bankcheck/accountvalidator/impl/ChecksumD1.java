@@ -3,6 +3,10 @@
  */
 package hx.bankcheck.accountvalidator.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import hx.bankcheck.accountvalidator.AbstractChecksumValidator;
 import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 
 /**
@@ -127,18 +131,20 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 4006003027, 5814500990, 6128462594, 7000062025, 8003306026, 9000641509
  * 
  * 
- * @author Sascha D�mer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
  * @author Tobias Mayer (backcheck@tobiasm.de)
- * @version 1.2
+ * @author Dirk Schrödter (ds@monday-consulting.com) - Monday Consulting GmbH
+ * 
+ * @version 1.3
  * 
  */
-public class ChecksumD1 extends Checksum00 {
+public class ChecksumD1 extends AbstractChecksumValidator {
 
-	private static final int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1,
-			2, 1, 2 };
+	private Map<Integer, int[]> constants;
+	private static final int[] WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 };
 
 	public ChecksumD1() {
-		super(WEIGHTS);
+		initConstants();
 	}
 
 	/*
@@ -149,50 +155,37 @@ public class ChecksumD1 extends Checksum00 {
 	 */
 	@Override
 	public boolean validate(int[] accountNumber) throws ValidationException {
-		int[] extension;
-		switch (accountNumber[0]) {
-		case 0:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 0 };
-			break;
-		case 1:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 1 };
-			break;
-		case 2:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 2 };
-			break;
-		case 3:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 3 };
-			break;
-		case 4:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 4 };
-			break;
-		case 5:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 5 };
-			break;
-		case 6:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 6 };
-			break;
-		case 7:
-			return false;
-		case 8:
-			return false;
-		case 9:
-			extension = new int[] { 4, 3, 6, 3, 3, 8, 9 };
-			break;
-		default:
+		
+		int[] additionalDigits = this.constants.get(new Integer(accountNumber[0]));
+		
+		if (additionalDigits != null) {
+
+			int[] mergedAccountNumber = new int[15];
+			for (int i = 0; i < additionalDigits.length; i++) {
+				mergedAccountNumber[i] = additionalDigits[i];
+			}
+
+			for (int i = 0; i < accountNumber.length - 2; i++) {
+				mergedAccountNumber[i + additionalDigits.length] = accountNumber[i + 1];
+			}
+	
+			return accountNumber[9] == new Checksum00(WEIGHTS).calcChecksum(mergedAccountNumber);
+		} else {
 			return false;
 		}
-
-		int[] mergedAccountNumber = new int[15];
-		for (int i = 0; i < extension.length; i++) {
-			mergedAccountNumber[i] = extension[i];
-		}
-
-		for (int i = 0; i < accountNumber.length - 2; i++) {
-			mergedAccountNumber[i + extension.length] = accountNumber[i + 1];
-		}
-
-		return (accountNumber[9] == calcChecksum(mergedAccountNumber));
 	}
 
+	private void initConstants() {
+		this.constants = new HashMap<Integer, int[]>();
+
+		this.constants.put(new Integer(0), new int[] { 4, 3, 6, 3, 3, 8, 0 }); 
+		this.constants.put(new Integer(1), new int[] { 4, 3, 6, 3, 3, 8, 1 }); 
+		this.constants.put(new Integer(2), new int[] { 4, 3, 6, 3, 3, 8, 2 }); 
+		this.constants.put(new Integer(3), new int[] { 4, 3, 6, 3, 3, 8, 3 }); 
+		this.constants.put(new Integer(4), new int[] { 4, 3, 6, 3, 3, 8, 4 }); 
+		this.constants.put(new Integer(5), new int[] { 4, 3, 6, 3, 3, 8, 5 }); 
+		this.constants.put(new Integer(6), new int[] { 4, 3, 6, 3, 3, 8, 6 }); 
+		this.constants.put(new Integer(7), new int[] { 4, 3, 6, 3, 3, 8, 7 }); 
+		this.constants.put(new Integer(9), new int[] { 4, 3, 6, 3, 3, 8, 9 }); 
+	}	
 }

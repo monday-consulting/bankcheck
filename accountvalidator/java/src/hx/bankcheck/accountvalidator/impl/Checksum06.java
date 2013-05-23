@@ -28,14 +28,20 @@ public class Checksum06 extends AbstractChecksumValidator {
 	private final static Logger LOG = Logger.getLogger(Checksum02.class.getName());
 	
 	// Weights from left to right
-	private final static int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+	private final static int[] WEIGHTS = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };	
+	private int divisor = 11;
 
 	public Checksum06() {
 		this(WEIGHTS);
 	}
 	
 	public Checksum06(int[] weights) {
+		this(weights, 11);
+	}
+	
+	public Checksum06(int[] weights, int divisor) {
 		setWeights(weights);
+		this.divisor = divisor;
 	}
 	
 	public boolean validate(int[] accountNumber) throws ValidationException {
@@ -56,7 +62,7 @@ public class Checksum06 extends AbstractChecksumValidator {
 		for(int i=0; i<getWeights().length; i++) {
 			sum += accountNumber[i] * getWeights()[i];
 		}
-		int checksum = 11 - (sum % 11);
+		int checksum = divisor - (sum % divisor);
 		
 		checksum = adjustChecksum(checksum);
 		
