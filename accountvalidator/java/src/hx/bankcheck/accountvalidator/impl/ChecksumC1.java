@@ -8,22 +8,22 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen.<br/>
  * 
  * Kontonummern, die an der 1. Stelle der 10-stelligen Kontonummer einen Wert
- * ungleich „5“ beinhalten, sind nach der Variante 1 zu prüfen. Kontonummern,
- * die an der 1. Stelle der 10-stelligen Kontonummer den Wert „5“beinhalten,
- * sind nach der Variante 2 zu prüfen.<br/>
+ * ungleich Â„5Â“ beinhalten, sind nach der Variante 1 zu prÃ¼fen. Kontonummern,
+ * die an der 1. Stelle der 10-stelligen Kontonummer den Wert Â„5Â“beinhalten,
+ * sind nach der Variante 2 zu prÃ¼fen.<br/>
  * 
  * Variante 1: <br/>
  * 
  * Modulus 11, Gewichtung 1, 2, 1, 2, 1, 2<br/>
  * 
- * Die Berechnung und mögliche Ergebnisse entsprechen der Methode 17. <br/>
+ * Die Berechnung und mÃ¶gliche Ergebnisse entsprechen der Methode 17. <br/>
  * 
- * Führt die Berechnung nach der Variante 1 zu einem Prüfzifferfehler, so ist
+ * FÃ¼hrt die Berechnung nach der Variante 1 zu einem PrÃ¼fzifferfehler, so ist
  * die Kontonummer falsch.<br/>
  * 
  * Testkontonummern (richtig): 0446786040, 0478046940, 0701625830, 0701625840,
@@ -38,16 +38,16 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Die Kontonummer ist 10-stellig mit folgendem Aufbau: KNNNNNNNNP <br/>
  * K = Kontoartziffer <br/>
  * N = laufende Nummer <br/>
- * P = Prüfziffer <br/>
+ * P = PrÃ¼fziffer <br/>
  * 
- * Für die Berechnung fließen die Stellen 1 bis 9 ein. Stelle 10 ist die
- * ermittelte Prüfziffer. Die Stellen 1 bis 9 sind von links nach rechts mit den
+ * FÃ¼r die Berechnung flieÃŸen die Stellen 1 bis 9 ein. Stelle 10 ist die
+ * ermittelte PrÃ¼fziffer. Die Stellen 1 bis 9 sind von links nach rechts mit den
  * Ziffern 1, 2, 1, 2, 1, 2, 1, 2, 1 zu multiplizieren. Die jeweiligen Produkte
  * sind zu addieren, nachdem aus eventuell zweistelligen Produkten der 2., 4.,
  * 6. und 8. Stelle die Quersumme gebildet wurde. Von der Summe ist der Wert
- * „1“zu subtrahieren. Das Ergebnis ist dann durch 11 zu dividieren. Der
- * verbleibende Rest wird von 10 subtrahiert. Das Ergebnis ist die Prüfziffer.
- * Verbleibt nach der Division durch 11 kein Rest, ist die Prüfziffer 0. <br/>
+ * Â„1Â“zu subtrahieren. Das Ergebnis ist dann durch 11 zu dividieren. Der
+ * verbleibende Rest wird von 10 subtrahiert. Das Ergebnis ist die PrÃ¼fziffer.
+ * Verbleibt nach der Division durch 11 kein Rest, ist die PrÃ¼fziffer 0. <br/>
  * 
  * Beispiel: <br/>
  * 
@@ -59,7 +59,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * 35 - 1 = 34<br/>
  * 
- * 34 : 11 = 3, Rest 1 10 - 1 = 9 (Prüfziffer)<br/>
+ * 34 : 11 = 3, Rest 1 10 - 1 = 9 (PrÃ¼fziffer)<br/>
  * 
  * Testkontonummern richtig: 5432112349, 5543223456, 5654334563, 5765445670,
  * 5876556788<br/>
@@ -67,7 +67,7 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Testkontonummern falsch: 5432112341, 5543223458, 5654334565, 5765445672,
  * 5876556780<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

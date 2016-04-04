@@ -8,31 +8,31 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
 
 /**
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
  * Nullen 10-stellig darzustellen.<br/>
  * 
- * Kontonummern mit weniger als zwei oder mehr als drei führenden Nullen sind
- * falsch. Die Kontonummern mit zwei führenden Nullen sind nach Variante 1, mit
- * drei führenden Nullen nach Variante 2 zu prüfen.<br/>
+ * Kontonummern mit weniger als zwei oder mehr als drei fÃ¼hrenden Nullen sind
+ * falsch. Die Kontonummern mit zwei fÃ¼hrenden Nullen sind nach Variante 1, mit
+ * drei fÃ¼hrenden Nullen nach Variante 2 zu prÃ¼fen.<br/>
  * 
  * <b>Variante 1:</b><br/>
  * 
  * Modulus (11,10), Gewichtung 1, 3, 2, 1, 3, 2, 1<br/>
  * 
- * Die für die Berechnung relevanten Stellen der Kontonummer befinden sich - von
- * links nach rechts gelesen -in den Stellen 3-9 (die Prüfziffer ist in Stelle
- * 10). Sie sind –von rechts nach links – mit den zugehörigen
+ * Die fÃ¼r die Berechnung relevanten Stellen der Kontonummer befinden sich - von
+ * links nach rechts gelesen -in den Stellen 3-9 (die PrÃ¼fziffer ist in Stelle
+ * 10). Sie sind Â–von rechts nach links Â– mit den zugehÃ¶rigen
  * Gewichtungsfaktoren zu multiplizieren.<br/>
  * 
- * Zum jeweiligen Produkt ist der zugehörige Gewichtungsfaktor zu addieren.Das
+ * Zum jeweiligen Produkt ist der zugehÃ¶rige Gewichtungsfaktor zu addieren.Das
  * jeweilige Ergebnis ist durch 11 zu dividieren. Die sich aus der Division
  * ergebenden Reste sind zu summieren. Diese Summe ist durch 10 zu dividieren.
- * Der Rest ist die berechnete Prüfziffer.<br/>
+ * Der Rest ist die berechnete PrÃ¼fziffer.<br/>
  * 
- * Führt die Berechnung zu einem Prüfzifferfehler, so ist die berechnete
- * Prüfziffer um 5 zu erhöhen und erneut zu prüfen. Ist die Prüfziffer größer
- * oder gleich 10, ist 10 abzuziehen und das Ergebnis ist dann die Prüfziffer.<br/>
+ * FÃ¼hrt die Berechnung zu einem PrÃ¼fzifferfehler, so ist die berechnete
+ * PrÃ¼fziffer um 5 zu erhÃ¶hen und erneut zu prÃ¼fen. Ist die PrÃ¼fziffer grÃ¶ÃŸer
+ * oder gleich 10, ist 10 abzuziehen und das Ergebnis ist dann die PrÃ¼fziffer.<br/>
  * 
  * Rechenbeispiel mit der Testkontonummer 0087920187: <br/>
  * 
@@ -44,8 +44,8 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 1 x 3 = 3 + 3 = 6 6 : 11 = 0 Rest 6 <br/>
  * 8 x 1 = 8 + 1 = 9 9 : 11 = 0 Rest 9 <br/>
  * 
- * Summe der Reste: 42 42 : 10 = 4 Rest 2 (= falsche Prüfziffer) ==> 2 + 5 = 7
- * (= Prüfziffer)<br/>
+ * Summe der Reste: 42 42 : 10 = 4 Rest 2 (= falsche PrÃ¼fziffer) ==> 2 + 5 = 7
+ * (= PrÃ¼fziffer)<br/>
  * 
  * Testkontonummern (richtig): 87920187, 41203755, 81069577, 61287958, 58467232 <br/>
  * Testkontonummern (falsch): 88034023, 43025432, 86521362, 61256523, 54352684 <br/>
@@ -54,19 +54,19 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * 
  * Modulus 11, Gewichtung 1, 2, 3, 4, 5, 6 <br/>
  * 
- * Die für die Berechnung relevanten Stellen der Kontonummer befinden sich - von
- * links nach rechts gelesen-in den Stellen 4-9 (die Prüfziffer ist in Stelle
- * 10).Sie sind von rechts nach links mit den zugehörigen Gewichtungsfaktoren zu
+ * Die fÃ¼r die Berechnung relevanten Stellen der Kontonummer befinden sich - von
+ * links nach rechts gelesen-in den Stellen 4-9 (die PrÃ¼fziffer ist in Stelle
+ * 10).Sie sind von rechts nach links mit den zugehÃ¶rigen Gewichtungsfaktoren zu
  * multiplizieren.<br/>
  * 
  * Die Summe dieser Produkte ist zu bilden, und das erzielte Ergebnis ist durch
- * 11 zu dividieren. Der Rest ist die berechnete Prüfziffer.<br/>
+ * 11 zu dividieren. Der Rest ist die berechnete PrÃ¼fziffer.<br/>
  * 
- * Führt die Berechnung zu einem Prüfzifferfehler, so ist die berechnete
- * Prüfziffer um 5 zu erhöhen und erneut zu prüfen. <br/>
+ * FÃ¼hrt die Berechnung zu einem PrÃ¼fzifferfehler, so ist die berechnete
+ * PrÃ¼fziffer um 5 zu erhÃ¶hen und erneut zu prÃ¼fen. <br/>
  * 
- * Ist die Prüfziffer größer oder gleich 10, ist 10 abzuziehen und das Ergebnis
- * ist dann die Prüfziffer.<br/>
+ * Ist die PrÃ¼fziffer grÃ¶ÃŸer oder gleich 10, ist 10 abzuziehen und das Ergebnis
+ * ist dann die PrÃ¼fziffer.<br/>
  * 
  * Rechenbeispiel mit der Testkontonummer 7125633: <br/>
  * 
@@ -80,14 +80,14 @@ import hx.bankcheck.accountvalidator.utils.ChecksumUtils;
  * Summe = 85 <br/>
  * 
  * 85 : 11 = 7 Rest 8 <br/>
- * (= falsche Prüfziffer) ==> 8 + 5 = 13 <br/>
- * (= Prüfziffer größer 10) ==> 13 - 10 = 3 (= Prüfziffer) <br/>
+ * (= falsche PrÃ¼fziffer) ==> 8 + 5 = 13 <br/>
+ * (= PrÃ¼fziffer grÃ¶ÃŸer 10) ==> 13 - 10 = 3 (= PrÃ¼fziffer) <br/>
  * 
  * Testkontonummern (richtig): 7125633, 1253657, 4353631<br/>
  * 
  * Testkontonummern (falsch): 2356412, 5435886, 9435414<br/>
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */

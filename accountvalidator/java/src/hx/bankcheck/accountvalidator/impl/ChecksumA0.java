@@ -6,28 +6,28 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
 /**
  * Modulus 11, Gewichtung 2, 4, 8, 5, 10, 0, 0, 0, 0 <br/>
  * 
- * Die Kontonummer ist einschließlich der Prüfziffer 10-stellig, ggf. ist die
- * Kontonummer für die Prüfzifferberechnung durch linksbündige Auffüllung mit
- * Nullen 10-stellig darzustellen. Die Stelle 10 ist die Prüfziffer. Die
- * einzelnen Stellen der Kontonummer (ohne Prüfziffer) sind von rechts nach
- * links mit dem zugehörigen Gewicht (2, 4, 8, 5, 10, 0, 0, 0, 0) zu
+ * Die Kontonummer ist einschlieÃŸlich der PrÃ¼fziffer 10-stellig, ggf. ist die
+ * Kontonummer fÃ¼r die PrÃ¼fzifferberechnung durch linksbÃ¼ndige AuffÃ¼llung mit
+ * Nullen 10-stellig darzustellen. Die Stelle 10 ist die PrÃ¼fziffer. Die
+ * einzelnen Stellen der Kontonummer (ohne PrÃ¼fziffer) sind von rechts nach
+ * links mit dem zugehÃ¶rigen Gewicht (2, 4, 8, 5, 10, 0, 0, 0, 0) zu
  * multiplizieren. Die Produkte werden addiert. Das Ergebnis ist durch 11 zu
  * dividieren. Ergibt sich nach der Division ein Rest von 0 oder 1, so ist die
- * Prüfziffer 0. Ansonsten ist der Rest vom Divisor (11) zu subtrahieren. Das
- * Ergebnis ist die Prüfziffer. <br/>
+ * PrÃ¼fziffer 0. Ansonsten ist der Rest vom Divisor (11) zu subtrahieren. Das
+ * Ergebnis ist die PrÃ¼fziffer. <br/>
  * 
  * <b>Ausnahme:</b><br/>
  * 
  * 3-stellige Kontonummern bzw. Kontonummern, deren Stellen 1 bis 7 = 0 sind,
- * enthalten keine Prüfziffer und sind als richtig anzusehen.<br/>
+ * enthalten keine PrÃ¼fziffer und sind als richtig anzusehen.<br/>
  * 
  * Stellennr.: 1 2 3 4 5 6 7 8 9 10 <br/>
  * Kontonr.: x x x x x x x x x P<br/>
  * Gewichtung: 0 0 0 0 10 5 8 4 2<br/>
  * 
  * Summe der Produkte dividiert durch 11 = x,<br/>
- * Rest Rest = 0 oder 1 Prüfziffer = 0<br/>
- * Rest = 2 bis 10 Prüfziffer = 11 – Rest<br/>
+ * Rest Rest = 0 oder 1 PrÃ¼fziffer = 0<br/>
+ * Rest = 2 bis 10 PrÃ¼fziffer = 11 Â– Rest<br/>
  * 
  * Beispiel:<br/>
  * 
@@ -39,7 +39,7 @@ import hx.bankcheck.accountvalidator.exceptions.ValidationException;
  * 
  * Testkontonummern: 521003287, 54500, 3287, 18761, 28290
  * 
- * @author Sascha Dömer (sdo@lmis.de) - LM Internet Services AG
+ * @author Sascha DÃ¶mer (sdo@lmis.de) - LM Internet Services AG
  * @version 1.0
  * 
  */
